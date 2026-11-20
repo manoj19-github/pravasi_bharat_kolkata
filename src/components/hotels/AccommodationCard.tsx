@@ -97,6 +97,17 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
                 idx === currentImgIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
               }`}
               loading="lazy"
+              onError={(e) => {
+                const target = e.currentTarget
+                const fallback = hotel.propertyType === 'homestay' 
+                  ? '/images/hotels/satguru-homestays_1.jpg' 
+                  : hotel.propertyType === 'bnb' 
+                  ? '/images/hotels/auckland-bed-and-breakfast_1.jpg' 
+                  : '/images/hotels/itc-royal-bengal_1.jpg'
+                if (target.src !== fallback) {
+                  target.src = fallback
+                }
+              }}
             />
           ))}
 
