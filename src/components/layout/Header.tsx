@@ -122,13 +122,13 @@ export const Header: React.FC = () => {
             {/* Home Link */}
             <Link
               to="/"
-              className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition-all shadow-2xs ${
+              className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all ${
                 isActive('/')
-                  ? 'bg-[#BD1113] text-white hover:bg-[#A80E10]'
-                  : 'bg-[#BD1113] text-white hover:bg-[#A80E10]'
+                  ? 'bg-[#BD1113] text-white shadow-2xs hover:bg-[#A80E10]'
+                  : 'text-[#0A265D] hover:text-[#BD1113] hover:bg-[#FAF0E1]/80'
               }`}
             >
-              <Home className="h-3.5 w-3.5 text-white" />
+              <Home className={`h-3.5 w-3.5 ${isActive('/') ? 'text-white' : 'text-[#0A265D]'}`} />
               <span>Home</span>
             </Link>
 
@@ -137,13 +137,13 @@ export const Header: React.FC = () => {
             {/* Hotels & Stays Link */}
             <Link
               to="/hotels"
-              className={`inline-flex items-center gap-1.5 text-xs font-bold transition-colors ${
+              className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all ${
                 isActive('/hotels')
-                  ? 'text-[#BD1113]'
-                  : 'text-[#0A265D] hover:text-[#BD1113]'
+                  ? 'bg-[#BD1113] text-white shadow-2xs hover:bg-[#A80E10]'
+                  : 'text-[#0A265D] hover:text-[#BD1113] hover:bg-[#FAF0E1]/80'
               }`}
             >
-              <Bed className="h-3.5 w-3.5 text-[#0A265D]" />
+              <Bed className={`h-3.5 w-3.5 ${isActive('/hotels') ? 'text-white' : 'text-[#0A265D]'}`} />
               <span>Hotels &amp; Stays</span>
             </Link>
 
@@ -157,18 +157,26 @@ export const Header: React.FC = () => {
             {/* Button 1: Venue Map */}
             <Link
               to="/map"
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#BD1113] bg-white px-4 py-1.5 text-xs font-bold text-[#0A265D] shadow-2xs hover:bg-[#FAF3E7] hover:shadow-xs transition-all transform hover:-translate-y-0.5"
+              className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold shadow-2xs transition-all transform hover:-translate-y-0.5 ${
+                isActive('/map')
+                  ? 'bg-[#BD1113] text-white hover:bg-[#A80E10] border border-[#BD1113]'
+                  : 'border border-[#EBD6BE] bg-white text-[#0A265D] hover:border-[#BD1113] hover:text-[#BD1113] hover:bg-[#FAF3E7]'
+              }`}
             >
-              <MapPin className="h-3.5 w-3.5 text-[#BD1113] fill-[#BD1113]" />
+              <MapPin className={`h-3.5 w-3.5 ${isActive('/map') ? 'text-white fill-white' : 'text-[#BD1113] fill-[#BD1113]'}`} />
               <span>Venue Map</span>
             </Link>
 
             {/* Button 2: Explore Kolkata */}
             <Link
               to="/explore-kolkata"
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#BD1113] hover:bg-[#A80E10] px-4 py-1.5 text-xs font-bold text-white shadow-2xs hover:shadow-sm transition-all transform hover:-translate-y-0.5"
+              className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold shadow-2xs transition-all transform hover:-translate-y-0.5 ${
+                isActive('/explore-kolkata')
+                  ? 'bg-[#BD1113] text-white hover:bg-[#A80E10] border border-[#BD1113]'
+                  : 'border border-[#EBD6BE] bg-white text-[#0A265D] hover:border-[#BD1113] hover:text-[#BD1113] hover:bg-[#FAF3E7]'
+              }`}
             >
-              <Navigation className="h-3 w-3 text-white fill-white" />
+              <Navigation className={`h-3 w-3 ${isActive('/explore-kolkata') ? 'text-white fill-white' : 'text-[#BD1113] fill-[#BD1113]'}`} />
               <span>Explore Kolkata</span>
             </Link>
 
@@ -191,36 +199,52 @@ export const Header: React.FC = () => {
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#BD1113] text-white text-xs font-bold shadow-xs"
+              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-xs font-bold transition-all ${
+                isActive('/')
+                  ? 'bg-[#BD1113] text-white shadow-xs'
+                  : 'bg-white text-[#0A265D] border border-[#E3CCA9] hover:bg-[#FAF0E1]'
+              }`}
             >
-              <Home className="h-3.5 w-3.5 text-white" />
+              <Home className={`h-3.5 w-3.5 ${isActive('/') ? 'text-white' : 'text-[#BD1113]'}`} />
               <span>Home</span>
             </Link>
 
             <Link
               to="/hotels"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white text-[#0A265D] border border-[#E3CCA9] text-xs font-bold"
+              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-xs font-bold transition-all ${
+                isActive('/hotels')
+                  ? 'bg-[#BD1113] text-white shadow-xs'
+                  : 'bg-white text-[#0A265D] border border-[#E3CCA9] hover:bg-[#FAF0E1]'
+              }`}
             >
-              <Bed className="h-3.5 w-3.5 text-[#0A265D]" />
+              <Bed className={`h-3.5 w-3.5 ${isActive('/hotels') ? 'text-white' : 'text-[#BD1113]'}`} />
               <span>Hotels &amp; Stays</span>
             </Link>
 
             <Link
               to="/map"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-[#BD1113] bg-white text-[#0A265D] text-xs font-bold"
+              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-xs font-bold transition-all ${
+                isActive('/map')
+                  ? 'bg-[#BD1113] text-white shadow-xs'
+                  : 'bg-white text-[#0A265D] border border-[#E3CCA9] hover:bg-[#FAF0E1]'
+              }`}
             >
-              <MapPin className="h-3.5 w-3.5 text-[#BD1113] fill-[#BD1113]" />
+              <MapPin className={`h-3.5 w-3.5 ${isActive('/map') ? 'text-white fill-white' : 'text-[#BD1113] fill-[#BD1113]'}`} />
               <span>Venue Map</span>
             </Link>
 
             <Link
               to="/explore-kolkata"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#BD1113] text-white text-xs font-bold shadow-xs"
+              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-xs font-bold transition-all ${
+                isActive('/explore-kolkata')
+                  ? 'bg-[#BD1113] text-white shadow-xs'
+                  : 'bg-white text-[#0A265D] border border-[#E3CCA9] hover:bg-[#FAF0E1]'
+              }`}
             >
-              <Navigation className="h-3.5 w-3.5 text-white fill-white" />
+              <Navigation className={`h-3.5 w-3.5 ${isActive('/explore-kolkata') ? 'text-white fill-white' : 'text-[#BD1113] fill-[#BD1113]'}`} />
               <span>Explore Kolkata</span>
             </Link>
           </div>
