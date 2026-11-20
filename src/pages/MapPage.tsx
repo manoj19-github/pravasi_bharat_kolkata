@@ -13,6 +13,7 @@ import {
   Compass
 } from 'lucide-react'
 import { MAP_LOCATIONS, MapLocation } from '../data/mapLocations'
+import { ModernMapControls } from '../components/map/ModernMapControls'
 
 // Helper component to pan/zoom map programmatically
 const MapController: React.FC<{ targetCoords: [number, number] | null; zoomLevel?: number }> = ({
@@ -369,6 +370,7 @@ export const MapPage = () => {
         <MapContainer
           center={centerKolkata}
           zoom={12}
+          zoomControl={false}
           scrollWheelZoom={true}
           className="h-full w-full"
         >
@@ -378,6 +380,14 @@ export const MapPage = () => {
           />
 
           <MapController targetCoords={targetCoords} />
+
+          {/* Modern Advanced Glassmorphic Zoom Control with Scroll-to-Zoom */}
+          <ModernMapControls
+            initialCenter={centerKolkata}
+            initialZoom={12}
+            positionClassName="bottom-20 right-6"
+            showScrollHint={true}
+          />
 
           {/* User Geolocation Marker */}
           {userLocation && (

@@ -21,6 +21,7 @@ import {
   Phone
 } from 'lucide-react'
 import { MAP_LOCATIONS, MapLocation } from '../../data/mapLocations'
+import { ModernMapControls } from '../map/ModernMapControls'
 import alponaThemeSvg from '../../assets/alpana/alpona_theme.svg'
 import chakraSvg from '../../assets/alpana/chakra.svg'
 
@@ -272,11 +273,20 @@ export const MapPreviewSection: React.FC = () => {
             <MapContainer
               center={[targetCoords ? targetCoords[0] : 22.5448, targetCoords ? targetCoords[1] : 88.3995]}
               zoom={zoomLevel}
-              scrollWheelZoom={false}
+              zoomControl={false}
+              scrollWheelZoom={true}
               className="w-full h-full z-0"
             >
               <MapResizer />
               <MapController targetCoords={targetCoords} zoomLevel={zoomLevel} />
+
+              {/* Modern Advanced Glassmorphic Zoom Control */}
+              <ModernMapControls
+                initialCenter={[22.5448, 88.3995]}
+                initialZoom={13}
+                positionClassName="bottom-3 right-3"
+                showScrollHint={false}
+              />
 
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
