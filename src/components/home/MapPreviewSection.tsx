@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
@@ -14,7 +14,11 @@ import {
   Plane,
   ArrowUpRight,
   ArrowRight,
-  X
+  X,
+  Home,
+  Coffee,
+  ShieldCheck,
+  Phone
 } from 'lucide-react'
 import { MAP_LOCATIONS, MapLocation } from '../../data/mapLocations'
 import alponaThemeSvg from '../../assets/alpana/alpona_theme.svg'
@@ -60,18 +64,25 @@ const createMarkerIcon = (category: string, isSelected: boolean) => {
       bgColor = '#D97706'
       emoji = '🏨'
       break
+    case 'homestay':
+      bgColor = '#059669'
+      emoji = '🏡'
+      break
+    case 'bnb':
+      bgColor = '#B45309'
+      emoji = '☕'
+      break
+    case 'transport':
+    case 'airport':
+    case 'railway':
+      bgColor = '#0284c7'
+      emoji = '✈️'
+      break
+    case 'destination':
     case 'tourist':
     case 'historical':
       bgColor = '#0A265D'
       emoji = '🕌'
-      break
-    case 'airport':
-      bgColor = '#0284c7'
-      emoji = '✈️'
-      break
-    case 'railway':
-      bgColor = '#059669'
-      emoji = '🚆'
       break
     default:
       bgColor = '#BD1113'
@@ -79,8 +90,8 @@ const createMarkerIcon = (category: string, isSelected: boolean) => {
   }
 
   const border = isSelected
-    ? 'border-2 border-white ring-3 ring-[#BD1113] shadow-xl scale-110'
-    : 'border-2 border-white shadow-sm hover:scale-105'
+    ? 'border-2 border-white ring-3 ring-[#BD1113] shadow-xl scale-125 z-50'
+    : 'border-2 border-white shadow-sm hover:scale-110'
 
   return L.divIcon({
     className: 'custom-preview-marker',
@@ -105,15 +116,28 @@ export const MapPreviewSection: React.FC = () => {
   const [zoomLevel, setZoomLevel] = useState<number>(13)
   const autoHideTimerRef = useRef<NodeJS.Timeout | null>(null)
 
-  const filteredLocations = selectedCategory === 'all'
-    ? MAP_LOCATIONS
-    : MAP_LOCATIONS.filter((loc) => {
+  const filterButtons = useMemo(() => [
+    { id: 'all', label: 'All (104)', icon: Compass },
+    { id: 'venues', label: 'Venues (5)', icon: Building },
+    { id: 'hotels', label: 'Hotels (48)', icon: Hotel },
+    { id: 'homestays', label: 'Homestays (11)', icon: Home },
+    { id: 'bnbs', label: 'B&Bs (10)', icon: Coffee },
+    { id: 'transit', label: 'Getting to Kolkata (10)', icon: Plane },
+    { id: 'destinations', label: '20 Iconic Sights', icon: Landmark },
+  ], [])
+
+  const filteredLocations = useMemo(() => {
+    if (selectedCategory === 'all') return MAP_LOCATIONS
+    return MAP_LOCATIONS.filter((loc) => {
       if (selectedCategory === 'venues') return loc.category === 'convention'
       if (selectedCategory === 'hotels') return loc.category === 'hotel'
-      if (selectedCategory === 'heritage') return loc.category === 'tourist' || loc.category === 'historical'
-      if (selectedCategory === 'transit') return loc.category === 'airport' || loc.category === 'railway' || loc.category === 'transport'
+      if (selectedCategory === 'homestays') return loc.category === 'homestay'
+      if (selectedCategory === 'bnbs') return loc.category === 'bnb'
+      if (selectedCategory === 'transit') return loc.category === 'transport' || loc.category === 'airport' || loc.category === 'railway'
+      if (selectedCategory === 'destinations') return loc.category === 'destination' || loc.category === 'tourist' || loc.category === 'historical'
       return true
     })
+  }, [selectedCategory])
 
   const handleSelectLocation = (loc: MapLocation, zoom = 14) => {
     setSelectedLocation(loc)
@@ -125,10 +149,10 @@ export const MapPreviewSection: React.FC = () => {
       clearTimeout(autoHideTimerRef.current)
     }
 
-    // Auto-hide details card after 5 seconds
+    // Auto-hide details card after 6 seconds
     autoHideTimerRef.current = setTimeout(() => {
       setSelectedLocation(null)
-    }, 5000)
+    }, 6000)
   }
 
   useEffect(() => {
@@ -163,24 +187,24 @@ export const MapPreviewSection: React.FC = () => {
         />
       </div>
 
-      {/* Main 90vw Container */}
-      <div className="w-[90vw] mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
+      {/* Main 92vw Container */}
+      <div className="w-[92vw] max-w-[1920px] mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
 
-        {/* Section Header (Reduced Font Size & Height) */}
+        {/* Section Header */}
         <div className="flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3 py-0.5 mb-1.5 shadow-2xs">
             <Compass className="w-3 h-3 text-[#BD1113]" />
             <span className="text-[10px] font-bold tracking-wider uppercase text-[#BD1113]">
-              OPENSTREETMAP GEOPORTAL
+              PBD 2027 MASTER OPENSTREETMAP GEOPORTAL
             </span>
           </div>
 
           <h2 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-[#0A265D] leading-tight">
-            Explore Kolkata on the <span className="text-[#BD1113]">Interactive Map</span>
+            Explore All Accommodations, Venues, Transit &amp; <span className="text-[#BD1113]">Iconic Destinations</span>
           </h2>
 
-          <p className="mt-1 text-xs text-[#475569] font-medium max-w-xl leading-relaxed">
-            Locate Biswa Bangla Mela Prangan, luxury hotels, cultural monuments, and international transit terminals across the city.
+          <p className="mt-1 text-xs text-[#475569] font-medium max-w-2xl leading-relaxed">
+            Interactive map plotting all 48 certified hotels, 11 homestays, 10 B&amp;Bs, Biswa Bangla convention venues, airport &amp; rail gateways, and 20 iconic Kolkata heritage sights.
           </p>
 
           <div className="mt-2 flex items-center justify-center gap-1.5">
@@ -190,11 +214,11 @@ export const MapPreviewSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Master Interactive Map Card (Light Mode, Reduced Height) */}
+        {/* Master Interactive Map Card */}
         <div className="rounded-2xl bg-[#FFFDF9]/95 backdrop-blur-xs border border-[#EFE1CD] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
 
-          {/* Top Control Header Bar (Light Mode, Compact) */}
-          <div className="bg-[#FAF5EC]/90 border-b border-[#EFE1CD] px-3 sm:px-5 py-2 flex flex-wrap items-center justify-between gap-2.5">
+          {/* Top Control Header Bar */}
+          <div className="bg-[#FAF5EC]/90 border-b border-[#EFE1CD] px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
             
             {/* Live Geoportal Status Badge */}
             <div className="flex items-center gap-2">
@@ -203,7 +227,7 @@ export const MapPreviewSection: React.FC = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD1113]"></span>
               </span>
               <span className="text-[11px] font-bold text-[#0A265D]">
-                LIVE GEOPORTAL
+                104 MAPPED LOCATIONS
               </span>
               <span className="hidden sm:inline-block text-[11px] text-[#64748B] font-mono">
                 • 22.5448° N, 88.3995° E
@@ -212,13 +236,7 @@ export const MapPreviewSection: React.FC = () => {
 
             {/* Filter Pills */}
             <div className="flex items-center gap-1 flex-wrap">
-              {[
-                { id: 'all', label: 'All' },
-                { id: 'venues', label: 'Venues', icon: Building },
-                { id: 'hotels', label: 'Hotels', icon: Hotel },
-                { id: 'heritage', label: 'Heritage', icon: Landmark },
-                { id: 'transit', label: 'Transit', icon: Plane },
-              ].map((cat) => {
+              {filterButtons.map((cat) => {
                 const Icon = cat.icon
                 const isActive = selectedCategory === cat.id
                 return (
@@ -241,16 +259,16 @@ export const MapPreviewSection: React.FC = () => {
             {/* Full Screen Shortcut Button in Header */}
             <Link
               to="/map"
-              className="inline-flex items-center gap-1 bg-[#BD1113] hover:bg-[#A80E10] text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-2xs transition-all"
+              className="inline-flex items-center gap-1 bg-[#BD1113] hover:bg-[#A80E10] text-white text-[11px] font-semibold px-3 py-1 rounded-full shadow-2xs transition-all"
             >
               <Maximize2 className="w-3 h-3" />
-              <span>Full Screen</span>
+              <span>Full Screen Map</span>
             </Link>
 
           </div>
 
-          {/* Leaflet Map Canvas (Compact Height) */}
-          <div className="relative w-full h-[320px] sm:h-[360px] lg:h-[400px]">
+          {/* Leaflet Map Canvas */}
+          <div className="relative w-full h-[360px] sm:h-[420px] lg:h-[460px]">
             <MapContainer
               center={[targetCoords ? targetCoords[0] : 22.5448, targetCoords ? targetCoords[1] : 88.3995]}
               zoom={zoomLevel}
@@ -278,16 +296,40 @@ export const MapPreviewSection: React.FC = () => {
                     }}
                   >
                     <Popup className="custom-pbd-popup">
-                      <div className="p-1 min-w-[180px]">
+                      <div className="p-1 min-w-[200px] max-w-[240px]">
+                        {loc.image && (
+                          <img
+                            src={loc.image}
+                            alt={loc.name}
+                            className="w-full h-20 object-cover rounded mb-1.5 border border-[#EBD6BE]"
+                            loading="lazy"
+                          />
+                        )}
                         <span className="text-[9.5px] font-bold uppercase tracking-wider text-[#BD1113] block mb-0.5">
                           {loc.badgeText || loc.category}
                         </span>
                         <strong className="block text-xs font-serif text-[#0A265D] leading-tight">
                           {loc.name}
                         </strong>
-                        <p className="text-[10.5px] text-[#475569] mt-0.5 leading-snug">
+                        <p className="text-[10px] text-[#475569] mt-0.5 leading-snug">
                           {loc.address}
                         </p>
+                        {loc.distanceToVenueKm !== undefined && (
+                          <div className="text-[10.5px] text-[#BD1113] font-semibold mt-1">
+                            {loc.distanceToVenueKm === 0 ? 'PBD 2027 Main Venue' : `${loc.distanceToVenueKm} km to Venue`}
+                          </div>
+                        )}
+                        <div className="mt-2 pt-1.5 border-t border-[#F0E4D5] flex items-center justify-between">
+                          <a
+                            href={loc.googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[11px] font-bold text-[#BD1113] hover:underline flex items-center gap-0.5"
+                          >
+                            <span>Directions</span>
+                            <ExternalLink className="w-2.5 h-2.5" />
+                          </a>
+                        </div>
                       </div>
                     </Popup>
                   </Marker>
@@ -296,53 +338,61 @@ export const MapPreviewSection: React.FC = () => {
             </MapContainer>
 
             {/* Floating Quick Fly-to HUD (Top Right) */}
-            <div className="absolute top-3 right-3 z-400 flex flex-col gap-1.5">
+            <div className="absolute top-3 right-3 z-400 flex flex-col gap-1.5 max-w-[200px]">
               <button
-                onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 15)}
-                className="bg-white/95 backdrop-blur-md hover:bg-[#BD1113] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10.5px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 16)}
+                className="bg-white/95 backdrop-blur-md hover:bg-[#BD1113] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer truncate"
               >
                 <span>🏛️</span>
-                <span>Biswa Bangla Mela Prangan</span>
+                <span className="truncate">Biswa Bangla Mela Prangan</span>
               </button>
 
               <button
                 onClick={() => {
-                  const itc = MAP_LOCATIONS.find((l) => l.name.includes('ITC')) || MAP_LOCATIONS[1]
-                  handleSelectLocation(itc, 15)
+                  const itc = MAP_LOCATIONS.find((l) => l.name.includes('ITC Royal Bengal')) || MAP_LOCATIONS[1]
+                  handleSelectLocation(itc, 16)
                 }}
-                className="bg-white/95 backdrop-blur-md hover:bg-[#D97706] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10.5px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                className="bg-white/95 backdrop-blur-md hover:bg-[#D97706] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer truncate"
               >
                 <span>🏨</span>
-                <span>ITC Sonar</span>
+                <span className="truncate">ITC Royal Bengal</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  const bbcc = MAP_LOCATIONS.find((l) => l.id.includes('bbcc')) || MAP_LOCATIONS[1]
+                  handleSelectLocation(bbcc, 15)
+                }}
+                className="bg-white/95 backdrop-blur-md hover:bg-[#BD1113] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer truncate"
+              >
+                <span>🏛️</span>
+                <span className="truncate">BBCC New Town</span>
               </button>
 
               <button
                 onClick={() => {
                   const landmark = MAP_LOCATIONS.find((l) => l.id.includes('victoria')) || MAP_LOCATIONS[2]
-                  handleSelectLocation(landmark, 14)
+                  handleSelectLocation(landmark, 15)
                 }}
-                className="bg-white/95 backdrop-blur-md hover:bg-[#0A265D] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10.5px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                className="bg-white/95 backdrop-blur-md hover:bg-[#0A265D] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer truncate"
               >
                 <span>🕌</span>
-                <span>Victoria Memorial</span>
+                <span className="truncate">Victoria Memorial</span>
               </button>
 
               <button
                 onClick={() => {
-                  const airport = MAP_LOCATIONS.find((l) => l.category === 'airport') || MAP_LOCATIONS[0]
+                  const airport = MAP_LOCATIONS.find((l) => l.id.includes('airport')) || MAP_LOCATIONS[0]
                   handleSelectLocation(airport, 14)
                 }}
-                className="bg-white/95 backdrop-blur-md hover:bg-[#0284c7] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10.5px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                className="bg-white/95 backdrop-blur-md hover:bg-[#0284c7] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer truncate"
               >
                 <span>✈️</span>
-                <span>CCU Airport</span>
+                <span className="truncate">CCU Airport</span>
               </button>
             </div>
 
-            {/* ============================================================== */}
-            {/* COMPACT FLOATING LOCATION CARD (SMALL NOT FULL WIDTH)          */}
-            {/* Auto-hides after 5 seconds of clicking/selecting a location   */}
-            {/* ============================================================== */}
+            {/* Compact Floating Location Detail Overlay */}
             {selectedLocation && (
               <div className="absolute bottom-3 left-3 z-400 max-w-xs sm:max-w-sm w-[calc(100%-1.5rem)] animate-in fade-in slide-in-from-bottom-2 duration-300">
                 <div className="bg-[#FFFDF9]/95 backdrop-blur-md border border-[#EBD6BE] rounded-xl p-3 shadow-lg text-[#1E293B] relative">
@@ -357,9 +407,17 @@ export const MapPreviewSection: React.FC = () => {
                   </button>
 
                   <div className="flex items-start gap-2.5 pr-5">
-                    <div className="h-8 w-8 rounded-lg bg-[#BD1113] flex items-center justify-center text-white shrink-0 shadow-2xs">
-                      <MapPin className="w-4 h-4" />
-                    </div>
+                    {selectedLocation.image ? (
+                      <img
+                        src={selectedLocation.image}
+                        alt={selectedLocation.name}
+                        className="w-12 h-12 rounded-lg object-cover shrink-0 border border-[#EBD6BE]"
+                      />
+                    ) : (
+                      <div className="h-10 w-10 rounded-lg bg-[#BD1113] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                        <MapPin className="w-4 h-4" />
+                      </div>
+                    )}
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5 mb-0.5">
@@ -378,11 +436,29 @@ export const MapPreviewSection: React.FC = () => {
                       <p className="text-[10.5px] text-[#475569] line-clamp-1 font-normal mt-0.5">
                         {selectedLocation.address}
                       </p>
+
+                      {selectedLocation.nidhiId && (
+                        <div className="mt-1 flex items-center gap-1 text-[9.5px] font-bold text-amber-800">
+                          <ShieldCheck className="w-3 h-3 text-amber-600" />
+                          <span>NIDHI {selectedLocation.nidhiId}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
 
                   {/* Quick Action Buttons */}
                   <div className="mt-2.5 pt-2 border-t border-[#F0E4D5] flex items-center justify-end gap-2">
+                    {selectedLocation.phone && (
+                      <a
+                        href={`tel:${selectedLocation.phone}`}
+                        className="inline-flex items-center gap-1 rounded-lg border border-[#EBD6BE] bg-[#FAF5EC] hover:bg-white text-[#0A265D] text-[11px] font-semibold px-2 py-1 transition-all"
+                        title="Call"
+                      >
+                        <Phone className="w-3 h-3 text-[#BD1113]" />
+                        <span>Call</span>
+                      </a>
+                    )}
+
                     <a
                       href={selectedLocation.googleMapsUrl}
                       target="_blank"
@@ -397,7 +473,7 @@ export const MapPreviewSection: React.FC = () => {
                       to="/map"
                       className="inline-flex items-center gap-1 rounded-lg bg-[#BD1113] hover:bg-[#A80E10] px-3 py-1 text-[11px] font-semibold text-white transition-all"
                     >
-                      <span>Geoportal</span>
+                      <span>Full Map</span>
                       <ArrowUpRight className="w-3 h-3" />
                     </Link>
                   </div>
@@ -408,11 +484,11 @@ export const MapPreviewSection: React.FC = () => {
 
           </div>
 
-          {/* Bottom 4 Quick Corridors Deck (Light Mode, Compact) */}
+          {/* Bottom 4 Quick Corridors Deck */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#F0E4D5] bg-[#FAF5EC]/80 border-t border-[#EFE6DC]">
 
             <div
-              onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 15)}
+              onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 16)}
               className="p-3 hover:bg-white transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-1.5 text-[#BD1113] text-[10.5px] font-bold uppercase tracking-wider mb-0.5">
@@ -423,64 +499,64 @@ export const MapPreviewSection: React.FC = () => {
                 Biswa Bangla Mela Prangan
               </h5>
               <p className="text-[10.5px] text-[#475569] truncate font-normal">
-                Maa Flyover &amp; EM Bypass Junction
+                Primary Venue + BBCC New Town
               </p>
             </div>
 
             <div
               onClick={() => {
                 const hotel = MAP_LOCATIONS.find((l) => l.category === 'hotel') || MAP_LOCATIONS[0]
-                handleSelectLocation(hotel, 14)
+                handleSelectLocation(hotel, 15)
               }}
               className="p-3 hover:bg-white transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-1.5 text-[#D97706] text-[10.5px] font-bold uppercase tracking-wider mb-0.5">
                 <Hotel className="w-3 h-3 text-[#D97706]" />
-                <span>Delegate Hotels</span>
+                <span>Certified Accommodations</span>
               </div>
               <h5 className="font-serif font-bold text-xs sm:text-sm text-[#0A265D] group-hover:text-[#BD1113] transition-colors truncate">
-                12+ Five-Star Stays
+                69 Certified Stays
               </h5>
               <p className="text-[10.5px] text-[#475569] truncate font-normal">
-                ITC Sonar, JW Marriott, Taj Bengal
+                48 Hotels • 11 Homestays • 10 B&amp;Bs
               </p>
             </div>
 
             <div
               onClick={() => {
-                const landmark = MAP_LOCATIONS.find((l) => l.category === 'tourist' || l.category === 'historical') || MAP_LOCATIONS[0]
-                handleSelectLocation(landmark, 14)
+                const landmark = MAP_LOCATIONS.find((l) => l.id.includes('victoria')) || MAP_LOCATIONS[0]
+                handleSelectLocation(landmark, 15)
               }}
               className="p-3 hover:bg-white transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-1.5 text-[#0A265D] text-[10.5px] font-bold uppercase tracking-wider mb-0.5">
                 <Landmark className="w-3 h-3 text-[#0A265D]" />
-                <span>Heritage Circuit</span>
+                <span>20 Iconic Destinations</span>
               </div>
               <h5 className="font-serif font-bold text-xs sm:text-sm text-[#0A265D] group-hover:text-[#BD1113] transition-colors truncate">
-                Victoria &amp; Prinsep Ghat
+                Victoria, Howrah Bridge &amp; Dakshineswar
               </h5>
               <p className="text-[10.5px] text-[#475569] truncate font-normal">
-                Hooghly Riverfront &amp; Cultural Core
+                Heritage circuits &amp; river promenade
               </p>
             </div>
 
             <div
               onClick={() => {
-                const airport = MAP_LOCATIONS.find((l) => l.category === 'airport') || MAP_LOCATIONS[0]
+                const airport = MAP_LOCATIONS.find((l) => l.id.includes('airport')) || MAP_LOCATIONS[0]
                 handleSelectLocation(airport, 14)
               }}
               className="p-3 hover:bg-white transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-1.5 text-[#0284c7] text-[10.5px] font-bold uppercase tracking-wider mb-0.5">
                 <Plane className="w-3 h-3 text-[#0284c7]" />
-                <span>Express Transit</span>
+                <span>Getting to Kolkata</span>
               </div>
               <h5 className="font-serif font-bold text-xs sm:text-sm text-[#0A265D] group-hover:text-[#BD1113] transition-colors truncate">
-                CCU Airport &amp; Rail Hubs
+                CCU Airport &amp; Rail Terminals
               </h5>
               <p className="text-[10.5px] text-[#475569] truncate font-normal">
-                Dedicated PBD Helpdesks &amp; Shuttles
+                Howrah, Sealdah &amp; Express Coach Hubs
               </p>
             </div>
 
@@ -492,11 +568,11 @@ export const MapPreviewSection: React.FC = () => {
         <div className="mt-4 sm:mt-6 flex items-center justify-center relative z-20">
           <Link
             to="/map"
-            className="inline-flex items-center gap-2 rounded-full bg-[#BD1113] hover:bg-[#A80E10] px-4 sm:px-5 py-1.5 text-xs font-semibold text-white shadow-xs hover:shadow transition-all"
+            className="inline-flex items-center gap-2 rounded-full bg-[#BD1113] hover:bg-[#A80E10] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md hover:shadow-xl hover:shadow-[#BD1113]/25 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
           >
-            <Navigation className="w-3.5 h-3.5 text-white" />
-            <span>Launch Full Screen Map</span>
-            <ArrowRight className="w-3 h-3 text-white" />
+            <Navigation className="w-4 h-4 text-white" />
+            <span>Launch Full Screen Interactive Geoportal (104 Locations)</span>
+            <ArrowRight className="w-3.5 h-3.5 text-white" />
           </Link>
         </div>
 
