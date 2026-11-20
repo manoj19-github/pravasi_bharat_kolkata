@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight, Camera, Sparkles, MapPin } from 'lucide-react'
 import { Attraction } from '../../data/attractions'
@@ -18,6 +18,7 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const touchStartX = useRef<number | null>(null)
 
   // Wait for client mounting for createPortal
   useEffect(() => {
@@ -72,10 +73,29 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const touchEndX = e.changedTouches[0].clientX
+    const diff = touchStartX.current - touchEndX
+
+    if (diff > 45) {
+      // Swiped left -> next
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+    } else if (diff < -45) {
+      // Swiped right -> prev
+      setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+    }
+    touchStartX.current = null
+  }
+
   // Render via React Portal directly into document.body
   // This avoids CSS transform / motion / scroll traps from parent elements
   return createPortal(
-    <div 
+    <div
       className="fixed inset-0 z-[9999] bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden select-none animate-in fade-in duration-200"
       onClick={onClose}
       role="dialog"
@@ -83,7 +103,7 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
       aria-label={`${attraction.name} Gallery`}
     >
       {/* Floating Modal Card Dialog */}
-      <div 
+      <div
         className="relative w-full max-w-5xl rounded-2xl sm:rounded-3xl bg-[#0B1120] border border-white/20 shadow-2xl flex flex-col overflow-hidden max-h-[92vh] animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
@@ -135,67 +155,70 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
         </div>
 
         {/* 2. MAIN CENTER PHOTO VIEWPORT */}
-        <div className="relative flex-1 w-full flex items-center justify-center p-2 sm:p-4 bg-black/60 overflow-hidden min-h-[260px] max-h-[60vh] sm:max-h-[65vh]">
-          {/* Active Real Photo */}
-          <img
-            key={images[currentIndex]}
-            src={images[currentIndex]}
-            alt={`${attraction.name} - View ${currentIndex + 1}`}
-            className="max-h-[58vh] sm:max-h-[63vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl border border-white/10 transition-all duration-300 select-none"
-          />
+          <div
+            className="relative flex-1 w-full flex items-center justify-center p-2 sm:p-4 bg-black/60 overflow-hidden min-h-[260px] max-h-[60vh] sm:max-h-[65vh] touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            {/* Active Real Photo */}
+            <img
+              key={images[currentIndex]}
+              src={images[currentIndex]}
+              alt={`${attraction.name} - View ${currentIndex + 1}`}
+              className="max-h-[58vh] sm:max-h-[63vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl border border-white/10 transition-all duration-300 select-none"
+            />
 
-          {/* Floating Left Arrow Button */}
-          {images.length > 1 && (
-            <button
-              onClick={handlePrev}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
-              title="Previous Photo (Left Arrow)"
-              aria-label="Previous Photo"
-            >
-              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
-          )}
+            {/* Floating Left Arrow Button */}
+            {images.length > 1 && (
+              <button
+                onClick={handlePrev}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
+                title="Previous Photo (Left Arrow)"
+                aria-label="Previous Photo"
+              >
+                <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
+            )}
 
-          {/* Floating Right Arrow Button */}
+            {/* Floating Right Arrow Button */}
+            {images.length > 1 && (
+              <button
+                onClick={handleNext}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
+                title="Next Photo (Right Arrow)"
+                aria-label="Next Photo"
+              >
+                <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
+            )}
+          </div>
+
+          {/* 3. BOTTOM THUMBNAIL STRIP */}
           {images.length > 1 && (
-            <button
-              onClick={handleNext}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
-              title="Next Photo (Right Arrow)"
-              aria-label="Next Photo"
-            >
-              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
+            <div className="w-full px-3 py-2 sm:py-2.5 bg-[#0F172A] border-t border-white/10 flex items-center justify-center shrink-0">
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5 max-w-full">
+                {images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`relative h-11 sm:h-14 w-16 sm:w-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${idx === currentIndex
+                        ? 'border-[#BD1113] ring-2 ring-[#BD1113]/80 scale-105 shadow-md'
+                        : 'border-white/20 opacity-55 hover:opacity-100 hover:border-white/60'
+                      }`}
+                    title={`View Photo ${idx + 1}`}
+                  >
+                    <img
+                      src={img}
+                      alt={`Thumbnail ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
         </div>
-
-        {/* 3. BOTTOM THUMBNAIL STRIP */}
-        {images.length > 1 && (
-          <div className="w-full px-3 py-2 sm:py-2.5 bg-[#0F172A] border-t border-white/10 flex items-center justify-center shrink-0">
-            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5 max-w-full">
-              {images.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`relative h-11 sm:h-14 w-16 sm:w-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
-                    idx === currentIndex
-                      ? 'border-[#BD1113] ring-2 ring-[#BD1113]/80 scale-105 shadow-md'
-                      : 'border-white/20 opacity-55 hover:opacity-100 hover:border-white/60'
-                  }`}
-                  title={`View Photo ${idx + 1}`}
-                >
-                  <img
-                    src={img}
-                    alt={`Thumbnail ${idx + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>,
-    document.body
-  )
+      </div>,
+      document.body
+      )
 }

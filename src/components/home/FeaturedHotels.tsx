@@ -177,9 +177,11 @@ export const FeaturedHotels: React.FC = () => {
             className="w-full overflow-hidden py-3 sm:py-4 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
           >
             <div
-              className="animate-infinite-scroll flex gap-5 sm:gap-6"
+              className="animate-infinite-scroll flex gap-4 sm:gap-6"
               style={{
                 animationPlayState: isPaused ? 'paused' : 'running',
                 animationDuration: '140s'
@@ -188,7 +190,7 @@ export const FeaturedHotels: React.FC = () => {
               {displayStays.map((stay, idx) => (
                 <div
                   key={`${stay.id}-${idx}`}
-                  className="w-[300px] sm:w-[340px] lg:w-[360px] shrink-0"
+                  className="w-[285px] xs:w-[315px] sm:w-[340px] lg:w-[360px] shrink-0"
                 >
                   <AccommodationCard
                     hotel={stay}

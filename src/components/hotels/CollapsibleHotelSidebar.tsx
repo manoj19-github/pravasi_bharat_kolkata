@@ -1,13 +1,14 @@
-import React from 'react'
-import { 
-  Search, 
-  X, 
-  RotateCcw, 
-  MapPin, 
-  Building2, 
-  Home, 
-  Coffee, 
-  ShieldCheck, 
+import React, { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import {
+  Search,
+  X,
+  RotateCcw,
+  MapPin,
+  Building2,
+  Home,
+  Coffee,
+  ShieldCheck,
   SlidersHorizontal,
   ArrowUpDown,
   Filter,
@@ -43,6 +44,23 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
   isOpen,
   onClose
 }) => {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Lock background scroll when mobile drawer is open
+  useEffect(() => {
+    if (isOpen && typeof window !== 'undefined' && window.innerWidth < 1024) {
+      const original = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = original
+      }
+    }
+  }, [isOpen])
+
   const activeFiltersCount = [
     Boolean(filters.searchQuery),
     filters.propertyType !== 'all',
@@ -67,9 +85,8 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
 
   if (!isOpen) return null
 
-  return (
-    <aside className="w-full lg:w-80 shrink-0 bg-white rounded-2xl border border-[#F3E8D8] p-5 shadow-lg lg:sticky lg:top-[125px] max-h-[calc(100vh-140px)] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200 animate-in fade-in slide-in-from-left-4 duration-300">
-      
+  const renderContent = () => (
+    <>
       {/* Sidebar Header */}
       <div className="flex items-center justify-between pb-3 border-b border-[#F3E8D8] mb-5">
         <div className="flex items-center gap-2">
@@ -101,7 +118,8 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
           <button
             onClick={onClose}
             className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
-            title="Collapse Sidebar"
+            title="Close Filters"
+            aria-label="Close Filters"
           >
             <PanelLeftClose className="h-4 w-4" />
           </button>
@@ -109,7 +127,6 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
       </div>
 
       <div className="space-y-5">
-        
         {/* 1. Keyword Search */}
         <div>
           <label className="block text-[11px] font-bold text-[#0F172A] mb-1.5 uppercase tracking-wider">
@@ -150,9 +167,11 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
               }`}
             >
               <span>All Stays</span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                filters.propertyType === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-              }`}>
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  filters.propertyType === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                }`}
+              >
                 {counts.total}
               </span>
             </button>
@@ -169,9 +188,11 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
                 <Building2 className="h-3 w-3" />
                 Hotels
               </span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                filters.propertyType === 'hotel' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-              }`}>
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  filters.propertyType === 'hotel' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                }`}
+              >
                 {counts.hotels}
               </span>
             </button>
@@ -188,9 +209,11 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
                 <Home className="h-3 w-3" />
                 Homestays
               </span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                filters.propertyType === 'homestay' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-              }`}>
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  filters.propertyType === 'homestay' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                }`}
+              >
                 {counts.homestays}
               </span>
             </button>
@@ -207,9 +230,11 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
                 <Coffee className="h-3 w-3" />
                 B&amp;B
               </span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                filters.propertyType === 'bnb' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-              }`}>
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  filters.propertyType === 'bnb' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                }`}
+              >
                 {counts.bnbs}
               </span>
             </button>
@@ -236,7 +261,7 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
               onChange={(e) => setFilters((prev) => ({ ...prev, nidhiOnly: e.target.checked }))}
               className="sr-only peer"
             />
-            <div className="w-8 h-4.5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-[#BD1113]"></div>
+            <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#BD1113]"></div>
           </label>
         </div>
 
@@ -350,7 +375,51 @@ export const CollapsibleHotelSidebar: React.FC<CollapsibleHotelSidebarProps> = (
           </div>
         </div>
 
+        {/* Mobile Sticky Footer with Apply Button */}
+        <div className="pt-4 mt-6 border-t border-[#F3E8D8] flex items-center justify-between gap-3 lg:hidden">
+          <button
+            onClick={onReset}
+            className="py-2.5 px-4 rounded-xl border border-[#E5D5C5] text-xs font-bold text-slate-700 hover:bg-slate-50 transition"
+          >
+            Reset Filters
+          </button>
+          <button
+            onClick={onClose}
+            className="flex-1 py-2.5 px-4 rounded-xl bg-[#BD1113] hover:bg-[#A80E10] text-white text-xs font-bold shadow-md transition text-center"
+          >
+            Apply Filters
+          </button>
+        </div>
       </div>
-    </aside>
+    </>
+  )
+
+  return (
+    <>
+      {/* 1. Desktop: Render inline sidebar in the grid layout */}
+      <aside className="hidden lg:block w-80 shrink-0 rounded-2xl border border-[#F3E8D8] bg-white p-5 shadow-sm sticky top-[125px] max-h-[calc(100vh-140px)] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200">
+        {renderContent()}
+      </aside>
+
+      {/* 2. Mobile & Tablet: Render full-screen portal modal / bottom sheet */}
+      {mounted &&
+        createPortal(
+          <div className="lg:hidden fixed inset-0 z-[9999] flex flex-col justify-end">
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-200"
+              onClick={onClose}
+              aria-hidden="true"
+            />
+            {/* Bottom Sheet Drawer */}
+            <aside className="relative z-10 w-full max-h-[85vh] rounded-t-3xl bg-white p-5 shadow-2xl border-t-2 border-[#BD1113] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200">
+              {/* Mobile drag handle indicator */}
+              <div className="w-12 h-1.5 bg-slate-300 rounded-full mx-auto -mt-1 mb-4" />
+              {renderContent()}
+            </aside>
+          </div>,
+          document.body
+        )}
+    </>
   )
 }

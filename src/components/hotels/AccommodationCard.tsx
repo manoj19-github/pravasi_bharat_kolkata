@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { 
-  MapPin, 
-  ChevronDown, 
-  ChevronLeft, 
-  ChevronRight, 
-  ExternalLink, 
-  Navigation, 
-  ShieldCheck, 
-  Home, 
-  Coffee, 
+import {
+  MapPin,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Navigation,
+  ShieldCheck,
+  Home,
+  Coffee,
   Building2,
   Phone,
   Info
@@ -20,9 +20,9 @@ interface AccommodationCardProps {
   initiallyExpanded?: boolean
 }
 
-export const AccommodationCard: React.FC<AccommodationCardProps> = ({ 
-  hotel, 
-  initiallyExpanded = false 
+export const AccommodationCard: React.FC<AccommodationCardProps> = ({
+  hotel,
+  initiallyExpanded = false
 }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
@@ -80,7 +80,7 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
   const typeBadge = getPropertyTypeBadge()
 
   return (
-    <div 
+    <div
       className="rounded-2xl border border-[#F3E8D8] bg-white overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-[#BD1113]/12 hover:border-[#BD1113]/40 hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between group cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -93,17 +93,16 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
               key={idx}
               src={img}
               alt={`${hotel.name} view ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                idx === currentImgIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
-              }`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${idx === currentImgIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                }`}
               loading="lazy"
               onError={(e) => {
                 const target = e.currentTarget
-                const fallback = hotel.propertyType === 'homestay' 
-                  ? '/images/hotels/satguru-homestays_1.jpg' 
-                  : hotel.propertyType === 'bnb' 
-                  ? '/images/hotels/auckland-bed-and-breakfast_1.jpg' 
-                  : '/images/hotels/itc-royal-bengal_1.jpg'
+                const fallback = hotel.propertyType === 'homestay'
+                  ? '/images/hotels/satguru-homestays_1.jpg'
+                  : hotel.propertyType === 'bnb'
+                    ? '/images/hotels/auckland-bed-and-breakfast_1.jpg'
+                    : '/images/hotels/itc-royal-bengal_1.jpg'
                 if (target.src !== fallback) {
                   target.src = fallback
                 }
@@ -146,14 +145,14 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
               <button
                 onClick={prevImage}
                 aria-label="Previous image"
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 hover:bg-white text-slate-800 shadow transition opacity-0 group-hover:opacity-100 focus:opacity-100 z-10"
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md transition opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 z-10 cursor-pointer"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button
                 onClick={nextImage}
                 aria-label="Next image"
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 hover:bg-white text-slate-800 shadow transition opacity-0 group-hover:opacity-100 focus:opacity-100 z-10"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md transition opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 z-10 cursor-pointer"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -171,9 +170,8 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
                     setCurrentImgIndex(dotIdx)
                   }}
                   aria-label={`Jump to slide ${dotIdx + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    dotIdx === currentImgIndex ? 'w-5 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'
-                  }`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${dotIdx === currentImgIndex ? 'w-5 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                    }`}
                 />
               ))}
             </div>
@@ -219,18 +217,16 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
                 <Info className="h-3.5 w-3.5 text-[#BD1113]" />
                 <span>{isExpanded ? 'Hide Details & Amenities' : `View Overview & Amenities (${hotel.facilities.length})`}</span>
               </span>
-              <ChevronDown 
-                className={`h-4 w-4 text-[#8B1D1D] transition-transform duration-300 ${
-                  isExpanded ? 'rotate-180' : ''
-                }`} 
+              <ChevronDown
+                className={`h-4 w-4 text-[#8B1D1D] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''
+                  }`}
               />
             </button>
 
             {/* Collapsible Content Area (Matches shared user screenshot) */}
-            <div 
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                isExpanded ? 'max-h-96 opacity-100 pt-3' : 'max-h-0 opacity-0'
-              }`}
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 pt-3' : 'max-h-0 opacity-0'
+                }`}
             >
               {/* Editorial Description */}
               <p className="text-xs text-[#475569] leading-relaxed">

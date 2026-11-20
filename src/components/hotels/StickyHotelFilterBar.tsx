@@ -78,7 +78,7 @@ export const StickyHotelFilterBar: React.FC<StickyHotelFilterBarProps> = ({
               title={isSidebarOpen ? 'Collapse Filter Sidebar' : 'Open Filter & Search Sidebar'}
             >
               <PanelLeftOpen className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">{isSidebarOpen ? 'Close' : 'Filters'}</span>
+              <span className="text-xs font-bold">{isSidebarOpen ? 'Close' : 'Filters'}</span>
               {activeFiltersCount > 0 && (
                 <span className="w-4 h-4 rounded-full bg-white text-[#BD1113] text-[10px] flex items-center justify-center font-bold">
                   {activeFiltersCount}
