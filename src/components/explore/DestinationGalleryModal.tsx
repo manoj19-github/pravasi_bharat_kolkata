@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { X, ChevronLeft, ChevronRight, Camera, Sparkles } from 'lucide-react'
+import { createPortal } from 'react-dom'
+import { X, ChevronLeft, ChevronRight, Camera, Sparkles, MapPin } from 'lucide-react'
 import { Attraction } from '../../data/attractions'
 
 interface DestinationGalleryModalProps {
@@ -16,10 +17,18 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
   onClose
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [mounted, setMounted] = useState(false)
+
+  // Wait for client mounting for createPortal
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Reset to first image when attraction changes or modal opens
   useEffect(() => {
-    setCurrentIndex(0)
+    if (isOpen) {
+      setCurrentIndex(0)
+    }
   }, [attraction, isOpen])
 
   // Prevent background scrolling when modal is open
@@ -51,7 +60,7 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [isOpen, images.length, onClose])
 
-  if (!isOpen || !attraction || images.length === 0) return null
+  if (!mounted || !isOpen || !attraction || images.length === 0) return null
 
   const handleNext = (e?: React.MouseEvent) => {
     e?.stopPropagation()
@@ -63,18 +72,22 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
-  return (
-    /* Modal Backdrop - positioned strictly below sticky header so header is completely untouched */
+  // Render via React Portal directly into document.body
+  // This avoids CSS transform / motion / scroll traps from parent elements
+  return createPortal(
     <div 
-      className="fixed inset-x-0 bottom-0 top-[56px] sm:top-[68px] z-40 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden select-none animate-in fade-in duration-200"
+      className="fixed inset-0 z-[9999] bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden select-none animate-in fade-in duration-200"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${attraction.name} Gallery`}
     >
       {/* Floating Modal Card Dialog */}
       <div 
-        className="relative w-full max-w-5xl rounded-2xl sm:rounded-3xl bg-[#0B1120] border border-white/20 shadow-2xl flex flex-col overflow-hidden max-h-[calc(100vh-84px)] sm:max-h-[calc(100vh-96px)] animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-5xl rounded-2xl sm:rounded-3xl bg-[#0B1120] border border-white/20 shadow-2xl flex flex-col overflow-hidden max-h-[92vh] animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 1. TOP HEADER BAR INSIDE MODAL (Completely safe from header overlap) */}
+        {/* 1. TOP HEADER BAR INSIDE MODAL */}
         <div className="w-full px-4 sm:px-6 py-3 bg-[#0F172A] border-b border-white/10 flex items-center justify-between z-10 shrink-0">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
             <div className="p-1.5 sm:p-2 rounded-xl bg-[#BD1113] text-white shadow-md shrink-0">
@@ -91,9 +104,14 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
                   {attraction.category}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-300 truncate hidden sm:block">
-                {attraction.tagline}
-              </p>
+              <div className="flex items-center gap-2 text-[11px] text-slate-300 truncate hidden sm:flex">
+                <span className="truncate">{attraction.tagline}</span>
+                <span className="text-slate-500">•</span>
+                <span className="flex items-center gap-0.5 text-amber-300/90 font-medium shrink-0">
+                  <MapPin className="h-3 w-3 text-[#BD1113]" />
+                  {attraction.distanceFromVenue}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -117,20 +135,20 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
         </div>
 
         {/* 2. MAIN CENTER PHOTO VIEWPORT */}
-        <div className="relative flex-1 w-full flex items-center justify-center p-2 sm:p-4 bg-black/50 overflow-hidden min-h-[220px] max-h-[54vh] sm:max-h-[58vh]">
+        <div className="relative flex-1 w-full flex items-center justify-center p-2 sm:p-4 bg-black/60 overflow-hidden min-h-[260px] max-h-[60vh] sm:max-h-[65vh]">
           {/* Active Real Photo */}
           <img
             key={images[currentIndex]}
             src={images[currentIndex]}
             alt={`${attraction.name} - View ${currentIndex + 1}`}
-            className="max-h-[54vh] sm:max-h-[58vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl border border-white/10 transition-all duration-300 select-none"
+            className="max-h-[58vh] sm:max-h-[63vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl border border-white/10 transition-all duration-300 select-none"
           />
 
           {/* Floating Left Arrow Button */}
           {images.length > 1 && (
             <button
               onClick={handlePrev}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
               title="Previous Photo (Left Arrow)"
               aria-label="Previous Photo"
             >
@@ -142,7 +160,7 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
           {images.length > 1 && (
             <button
               onClick={handleNext}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-[#BD1113] text-white backdrop-blur-md border border-white/30 hover:border-[#BD1113] transition-all shadow-xl hover:scale-110 active:scale-95 z-20 cursor-pointer"
               title="Next Photo (Right Arrow)"
               aria-label="Next Photo"
             >
@@ -159,7 +177,7 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`relative h-11 sm:h-13 w-16 sm:w-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                  className={`relative h-11 sm:h-14 w-16 sm:w-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
                     idx === currentIndex
                       ? 'border-[#BD1113] ring-2 ring-[#BD1113]/80 scale-105 shadow-md'
                       : 'border-white/20 opacity-55 hover:opacity-100 hover:border-white/60'
@@ -177,6 +195,7 @@ export const DestinationGalleryModal: React.FC<DestinationGalleryModalProps> = (
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
