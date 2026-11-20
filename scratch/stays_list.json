@@ -1,0 +1,485 @@
+[
+  {
+    "id": "fame-hotel-berhampore",
+    "name": "Hotel The Fame (Fame Hotels Pvt Ltd)",
+    "type": "hotel",
+    "nidhi": "AWB000309",
+    "location": "Berhampore, Murshidabad"
+  },
+  {
+    "id": "raajkutir-ihcl-seleqtions",
+    "name": "Raajkutir \u2013 IHCL SeleQtions",
+    "type": "hotel",
+    "nidhi": "AWB000549",
+    "location": "Phoolbagan / Kankurgachi"
+  },
+  {
+    "id": "the-astor-kolkata",
+    "name": "The Astor Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000421",
+    "location": "Shakespeare Sarani"
+  },
+  {
+    "id": "hotel-walson-kolkata",
+    "name": "Hotel Walson Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000253",
+    "location": "Sudder Street, New Market Area"
+  },
+  {
+    "id": "peerless-inn-durgapur",
+    "name": "The Peerless Inn Durgapur",
+    "type": "hotel",
+    "nidhi": "AWB000404",
+    "location": "City Centre, Durgapur"
+  },
+  {
+    "id": "holiday-inn-express-airport",
+    "name": "Holiday Inn Express Kolkata Airport",
+    "type": "hotel",
+    "nidhi": "AWB000413",
+    "location": "NSCBI Airport, Dum Dum"
+  },
+  {
+    "id": "hotel-hindusthan-international",
+    "name": "Hotel Hindusthan International (HHI Kolkata)",
+    "type": "hotel",
+    "nidhi": "AWB000417",
+    "location": "AJC Bose Road / Elgin"
+  },
+  {
+    "id": "regenta-orkos-kolkata",
+    "name": "Regenta Orko",
+    "type": "hotel",
+    "nidhi": "AWB000227",
+    "location": "Kasba / EM Bypass Connector"
+  },
+  {
+    "id": "aauris-kolkata",
+    "name": "Aauris Kolkata (Modern Inns Pvt Ltd)",
+    "type": "hotel",
+    "nidhi": "AWB000431",
+    "location": "Robinson Street / Rawdon St"
+  },
+  {
+    "id": "hotel-asansol-international",
+    "name": "Hotel Asansol International",
+    "type": "hotel",
+    "nidhi": "AWB000229",
+    "location": "G.T. Road, Asansol"
+  },
+  {
+    "id": "satees-jalchhabi-murshidabad",
+    "name": "Hotel Jalchhabi (Satees Hotels & Resorts)",
+    "type": "hotel",
+    "nidhi": "AWB000395",
+    "location": "Lalbagh, Murshidabad"
+  },
+  {
+    "id": "gallery-hotels-resorts",
+    "name": "Gallery Hotels and Resorts Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000547",
+    "location": "Bagmari / Kankurgachi"
+  },
+  {
+    "id": "victoria-hotel-chinar-park",
+    "name": "Hotel Victoria Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000548",
+    "location": "Chinar Park, Rajarhat"
+  },
+  {
+    "id": "the-park-kolkata",
+    "name": "The Park Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000534",
+    "location": "Park Street"
+  },
+  {
+    "id": "golden-retreat-berhampore",
+    "name": "Golden Retreat Berhampore",
+    "type": "hotel",
+    "nidhi": "AWB000443",
+    "location": "Berhampore, Murshidabad"
+  },
+  {
+    "id": "hotel-nandini-berhampore",
+    "name": "Hotel Nandini Berhampore",
+    "type": "hotel",
+    "nidhi": "AWB000496",
+    "location": "Cossimbazar, Berhampore"
+  },
+  {
+    "id": "itc-royal-bengal",
+    "name": "ITC Royal Bengal",
+    "type": "hotel",
+    "nidhi": "AWB000276",
+    "location": "Tangra, JBS Haldane Avenue"
+  },
+  {
+    "id": "hyatt-regency-kolkata",
+    "name": "Hyatt Regency Kolkata (Asian Hotels East)",
+    "type": "hotel",
+    "nidhi": "AWB000603",
+    "location": "Salt Lake Sector III / Stadium"
+  },
+  {
+    "id": "taj-city-centre-new-town",
+    "name": "Taj City Centre New Town",
+    "type": "hotel",
+    "nidhi": "AWB000438",
+    "location": "City Centre II, New Town"
+  },
+  {
+    "id": "golden-tulip-kolkata",
+    "name": "Golden Tulip Kolkata (Tirupati Projects)",
+    "type": "hotel",
+    "nidhi": "AWB001160",
+    "location": "Salt Lake Sector I"
+  },
+  {
+    "id": "airport-city-hotel-dumdum",
+    "name": "Airport City Hotel Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB001165",
+    "location": "Jessore Road, Dum Dum"
+  },
+  {
+    "id": "the-citi-residenci-durgapur",
+    "name": "The Citi Residenci Hotel Durgapur",
+    "type": "hotel",
+    "nidhi": "AWB000541",
+    "location": "City Centre, Durgapur"
+  },
+  {
+    "id": "fortune-park-pushpanjali-durgapur",
+    "name": "Fortune Park Pushpanjali Durgapur (ITC Member)",
+    "type": "hotel",
+    "nidhi": "AWB001238",
+    "location": "City Centre, Durgapur"
+  },
+  {
+    "id": "ramada-encore-siliguri",
+    "name": "Ramada Encore by Wyndham Siliguri",
+    "type": "hotel",
+    "nidhi": "AWB001279",
+    "location": "Sevoke Road, Siliguri"
+  },
+  {
+    "id": "morvee-hotels-alipore",
+    "name": "Morvee Hotels Alipore",
+    "type": "hotel",
+    "nidhi": "AWB001225",
+    "location": "Alipore / Chetla"
+  },
+  {
+    "id": "taj-bengal-kolkata",
+    "name": "Taj Bengal Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000249",
+    "location": "Alipore Heritage District"
+  },
+  {
+    "id": "fairfield-marriott-kolkata",
+    "name": "Fairfield by Marriott Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000676",
+    "location": "Action Area I, New Town"
+  },
+  {
+    "id": "samcon-stadel-saltlake",
+    "name": "The Stadel (Samcon Resort & Hotel Pvt Ltd)",
+    "type": "hotel",
+    "nidhi": "AWB001362",
+    "location": "Salt Lake Stadium, Sector III"
+  },
+  {
+    "id": "swarn-hotels-asansol",
+    "name": "The Grand Swarn (Swarn Hotels LLP)",
+    "type": "hotel",
+    "nidhi": "AWB001417",
+    "location": "Ushagram, Asansol"
+  },
+  {
+    "id": "hotel-o2-oxygen-kolkata",
+    "name": "Hotel O2 Oxygen Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB001447",
+    "location": "VIP Road, Kaikhali"
+  },
+  {
+    "id": "ethnotel-airport-kolkata",
+    "name": "Ethnotel Kolkata Airport (Raha Hospitality)",
+    "type": "hotel",
+    "nidhi": "AWB000387",
+    "location": "Airport Gate 2.5, Jessore Rd"
+  },
+  {
+    "id": "hotel-the-signature-asansol",
+    "name": "Hotel The Signature Asansol",
+    "type": "hotel",
+    "nidhi": "AWB001262",
+    "location": "Ushagram, Asansol"
+  },
+  {
+    "id": "zone-by-the-park-new-town",
+    "name": "Zone by The Park Kolkata (Apeejay Hotels)",
+    "type": "hotel",
+    "nidhi": "AWB001472",
+    "location": "Action Area 1D, New Town"
+  },
+  {
+    "id": "ibis-kolkata-rajarhat",
+    "name": "Ibis Kolkata Rajarhat (InterGlobe / Accor)",
+    "type": "hotel",
+    "nidhi": "AWB001432",
+    "location": "Action Area 1, New Town"
+  },
+  {
+    "id": "itc-sonar",
+    "name": "ITC Sonar \u2013 Luxury Collection",
+    "type": "hotel",
+    "nidhi": "AWB000315",
+    "location": "Tangra, JBS Haldane Avenue"
+  },
+  {
+    "id": "altair-boutique-hotel",
+    "name": "Altair Boutique Hotel (Choicest Enterprises)",
+    "type": "hotel",
+    "nidhi": "AWB000333",
+    "location": "Sector V, Salt Lake"
+  },
+  {
+    "id": "lbd-resorts-hotels-kolkata",
+    "name": "LBD Resorts & Hotels Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000683",
+    "location": "Kasba / Bosepukur"
+  },
+  {
+    "id": "the-golden-parkk",
+    "name": "The Golden Parkk",
+    "type": "hotel",
+    "nidhi": "AWB000287",
+    "location": "Ho Chi Minh Sarani / Park St"
+  },
+  {
+    "id": "the-fern-residency-asansol",
+    "name": "The Fern Residency Asansol",
+    "type": "hotel",
+    "nidhi": "AWB000752",
+    "location": "Galaxy Mall, Burnpur Rd, Asansol"
+  },
+  {
+    "id": "hyatt-centric-ballygunge",
+    "name": "Hyatt Centric Ballygunge Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB000268",
+    "location": "Ballygunge Cultural District"
+  },
+  {
+    "id": "royal-bishnu-berhampore",
+    "name": "Royal Bishnu Hotel (Bishnu Inn)",
+    "type": "hotel",
+    "nidhi": "AWB001581",
+    "location": "Berhampore, Murshidabad"
+  },
+  {
+    "id": "the-lalit-great-eastern",
+    "name": "The LaLiT Great Eastern Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB001552",
+    "location": "Dalhousie / BBD Bagh"
+  },
+  {
+    "id": "the-kenilworth-hotel",
+    "name": "The Kenilworth Hotel (New Kenilworth Hotel Pvt Ltd)",
+    "type": "hotel",
+    "nidhi": "AWB001569",
+    "location": "Little Russel Street / Park St"
+  },
+  {
+    "id": "hotel-hindusthan-international-renewal",
+    "name": "Hotel Hindusthan International (HHI - 2026 Re-Classification)",
+    "type": "hotel",
+    "nidhi": "AWB000417",
+    "location": "AJC Bose Road / Elgin"
+  },
+  {
+    "id": "hotel-lake-view-berhampore",
+    "name": "Hotel Lake View Berhampore",
+    "type": "hotel",
+    "nidhi": "AWB001380",
+    "location": "Laldighi, Berhampore"
+  },
+  {
+    "id": "peerless-hotel-kolkata",
+    "name": "Peerless Hotel Kolkata",
+    "type": "hotel",
+    "nidhi": "AWB001343",
+    "location": "Esplanade / Jawaharlal Nehru Rd"
+  },
+  {
+    "id": "novotel-kolkata-rajarhat",
+    "name": "Novotel Kolkata Hotel and Residences",
+    "type": "hotel",
+    "nidhi": "AWB000405",
+    "location": "Action Area 1C, New Town"
+  },
+  {
+    "id": "the-westin-kolkata-rajarhat",
+    "name": "The Westin Kolkata Rajarhat (Sarga Hotel)",
+    "type": "hotel",
+    "nidhi": "AWB000272",
+    "location": "Action Area II, New Town"
+  },
+  {
+    "id": "sarkar-villa-homestay",
+    "name": "Sarkar Villa Homestay",
+    "type": "homestay",
+    "nidhi": "AWB001382",
+    "location": "Narendrapur / Garia"
+  },
+  {
+    "id": "central-bed-and-breakfast-homestay",
+    "name": "Central Bed & Breakfast Homestay",
+    "type": "homestay",
+    "nidhi": "AWB000390",
+    "location": "Sarat Bose Road / Lansdowne"
+  },
+  {
+    "id": "satguru-homestays",
+    "name": "Satguru Homestays",
+    "type": "homestay",
+    "nidhi": "AWB001437",
+    "location": "Tagore Park, Kasba / EM Bypass"
+  },
+  {
+    "id": "aranya-sundari-homestay-jhargram",
+    "name": "Aranya Sundari Guest House & Homestay",
+    "type": "homestay",
+    "nidhi": "AWB001357",
+    "location": "Jhargram Forest Region"
+  },
+  {
+    "id": "oasis-homestay-jhargram",
+    "name": "OASIS Homestay Jhargram",
+    "type": "homestay",
+    "nidhi": "AWB001426",
+    "location": "Raghunathpur, Jhargram"
+  },
+  {
+    "id": "the-moira-bed-and-breakfast",
+    "name": "The Moira Bed and Breakfast (Homestay)",
+    "type": "homestay",
+    "nidhi": "AWB001542",
+    "location": "Moira Street / Rawdon Street"
+  },
+  {
+    "id": "service-apartments-park-street",
+    "name": "Service Apartments Park Street (Homestay)",
+    "type": "homestay",
+    "nidhi": "AWB001204",
+    "location": "Ripon Street / Park Street Area"
+  },
+  {
+    "id": "balmy-homestay-newtown",
+    "name": "Balmy Homestay New Town",
+    "type": "homestay",
+    "nidhi": "AWB001213",
+    "location": "Action Area 1C, New Town"
+  },
+  {
+    "id": "royal-galaxy-homestay-newtown",
+    "name": "Royal Galaxy Home Stay New Town",
+    "type": "homestay",
+    "nidhi": "AWB001536",
+    "location": "Action Area 1 (Block AI), New Town"
+  },
+  {
+    "id": "radharani-kutir-nabadwip",
+    "name": "Radharani Kutir Homestay Nabadwip",
+    "type": "homestay",
+    "nidhi": "AWB001541",
+    "location": "Nabadwip Heritage Town, Nadia"
+  },
+  {
+    "id": "central-bed-and-breakfast-renewal",
+    "name": "Central Bed & Breakfast Homestay (2026 Re-Classification)",
+    "type": "homestay",
+    "nidhi": "AWB000390",
+    "location": "Sarat Bose Road / Lansdowne"
+  },
+  {
+    "id": "ganga-niwas-batanagar",
+    "name": "Ganga Niwas (Calcutta Riverside)",
+    "type": "bnb",
+    "nidhi": "AWB000290",
+    "location": "Calcutta Riverside, Batanagar"
+  },
+  {
+    "id": "auckland-bed-and-breakfast",
+    "name": "Auckland Bed and Breakfast",
+    "type": "bnb",
+    "nidhi": "AWB000409",
+    "location": "AJC Bose Road / Mullick Bazar"
+  },
+  {
+    "id": "vedic-village-aqua-bungalow",
+    "name": "Vedic Village Aqua Bungalow 41/9",
+    "type": "bnb",
+    "nidhi": "AWB001243",
+    "location": "Vedic Village, Rajarhat"
+  },
+  {
+    "id": "hornbill-nest-bunglow-jalpaiguri",
+    "name": "Hornbill Nest Bunglow",
+    "type": "bnb",
+    "nidhi": "AWB001180",
+    "location": "Mantadari / Dooars, Jalpaiguri"
+  },
+  {
+    "id": "jaiswal-house-alipore",
+    "name": "Jaiswal House (B&B)",
+    "type": "bnb",
+    "nidhi": "AWB001438",
+    "location": "Diamond Harbour Road / Alipore"
+  },
+  {
+    "id": "handmade-homes-em-bypass",
+    "name": "Handmade Homes \u2013 EM Bypass",
+    "type": "bnb",
+    "nidhi": "AWB001521",
+    "location": "Mukundapur, EM Bypass"
+  },
+  {
+    "id": "handmade-homes-tollygunge",
+    "name": "Handmade Homes \u2013 Tollygunge",
+    "type": "bnb",
+    "nidhi": "AWB001517",
+    "location": "Tollygunge / Kalighat Area"
+  },
+  {
+    "id": "handmade-homes-lords",
+    "name": "Handmade Homes \u2013 Lords",
+    "type": "bnb",
+    "nidhi": "AWB001539",
+    "location": "Prince Anwar Shah Road (Lords More)"
+  },
+  {
+    "id": "lake-city-home-stay-saltlake",
+    "name": "Lake City Home Stay (B&B)",
+    "type": "bnb",
+    "nidhi": "AWB001592",
+    "location": "Salt Lake Sector 1"
+  },
+  {
+    "id": "devs-sweet-home-birati",
+    "name": "Dev",
+    "type": "bnb",
+    "nidhi": "AWB000271",
+    "location": "Birati / Airport North"
+  }
+]

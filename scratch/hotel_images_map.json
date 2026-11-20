@@ -1,0 +1,550 @@
+{
+  "fame-hotel-berhampore": {
+    "image": "/images/hotels/fame-hotel-berhampore_1.jpg",
+    "images": [
+      "/images/hotels/fame-hotel-berhampore_1.jpg",
+      "/images/hotels/fame-hotel-berhampore_2.jpg",
+      "/images/hotels/fame-hotel-berhampore_3.jpg"
+    ]
+  },
+  "raajkutir-ihcl-seleqtions": {
+    "image": "/images/hotels/raajkutir-ihcl-seleqtions_1.jpg",
+    "images": [
+      "/images/hotels/raajkutir-ihcl-seleqtions_1.jpg",
+      "/images/hotels/raajkutir-ihcl-seleqtions_2.jpg",
+      "/images/hotels/raajkutir-ihcl-seleqtions_3.jpg"
+    ]
+  },
+  "the-astor-kolkata": {
+    "image": "/images/hotels/the-astor-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/the-astor-kolkata_1.jpg",
+      "/images/hotels/the-astor-kolkata_2.jpg",
+      "/images/hotels/the-astor-kolkata_3.jpg"
+    ]
+  },
+  "hotel-walson-kolkata": {
+    "image": "/images/hotels/hotel-walson-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/hotel-walson-kolkata_1.jpg",
+      "/images/hotels/hotel-walson-kolkata_2.jpg"
+    ]
+  },
+  "peerless-inn-durgapur": {
+    "image": "/images/hotels/peerless-inn-durgapur_1.jpg",
+    "images": [
+      "/images/hotels/peerless-inn-durgapur_1.jpg",
+      "/images/hotels/peerless-inn-durgapur_2.jpg",
+      "/images/hotels/peerless-inn-durgapur_3.jpg"
+    ]
+  },
+  "holiday-inn-express-airport": {
+    "image": "/images/hotels/holiday-inn-express-airport_1.jpg",
+    "images": [
+      "/images/hotels/holiday-inn-express-airport_1.jpg",
+      "/images/hotels/holiday-inn-express-airport_2.jpg",
+      "/images/hotels/holiday-inn-express-airport_3.jpg"
+    ]
+  },
+  "hotel-hindusthan-international": {
+    "image": "/images/hotels/hotel-hindusthan-international_1.jpg",
+    "images": [
+      "/images/hotels/hotel-hindusthan-international_1.jpg",
+      "/images/hotels/hotel-hindusthan-international_2.jpg",
+      "/images/hotels/hotel-hindusthan-international_3.jpg"
+    ]
+  },
+  "regenta-orkos-kolkata": {
+    "image": "/images/hotels/regenta-orkos-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/regenta-orkos-kolkata_1.jpg",
+      "/images/hotels/regenta-orkos-kolkata_2.jpg",
+      "/images/hotels/regenta-orkos-kolkata_3.jpg"
+    ]
+  },
+  "aauris-kolkata": {
+    "image": "/images/hotels/aauris-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/aauris-kolkata_1.jpg",
+      "/images/hotels/aauris-kolkata_2.jpg",
+      "/images/hotels/aauris-kolkata_3.jpg"
+    ]
+  },
+  "hotel-asansol-international": {
+    "image": "/images/hotels/hotel-asansol-international_1.jpg",
+    "images": [
+      "/images/hotels/hotel-asansol-international_1.jpg",
+      "/images/hotels/hotel-asansol-international_2.jpg",
+      "/images/hotels/hotel-asansol-international_3.jpg"
+    ]
+  },
+  "satees-jalchhabi-murshidabad": {
+    "image": "/images/hotels/satees-jalchhabi-murshidabad_1.jpg",
+    "images": [
+      "/images/hotels/satees-jalchhabi-murshidabad_1.jpg",
+      "/images/hotels/satees-jalchhabi-murshidabad_2.jpg",
+      "/images/hotels/satees-jalchhabi-murshidabad_3.jpg"
+    ]
+  },
+  "gallery-hotels-resorts": {
+    "image": "/images/hotels/gallery-hotels-resorts_1.jpg",
+    "images": [
+      "/images/hotels/gallery-hotels-resorts_1.jpg",
+      "/images/hotels/gallery-hotels-resorts_2.jpg",
+      "/images/hotels/gallery-hotels-resorts_3.jpg"
+    ]
+  },
+  "victoria-hotel-chinar-park": {
+    "image": "/images/hotels/victoria-hotel-chinar-park_1.jpg",
+    "images": [
+      "/images/hotels/victoria-hotel-chinar-park_1.jpg",
+      "/images/hotels/victoria-hotel-chinar-park_2.jpg",
+      "/images/hotels/victoria-hotel-chinar-park_3.jpg"
+    ]
+  },
+  "the-park-kolkata": {
+    "image": "/images/hotels/the-park-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/the-park-kolkata_1.jpg",
+      "/images/hotels/the-park-kolkata_2.jpg",
+      "/images/hotels/the-park-kolkata_3.jpg"
+    ]
+  },
+  "golden-retreat-berhampore": {
+    "image": "/images/hotels/golden-retreat-berhampore_1.jpg",
+    "images": [
+      "/images/hotels/golden-retreat-berhampore_1.jpg",
+      "/images/hotels/golden-retreat-berhampore_2.jpg",
+      "/images/hotels/golden-retreat-berhampore_3.jpg"
+    ]
+  },
+  "hotel-nandini-berhampore": {
+    "image": "/images/hotels/hotel-nandini-berhampore_1.jpg",
+    "images": [
+      "/images/hotels/hotel-nandini-berhampore_1.jpg",
+      "/images/hotels/hotel-nandini-berhampore_2.jpg",
+      "/images/hotels/hotel-nandini-berhampore_3.jpg"
+    ]
+  },
+  "itc-royal-bengal": {
+    "image": "/images/hotels/itc-royal-bengal_1.jpg",
+    "images": [
+      "/images/hotels/itc-royal-bengal_1.jpg",
+      "/images/hotels/itc-royal-bengal_2.jpg",
+      "/images/hotels/itc-royal-bengal_3.jpg"
+    ]
+  },
+  "hyatt-regency-kolkata": {
+    "image": "/images/hotels/hyatt-regency-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/hyatt-regency-kolkata_1.jpg",
+      "/images/hotels/hyatt-regency-kolkata_2.jpg",
+      "/images/hotels/hyatt-regency-kolkata_3.jpg"
+    ]
+  },
+  "taj-city-centre-new-town": {
+    "image": "/images/hotels/taj-city-centre-new-town_1.jpg",
+    "images": [
+      "/images/hotels/taj-city-centre-new-town_1.jpg",
+      "/images/hotels/taj-city-centre-new-town_2.jpg",
+      "/images/hotels/taj-city-centre-new-town_3.jpg"
+    ]
+  },
+  "golden-tulip-kolkata": {
+    "image": "/images/hotels/golden-tulip-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/golden-tulip-kolkata_1.jpg",
+      "/images/hotels/golden-tulip-kolkata_2.jpg",
+      "/images/hotels/golden-tulip-kolkata_3.jpg"
+    ]
+  },
+  "airport-city-hotel-dumdum": {
+    "image": "/images/hotels/airport-city-hotel-dumdum_1.jpg",
+    "images": [
+      "/images/hotels/airport-city-hotel-dumdum_1.jpg",
+      "/images/hotels/airport-city-hotel-dumdum_2.jpg",
+      "/images/hotels/airport-city-hotel-dumdum_3.jpg"
+    ]
+  },
+  "the-citi-residenci-durgapur": {
+    "image": "/images/hotels/the-citi-residenci-durgapur_1.jpg",
+    "images": [
+      "/images/hotels/the-citi-residenci-durgapur_1.jpg",
+      "/images/hotels/the-citi-residenci-durgapur_2.jpg",
+      "/images/hotels/the-citi-residenci-durgapur_3.jpg"
+    ]
+  },
+  "fortune-park-pushpanjali-durgapur": {
+    "image": "/images/hotels/fortune-park-pushpanjali-durgapur_1.jpg",
+    "images": [
+      "/images/hotels/fortune-park-pushpanjali-durgapur_1.jpg",
+      "/images/hotels/fortune-park-pushpanjali-durgapur_2.jpg",
+      "/images/hotels/fortune-park-pushpanjali-durgapur_3.jpg"
+    ]
+  },
+  "ramada-encore-siliguri": {
+    "image": "/images/hotels/ramada-encore-siliguri_1.jpg",
+    "images": [
+      "/images/hotels/ramada-encore-siliguri_1.jpg",
+      "/images/hotels/ramada-encore-siliguri_2.jpg",
+      "/images/hotels/ramada-encore-siliguri_3.jpg"
+    ]
+  },
+  "morvee-hotels-alipore": {
+    "image": "/images/hotels/morvee-hotels-alipore_1.jpg",
+    "images": [
+      "/images/hotels/morvee-hotels-alipore_1.jpg",
+      "/images/hotels/morvee-hotels-alipore_2.jpg",
+      "/images/hotels/morvee-hotels-alipore_3.jpg"
+    ]
+  },
+  "taj-bengal-kolkata": {
+    "image": "/images/hotels/taj-bengal-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/taj-bengal-kolkata_1.jpg",
+      "/images/hotels/taj-bengal-kolkata_2.jpg",
+      "/images/hotels/taj-bengal-kolkata_3.jpg"
+    ]
+  },
+  "fairfield-marriott-kolkata": {
+    "image": "/images/hotels/fairfield-marriott-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/fairfield-marriott-kolkata_1.jpg",
+      "/images/hotels/fairfield-marriott-kolkata_2.jpg",
+      "/images/hotels/fairfield-marriott-kolkata_3.jpg"
+    ]
+  },
+  "samcon-stadel-saltlake": {
+    "image": "/images/hotels/samcon-stadel-saltlake_1.jpg",
+    "images": [
+      "/images/hotels/samcon-stadel-saltlake_1.jpg",
+      "/images/hotels/samcon-stadel-saltlake_2.jpg",
+      "/images/hotels/samcon-stadel-saltlake_3.jpg"
+    ]
+  },
+  "swarn-hotels-asansol": {
+    "image": "/images/hotels/swarn-hotels-asansol_1.jpg",
+    "images": [
+      "/images/hotels/swarn-hotels-asansol_1.jpg",
+      "/images/hotels/swarn-hotels-asansol_2.jpg",
+      "/images/hotels/swarn-hotels-asansol_3.jpg"
+    ]
+  },
+  "hotel-o2-oxygen-kolkata": {
+    "image": "/images/hotels/hotel-o2-oxygen-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/hotel-o2-oxygen-kolkata_1.jpg",
+      "/images/hotels/hotel-o2-oxygen-kolkata_2.jpg",
+      "/images/hotels/hotel-o2-oxygen-kolkata_3.jpg"
+    ]
+  },
+  "ethnotel-airport-kolkata": {
+    "image": "/images/hotels/ethnotel-airport-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/ethnotel-airport-kolkata_1.jpg",
+      "/images/hotels/ethnotel-airport-kolkata_2.jpg",
+      "/images/hotels/ethnotel-airport-kolkata_3.jpg"
+    ]
+  },
+  "hotel-the-signature-asansol": {
+    "image": "/images/hotels/hotel-the-signature-asansol_1.jpg",
+    "images": [
+      "/images/hotels/hotel-the-signature-asansol_1.jpg",
+      "/images/hotels/hotel-the-signature-asansol_2.jpg",
+      "/images/hotels/hotel-the-signature-asansol_3.jpg"
+    ]
+  },
+  "zone-by-the-park-new-town": {
+    "image": "/images/hotels/zone-by-the-park-new-town_1.jpg",
+    "images": [
+      "/images/hotels/zone-by-the-park-new-town_1.jpg",
+      "/images/hotels/zone-by-the-park-new-town_2.jpg",
+      "/images/hotels/zone-by-the-park-new-town_3.jpg"
+    ]
+  },
+  "ibis-kolkata-rajarhat": {
+    "image": "/images/hotels/ibis-kolkata-rajarhat_1.jpg",
+    "images": [
+      "/images/hotels/ibis-kolkata-rajarhat_1.jpg",
+      "/images/hotels/ibis-kolkata-rajarhat_2.jpg",
+      "/images/hotels/ibis-kolkata-rajarhat_3.jpg"
+    ]
+  },
+  "itc-sonar": {
+    "image": "/images/hotels/itc-sonar_1.jpg",
+    "images": [
+      "/images/hotels/itc-sonar_1.jpg",
+      "/images/hotels/itc-sonar_2.jpg"
+    ]
+  },
+  "altair-boutique-hotel": {
+    "image": "/images/hotels/altair-boutique-hotel_1.jpg",
+    "images": [
+      "/images/hotels/altair-boutique-hotel_1.jpg",
+      "/images/hotels/altair-boutique-hotel_2.jpg",
+      "/images/hotels/altair-boutique-hotel_3.jpg"
+    ]
+  },
+  "lbd-resorts-hotels-kolkata": {
+    "image": "/images/hotels/lbd-resorts-hotels-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/lbd-resorts-hotels-kolkata_1.jpg",
+      "/images/hotels/lbd-resorts-hotels-kolkata_2.jpg",
+      "/images/hotels/lbd-resorts-hotels-kolkata_3.jpg"
+    ]
+  },
+  "the-golden-parkk": {
+    "image": "/images/hotels/the-golden-parkk_1.jpg",
+    "images": [
+      "/images/hotels/the-golden-parkk_1.jpg",
+      "/images/hotels/the-golden-parkk_2.jpg",
+      "/images/hotels/the-golden-parkk_3.jpg"
+    ]
+  },
+  "the-fern-residency-asansol": {
+    "image": "/images/hotels/the-fern-residency-asansol_1.jpg",
+    "images": [
+      "/images/hotels/the-fern-residency-asansol_1.jpg",
+      "/images/hotels/the-fern-residency-asansol_2.jpg",
+      "/images/hotels/the-fern-residency-asansol_3.jpg"
+    ]
+  },
+  "hyatt-centric-ballygunge": {
+    "image": "/images/hotels/hyatt-centric-ballygunge_1.jpg",
+    "images": [
+      "/images/hotels/hyatt-centric-ballygunge_1.jpg",
+      "/images/hotels/hyatt-centric-ballygunge_2.jpg",
+      "/images/hotels/hyatt-centric-ballygunge_3.jpg"
+    ]
+  },
+  "royal-bishnu-berhampore": {
+    "image": "/images/hotels/royal-bishnu-berhampore_1.jpg",
+    "images": [
+      "/images/hotels/royal-bishnu-berhampore_1.jpg",
+      "/images/hotels/royal-bishnu-berhampore_2.jpg",
+      "/images/hotels/royal-bishnu-berhampore_3.jpg"
+    ]
+  },
+  "the-lalit-great-eastern": {
+    "image": "/images/hotels/the-lalit-great-eastern_1.jpg",
+    "images": [
+      "/images/hotels/the-lalit-great-eastern_1.jpg",
+      "/images/hotels/the-lalit-great-eastern_2.jpg",
+      "/images/hotels/the-lalit-great-eastern_3.jpg"
+    ]
+  },
+  "the-kenilworth-hotel": {
+    "image": "/images/hotels/the-kenilworth-hotel_1.jpg",
+    "images": [
+      "/images/hotels/the-kenilworth-hotel_1.jpg",
+      "/images/hotels/the-kenilworth-hotel_2.jpg",
+      "/images/hotels/the-kenilworth-hotel_3.jpg"
+    ]
+  },
+  "hotel-hindusthan-international-renewal": {
+    "image": "/images/hotels/hotel-hindusthan-international-renewal_1.jpg",
+    "images": [
+      "/images/hotels/hotel-hindusthan-international-renewal_1.jpg",
+      "/images/hotels/hotel-hindusthan-international-renewal_2.jpg",
+      "/images/hotels/hotel-hindusthan-international-renewal_3.jpg"
+    ]
+  },
+  "hotel-lake-view-berhampore": {
+    "image": "/images/hotels/hotel-lake-view-berhampore_1.jpg",
+    "images": [
+      "/images/hotels/hotel-lake-view-berhampore_1.jpg",
+      "/images/hotels/hotel-lake-view-berhampore_2.jpg",
+      "/images/hotels/hotel-lake-view-berhampore_3.jpg"
+    ]
+  },
+  "peerless-hotel-kolkata": {
+    "image": "/images/hotels/peerless-hotel-kolkata_1.jpg",
+    "images": [
+      "/images/hotels/peerless-hotel-kolkata_1.jpg",
+      "/images/hotels/peerless-hotel-kolkata_2.jpg"
+    ]
+  },
+  "novotel-kolkata-rajarhat": {
+    "image": "/images/hotels/novotel-kolkata-rajarhat_1.jpg",
+    "images": [
+      "/images/hotels/novotel-kolkata-rajarhat_1.jpg",
+      "/images/hotels/novotel-kolkata-rajarhat_2.jpg",
+      "/images/hotels/novotel-kolkata-rajarhat_3.jpg"
+    ]
+  },
+  "the-westin-kolkata-rajarhat": {
+    "image": "/images/hotels/the-westin-kolkata-rajarhat_1.jpg",
+    "images": [
+      "/images/hotels/the-westin-kolkata-rajarhat_1.jpg",
+      "/images/hotels/the-westin-kolkata-rajarhat_2.jpg",
+      "/images/hotels/the-westin-kolkata-rajarhat_3.jpg"
+    ]
+  },
+  "sarkar-villa-homestay": {
+    "image": "/images/hotels/sarkar-villa-homestay_1.jpg",
+    "images": [
+      "/images/hotels/sarkar-villa-homestay_1.jpg",
+      "/images/hotels/sarkar-villa-homestay_2.jpg",
+      "/images/hotels/sarkar-villa-homestay_3.jpg"
+    ]
+  },
+  "central-bed-and-breakfast-homestay": {
+    "image": "/images/hotels/central-bed-and-breakfast-homestay_1.jpg",
+    "images": [
+      "/images/hotels/central-bed-and-breakfast-homestay_1.jpg",
+      "/images/hotels/central-bed-and-breakfast-homestay_2.jpg",
+      "/images/hotels/central-bed-and-breakfast-homestay_3.jpg"
+    ]
+  },
+  "satguru-homestays": {
+    "image": "/images/hotels/satguru-homestays_1.jpg",
+    "images": [
+      "/images/hotels/satguru-homestays_1.jpg",
+      "/images/hotels/satguru-homestays_2.jpg",
+      "/images/hotels/satguru-homestays_3.jpg"
+    ]
+  },
+  "aranya-sundari-homestay-jhargram": {
+    "image": "/images/hotels/aranya-sundari-homestay-jhargram_1.jpg",
+    "images": [
+      "/images/hotels/aranya-sundari-homestay-jhargram_1.jpg",
+      "/images/hotels/aranya-sundari-homestay-jhargram_2.jpg",
+      "/images/hotels/aranya-sundari-homestay-jhargram_3.jpg"
+    ]
+  },
+  "oasis-homestay-jhargram": {
+    "image": "/images/hotels/oasis-homestay-jhargram_1.jpg",
+    "images": [
+      "/images/hotels/oasis-homestay-jhargram_1.jpg",
+      "/images/hotels/oasis-homestay-jhargram_2.jpg",
+      "/images/hotels/oasis-homestay-jhargram_3.jpg"
+    ]
+  },
+  "the-moira-bed-and-breakfast": {
+    "image": "/images/hotels/the-moira-bed-and-breakfast_1.jpg",
+    "images": [
+      "/images/hotels/the-moira-bed-and-breakfast_1.jpg",
+      "/images/hotels/the-moira-bed-and-breakfast_2.jpg",
+      "/images/hotels/the-moira-bed-and-breakfast_3.jpg"
+    ]
+  },
+  "service-apartments-park-street": {
+    "image": "/images/hotels/service-apartments-park-street_1.jpg",
+    "images": [
+      "/images/hotels/service-apartments-park-street_1.jpg",
+      "/images/hotels/service-apartments-park-street_2.jpg",
+      "/images/hotels/service-apartments-park-street_3.jpg"
+    ]
+  },
+  "balmy-homestay-newtown": {
+    "image": "/images/hotels/balmy-homestay-newtown_1.jpg",
+    "images": [
+      "/images/hotels/balmy-homestay-newtown_1.jpg",
+      "/images/hotels/balmy-homestay-newtown_2.jpg",
+      "/images/hotels/balmy-homestay-newtown_3.jpg"
+    ]
+  },
+  "royal-galaxy-homestay-newtown": {
+    "image": "/images/hotels/royal-galaxy-homestay-newtown_1.jpg",
+    "images": [
+      "/images/hotels/royal-galaxy-homestay-newtown_1.jpg",
+      "/images/hotels/royal-galaxy-homestay-newtown_2.jpg",
+      "/images/hotels/royal-galaxy-homestay-newtown_3.jpg"
+    ]
+  },
+  "radharani-kutir-nabadwip": {
+    "image": "/images/hotels/radharani-kutir-nabadwip_1.jpg",
+    "images": [
+      "/images/hotels/radharani-kutir-nabadwip_1.jpg",
+      "/images/hotels/radharani-kutir-nabadwip_2.jpg",
+      "/images/hotels/radharani-kutir-nabadwip_3.jpg"
+    ]
+  },
+  "central-bed-and-breakfast-renewal": {
+    "image": "/images/hotels/central-bed-and-breakfast-renewal_1.jpg",
+    "images": [
+      "/images/hotels/central-bed-and-breakfast-renewal_1.jpg",
+      "/images/hotels/central-bed-and-breakfast-renewal_2.jpg",
+      "/images/hotels/central-bed-and-breakfast-renewal_3.jpg"
+    ]
+  },
+  "ganga-niwas-batanagar": {
+    "image": "/images/hotels/ganga-niwas-batanagar_1.jpg",
+    "images": [
+      "/images/hotels/ganga-niwas-batanagar_1.jpg",
+      "/images/hotels/ganga-niwas-batanagar_2.jpg",
+      "/images/hotels/ganga-niwas-batanagar_3.jpg"
+    ]
+  },
+  "auckland-bed-and-breakfast": {
+    "image": "/images/hotels/auckland-bed-and-breakfast_1.jpg",
+    "images": [
+      "/images/hotels/auckland-bed-and-breakfast_1.jpg",
+      "/images/hotels/auckland-bed-and-breakfast_2.jpg",
+      "/images/hotels/auckland-bed-and-breakfast_3.jpg"
+    ]
+  },
+  "vedic-village-aqua-bungalow": {
+    "image": "/images/hotels/vedic-village-aqua-bungalow_1.jpg",
+    "images": [
+      "/images/hotels/vedic-village-aqua-bungalow_1.jpg",
+      "/images/hotels/vedic-village-aqua-bungalow_2.jpg"
+    ]
+  },
+  "hornbill-nest-bunglow-jalpaiguri": {
+    "image": "/images/hotels/hornbill-nest-bunglow-jalpaiguri_1.jpg",
+    "images": [
+      "/images/hotels/hornbill-nest-bunglow-jalpaiguri_1.jpg",
+      "/images/hotels/hornbill-nest-bunglow-jalpaiguri_2.jpg",
+      "/images/hotels/hornbill-nest-bunglow-jalpaiguri_3.jpg"
+    ]
+  },
+  "jaiswal-house-alipore": {
+    "image": "/images/hotels/jaiswal-house-alipore_1.jpg",
+    "images": [
+      "/images/hotels/jaiswal-house-alipore_1.jpg",
+      "/images/hotels/jaiswal-house-alipore_2.jpg",
+      "/images/hotels/jaiswal-house-alipore_3.jpg"
+    ]
+  },
+  "handmade-homes-em-bypass": {
+    "image": "/images/hotels/handmade-homes-em-bypass_1.jpg",
+    "images": [
+      "/images/hotels/handmade-homes-em-bypass_1.jpg",
+      "/images/hotels/handmade-homes-em-bypass_2.jpg",
+      "/images/hotels/handmade-homes-em-bypass_3.jpg"
+    ]
+  },
+  "handmade-homes-tollygunge": {
+    "image": "/images/hotels/handmade-homes-tollygunge_1.jpg",
+    "images": [
+      "/images/hotels/handmade-homes-tollygunge_1.jpg",
+      "/images/hotels/handmade-homes-tollygunge_2.jpg",
+      "/images/hotels/handmade-homes-tollygunge_3.jpg"
+    ]
+  },
+  "handmade-homes-lords": {
+    "image": "/images/hotels/handmade-homes-lords_1.jpg",
+    "images": [
+      "/images/hotels/handmade-homes-lords_1.jpg",
+      "/images/hotels/handmade-homes-lords_2.jpg",
+      "/images/hotels/handmade-homes-lords_3.jpg"
+    ]
+  },
+  "lake-city-home-stay-saltlake": {
+    "image": "/images/hotels/lake-city-home-stay-saltlake_1.jpg",
+    "images": [
+      "/images/hotels/lake-city-home-stay-saltlake_1.jpg",
+      "/images/hotels/lake-city-home-stay-saltlake_2.jpg",
+      "/images/hotels/lake-city-home-stay-saltlake_3.jpg"
+    ]
+  },
+  "devs-sweet-home-birati": {
+    "image": "/images/hotels/devs-sweet-home-birati_1.jpg",
+    "images": [
+      "/images/hotels/devs-sweet-home-birati_1.jpg",
+      "/images/hotels/devs-sweet-home-birati_2.jpg",
+      "/images/hotels/devs-sweet-home-birati_3.jpg"
+    ]
+  }
+}

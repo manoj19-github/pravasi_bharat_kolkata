@@ -102,10 +102,10 @@ export const HeroSection: React.FC = () => {
                   <path d="M16 13 C21 15 25 18 29 17 C26 21 21 21 16 18 Z" opacity="0.85" />
                   <path d="M16 13 C11 15 7 18 3 17 C6 21 11 21 16 18 Z" opacity="0.85" />
                 </svg>
-
-                <span className="h-[1.5px] w-12 xl:w-16 bg-[#BD1113] relative flex items-center justify-end">
-                  32 <span className="w-1.5 h-1.5 rotate-45 bg-[#BD1113] absolute -right-0.5" />
+                <span className="h-[1.5px] w-12 xl:w-16 bg-[#BD1113] relative flex items-center justify-start">
+                  <span className="w-1.5 h-1.5 rotate-45 bg-[#BD1113] absolute -right-0.5" />
                 </span>
+
               </div>
 
               {/* 2. Script Heading: "Kolkata" (Red) + "Welcomes You" (Navy Blue) */}
