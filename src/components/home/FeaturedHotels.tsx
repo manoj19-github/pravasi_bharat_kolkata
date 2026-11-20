@@ -160,21 +160,21 @@ export const FeaturedHotels: React.FC = () => {
         {/* ============================================================== */}
         <div className="relative w-full">
 
-          {/* Left Edge Mask Gradient Overlay */}
+          {/* Left Edge Mask Gradient Overlay (Hidden on Mobile) */}
           <div
-            className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 lg:w-44 z-20 bg-gradient-to-r from-[#FAF5EC] via-[#FAF5EC]/85 to-transparent"
+            className="hidden sm:block pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 lg:w-44 z-20 bg-gradient-to-r from-[#FAF5EC] via-[#FAF5EC]/85 to-transparent"
             aria-hidden="true"
           />
 
-          {/* Right Edge Mask Gradient Overlay */}
+          {/* Right Edge Mask Gradient Overlay (Hidden on Mobile) */}
           <div
-            className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 lg:w-44 z-20 bg-gradient-to-l from-[#FAF5EC] via-[#FAF5EC]/85 to-transparent"
+            className="hidden sm:block pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 lg:w-44 z-20 bg-gradient-to-l from-[#FAF5EC] via-[#FAF5EC]/85 to-transparent"
             aria-hidden="true"
           />
 
           {/* Continuous Infinite Scrolling Track */}
           <div
-            className="w-full overflow-hidden py-3 sm:py-4 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
+            className="w-full overflow-hidden py-3 sm:py-4 sm:[mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] sm:[-webkit-mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={() => setIsPaused(true)}
