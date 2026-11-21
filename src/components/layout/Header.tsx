@@ -8,7 +8,6 @@ import {
   Navigation,
   Home,
   Bed,
-  Globe,
   Sparkles,
   Calendar
 } from 'lucide-react'
@@ -82,54 +81,13 @@ export const Header: React.FC = () => {
   return (
     <>
       {/* ============================================================== */}
-      {/* PART 1: TOP-MOST ANNOUNCEMENT BAR                             */}
-      {/* Scrolls smoothly out of view with document (Zero Layout Shift) */}
-      {/* ============================================================== */}
-      <div className="w-full bg-gradient-to-r from-[#F4E4CD] via-[#F8EBDA] to-[#F4E4CD] border-b border-[#E3CCA9] py-1 px-3 sm:px-6 lg:px-10 select-none">
-        <div className="max-w-[1920px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-[10px] sm:text-[11px]">
-
-          {/* Left: Authority & Host State Notice */}
-          <div className="flex items-center gap-1.5 sm:gap-2 text-center sm:text-left">
-            <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
-              <span className="absolute inline-flex h-full w-full rounded-full border border-[#BD1113] opacity-60 animate-ping" />
-              <span className="relative inline-flex rounded-full h-1 w-1 bg-[#BD1113]" />
-            </span>
-            <span className="font-bold tracking-tight text-[#0A265D] line-clamp-1">
-              Government of India &amp; Government of West Bengal • 19th PBD Convention 2027
-            </span>
-            <span className="text-[#C5A880] hidden md:inline font-light ml-1">|</span>
-          </div>
-
-          {/* Right: Venue & Official Parent Portal Pill */}
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="font-semibold text-[#0A265D] hidden md:inline">
-              Host Venue: <strong className="font-bold text-[#BD1113]">Biswa Bangla Mela Prangan</strong>
-            </span>
-            <span className="text-[#C5A880] hidden md:inline font-light">|</span>
-
-            <a
-              href="https://pbdindia.gov.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full border border-[#BD1113]/70 bg-white px-2.5 py-0.5 text-[9.5px] sm:text-[10px] font-bold text-[#0A265D] shadow-2xs hover:bg-[#FFF7ED] hover:text-[#BD1113] transition-all"
-            >
-              <Globe className="h-3 w-3 text-[#BD1113]" />
-              <span>Parent Portal: pbdindia.gov.in</span>
-              <ExternalLink className="h-2.5 w-2.5 text-[#BD1113]" />
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      {/* ============================================================== */}
-      {/* PART 2: STICKY MAIN NAVIGATION BAR                             */}
-      {/* Always sticks to top:0 when scrolled, with frosted glass blur  */}
+      {/* STICKY MAIN NAVIGATION BAR                                     */}
+      {/* Fixed height & padding - zero vertical shift or bounce on scroll*/}
       {/* ============================================================== */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 px-3 sm:px-6 lg:px-10 ${isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-[#BD1113]/30 py-1.5 sm:py-2'
-          : 'bg-gradient-to-r from-[#FFFDF9] via-[#FAF6F0] to-[#FFFDF9] border-b-2 border-[#BD1113] py-2 sm:py-2.5 shadow-xs'
+        className={`sticky top-0 z-40 px-3 sm:px-6 lg:px-10 py-2 sm:py-2.5 border-b border-[#BD1113]/30 transition-colors duration-150 select-none ${isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-md'
+          : 'bg-gradient-to-r from-[#FFFDF9] via-[#FAF6F0] to-[#FFFDF9] shadow-xs'
           }`}
       >
         <div className="max-w-[1920px] mx-auto flex items-center justify-between">

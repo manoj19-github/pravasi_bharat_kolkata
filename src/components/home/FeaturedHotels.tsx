@@ -132,6 +132,7 @@ export const FeaturedHotels: React.FC = () => {
                   <AccommodationCard
                     hotel={stay}
                     initiallyExpanded={false}
+                    compact={true}
                   />
                 </div>
               ))}

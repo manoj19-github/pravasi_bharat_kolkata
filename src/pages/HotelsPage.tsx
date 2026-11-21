@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
-import { 
-  Building2, 
+import {
+  Building2,
   RotateCcw,
   SlidersHorizontal
 } from 'lucide-react'
@@ -117,7 +117,7 @@ export const HotelsPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-[#FAF5EC] via-[#FFFDF9] to-[#FAF5EC] text-[#0F172A] selection:bg-[#BD1113]/20 selection:text-[#BD1113] overflow-x-clip">
-      
+
       {/* Background Bengali Alpana Motifs (Matches Homepage Aesthetic) */}
       <div className="absolute -left-28 sm:-left-36 lg:-left-44 top-24 w-64 sm:w-80 lg:w-[400px] h-64 sm:h-80 lg:h-[400px] pointer-events-none z-0 opacity-20 select-none">
         <img
@@ -147,7 +147,7 @@ export const HotelsPage: React.FC = () => {
       </div>
 
       <div className="relative z-10 pt-6 pb-16">
-        
+
         {/* Section Header (Unified font size, weight and style with Home page section headers) */}
         <div className="w-[98vw] max-w-[1920px] mx-auto px-2 sm:px-4 flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3 py-0.5 mb-1.5 shadow-2xs">
@@ -188,7 +188,7 @@ export const HotelsPage: React.FC = () => {
 
         {/* Hotels Section: Preserves comfortable side margins */}
         <div className="w-[96vw] sm:w-[94vw] lg:w-[94vw] max-w-[1760px] mx-auto px-2 sm:px-6 lg:px-8 mt-4 sm:mt-5">
-          
+
           {/* Sub-Header Bar: Showing Count & Active Indicator */}
           <div className="flex items-center justify-between text-xs text-[#64748B] mb-4 pb-2 border-b border-[#E5D5C5]/60">
             <div className="flex items-center gap-2">
@@ -219,7 +219,7 @@ export const HotelsPage: React.FC = () => {
           </div>
 
           <div className="flex flex-col lg:flex-row items-start gap-5">
-            
+
             {/* Collapsible Left Filter & Advanced Search Sidebar */}
             <CollapsibleHotelSidebar
               filters={filters}
@@ -238,7 +238,7 @@ export const HotelsPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
                   {filteredHotels.map((hotel) => (
                     <div key={hotel.id} className="h-full flex flex-col">
-                      <AccommodationCard hotel={hotel} />
+                      <AccommodationCard hotel={hotel} compact={true} />
                     </div>
                   ))}
                 </div>

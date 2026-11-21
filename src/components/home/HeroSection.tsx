@@ -10,7 +10,7 @@ import {
   MapPin,
   Sparkles
 } from 'lucide-react'
-import heroBgImg from '../../assets/images/Gemini_Generated_Image_76tzd776tzd776tz.png'
+import heroPanoramaImg from '../../assets/images/kolkata_riverside_heritage_panorama.png'
 import { PBD_EVENT_DATA } from '../../data/event'
 
 interface TimeRemaining {
@@ -54,7 +54,7 @@ export const HeroSection: React.FC = () => {
   }, [])
 
   return (
-    <section className="relative w-full lg:h-[calc(100vh-80px)] lg:max-h-[calc(100vh-80px)] overflow-hidden bg-[#FAF6F0] border-b border-[#EFE6DC]">
+    <section className="relative w-full lg:h-[calc(100vh-80px)] lg:max-h-[calc(100vh-80px)] overflow-hidden bg-[#FAF5EE] border-b border-[#EFE6DC]">
 
       {/* ============================================================== */}
       {/* 1. DESKTOP & WIDESCREEN PRESENTATION (>= 1024px)               */}
@@ -64,18 +64,21 @@ export const HeroSection: React.FC = () => {
 
         {/* Full 100% Width & Fitted Height Container */}
         <div className="relative w-full h-full overflow-hidden">
-          {/* Main Hero Background Image */}
+          {/* Main Hero Background Image - Kolkata Riverside Heritage Panorama */}
           <img
-            src={heroBgImg}
-            alt="19th Pravasi Bharatiya Divas 2027 - Kolkata Cultural Tableau"
+            src={heroPanoramaImg}
+            alt="19th Pravasi Bharatiya Divas 2027 - Kolkata Riverside Heritage Panorama"
             className="absolute inset-0 w-full h-full object-cover object-left pointer-events-none"
             loading="eager"
           />
 
+          {/* Soft atmospheric gradient feathering for the right content area on ultra-wide screens */}
+          <div className="absolute inset-y-0 right-0 w-[58%] bg-gradient-to-r from-transparent via-[#FAF5EE]/30 to-[#FAF5EE]/75 pointer-events-none" />
+
           {/* Right-Side Content Overlay (in negative space, centered vertically) */}
           <div className="absolute inset-0 z-10 flex h-full">
 
-            {/* Left 45%: Preserves Howrah Bridge, Durga, Dhak, Shankha, Hibiscus & Temple */}
+            {/* Left 45%: Preserves Howrah Bridge, Durga Idol, Yellow Taxi, Temple & Ghat */}
             <div className="w-[45%] xl:w-[46%] 2xl:w-[48%] h-full shrink-0" />
 
             {/* Right 55%: Balanced, elegant vertical spacing for every element */}
@@ -142,14 +145,14 @@ export const HeroSection: React.FC = () => {
 
               {/* 4. DATE & VENUE CARD (WITH NATURAL BREATHING ROOM) */}
               <div className="flex justify-center w-auto max-w-none mb-5 xl:mb-7">
-                <div className="bg-[#C2410C] text-white px-5 py-2 rounded-xl shadow-2xs border border-white/20 flex flex-row items-center justify-center gap-3 whitespace-nowrap shrink-0">
+                <div className="bg-gradient-to-r from-[#BD1113] via-[#C2410C] to-[#8E0D0E] text-white px-5 py-2 rounded-xl shadow-xs border border-amber-300/35 flex flex-row items-center justify-center gap-3 whitespace-nowrap shrink-0">
                   <div className="flex items-center gap-1.5 font-semibold text-[11.5px] xl:text-[13px] tracking-wide">
-                    <Calendar className="w-4 h-4 text-white shrink-0" />
+                    <Calendar className="w-4 h-4 text-amber-200 shrink-0" />
                     <span>January 7–9, 2027</span>
                   </div>
                   <span className="w-1.5 h-1.5 rounded-full bg-white/70 shrink-0" />
                   <div className="flex items-center gap-1.5 font-semibold text-[11.5px] xl:text-[13px] tracking-wide">
-                    <MapPin className="w-4 h-4 text-white shrink-0" />
+                    <MapPin className="w-4 h-4 text-amber-200 shrink-0" />
                     <span>Biswa Bangla Mela Prangan • Kolkata</span>
                   </div>
                 </div>
@@ -157,8 +160,8 @@ export const HeroSection: React.FC = () => {
 
               {/* 5. OFFICIAL THEME (WITH GENEROUS VERTICAL SPACE) */}
               <div className="w-full max-w-[540px] flex flex-col items-center mb-6 xl:mb-8">
-                <div className="w-full bg-[#FAF0E1]/90 border border-[#D97706]/35 rounded-xl px-5 py-2.5 xl:py-3.5 shadow-2xs text-center backdrop-blur-2xs">
-                  <div className="inline-flex items-center gap-1 bg-[#B31010] text-white text-[9.5px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-2xs mb-1.5">
+                <div className="w-full bg-[#FFFDF9]/92 border border-[#EBD6BE] rounded-xl px-5 py-2.5 xl:py-3.5 shadow-xs text-center backdrop-blur-xs ring-1 ring-[#BD1113]/10">
+                  <div className="inline-flex items-center gap-1 bg-[#BD1113] text-white text-[9.5px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-2xs mb-1.5">
                     <Sparkles className="w-2.5 h-2.5 text-[#FDE68A]" />
                     <span>OFFICIAL THEME</span>
                   </div>
@@ -256,13 +259,13 @@ export const HeroSection: React.FC = () => {
       {/* ============================================================== */}
       {/* 2. TABLET & MOBILE RESPONSIVE PRESENTATION (< 1024px)          */}
       {/* ============================================================== */}
-      <div className="lg:hidden flex flex-col w-full bg-[#FAF6F0]">
+      <div className="lg:hidden flex flex-col w-full bg-[#FAF5EE]">
 
         {/* Visual Artwork Showcase */}
         <div className="relative w-full overflow-hidden bg-white shadow-sm border-b border-[#EFE6DC]">
           <img
-            src={heroBgImg}
-            alt="19th Pravasi Bharatiya Divas Kolkata Artwork"
+            src={heroPanoramaImg}
+            alt="19th Pravasi Bharatiya Divas Kolkata Riverside Heritage Panorama"
             className="w-full h-auto object-cover object-left"
           />
         </div>
@@ -317,14 +320,14 @@ export const HeroSection: React.FC = () => {
 
           {/* Compact Date & Venue */}
           <div className="mb-5">
-            <div className="bg-[#C2410C] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs">
-              <Calendar className="w-4 h-4" />
+            <div className="bg-gradient-to-r from-[#BD1113] via-[#C2410C] to-[#8E0D0E] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-xs border border-amber-300/30">
+              <Calendar className="w-4 h-4 text-amber-200" />
               <span>Jan 7–9, 2027 • Biswa Bangla Mela Prangan</span>
             </div>
           </div>
 
           {/* Theme Card */}
-          <div className="w-full mb-5 bg-[#FAF0E1] border border-[#D97706]/40 rounded-xl p-3.5 text-center shadow-2xs">
+          <div className="w-full mb-5 bg-[#FFFDF9] border border-[#EBD6BE] rounded-xl p-3.5 text-center shadow-xs ring-1 ring-[#BD1113]/10">
             <span className="text-[9.5px] font-bold uppercase text-[#BD1113] block mb-1">OFFICIAL CONVENTION THEME</span>
             <p className="font-serif text-xs sm:text-sm font-bold text-[#0A265D] leading-snug">
               “Return to Roots: Reigniting the Diaspora Connect with Bharat”

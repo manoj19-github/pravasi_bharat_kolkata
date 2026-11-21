@@ -18,15 +18,18 @@ import { Hotel } from '../../data/hotels'
 interface AccommodationCardProps {
   hotel: Hotel
   initiallyExpanded?: boolean
+  compact?: boolean
 }
 
 export const AccommodationCard: React.FC<AccommodationCardProps> = ({ 
   hotel, 
-  initiallyExpanded = false 
+  initiallyExpanded = false,
+  compact = true
 }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
   const [isHovered, setIsHovered] = useState(false)
+  const [showAddressTooltip, setShowAddressTooltip] = useState(false)
 
   const images = hotel.images && hotel.images.length > 0 ? hotel.images : [hotel.image]
 
@@ -81,7 +84,7 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
 
   return (
     <div 
-      className="rounded-2xl border border-[#F3E8D8] bg-white overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-[#BD1113]/12 hover:border-[#BD1113]/40 hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col justify-between group cursor-pointer h-full"
+      className="rounded-2xl border border-[#F3E8D8] bg-white overflow-hidden shadow-sm hover:shadow-xl hover:shadow-[#BD1113]/12 hover:border-[#BD1113]/40 transition-shadow duration-200 flex flex-col justify-between group cursor-pointer h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -179,6 +182,54 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
             </div>
           )}
 
+          {/* Bottom Left (Home Page / Compact): Address icon with hover/tap tooltip in card image */}
+          {compact && (
+            <div className="absolute bottom-3 left-3 z-20 group/imgaddr">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setShowAddressTooltip((prev) => !prev)
+                }}
+                onMouseEnter={() => setShowAddressTooltip(true)}
+                onMouseLeave={() => setShowAddressTooltip(false)}
+                className="inline-flex items-center gap-1 bg-white/95 hover:bg-[#BD1113] hover:text-white backdrop-blur-md text-[#BD1113] text-[11px] font-bold px-2.5 py-1 rounded-md border border-[#F3E8D8] shadow-md transition-all cursor-pointer group-hover/imgaddr:border-[#BD1113]/40"
+                title="Hover or click to view address"
+                aria-label={`Address for ${hotel.name}`}
+              >
+                <MapPin className="h-3 w-3 text-[#BD1113] group-hover/imgaddr:text-white transition-colors shrink-0" />
+                <span className="text-[10.5px] font-bold">Address</span>
+              </button>
+
+              {/* Floating Address Popup / Tooltip (Light Mode, Eye-Catchy & Easy to Read) */}
+              <div
+                className={`absolute left-0 bottom-full mb-2 z-40 w-68 sm:w-76 p-3 rounded-2xl bg-[#FFFDF9]/98 backdrop-blur-md text-[#0F172A] shadow-[0_12px_32px_rgba(189,17,19,0.22)] border border-[#EBD6BE] ring-1 ring-[#BD1113]/15 transition-all duration-200 pointer-events-none select-text ${
+                  showAddressTooltip
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
+                    : 'opacity-0 translate-y-1 scale-95 pointer-events-none'
+                }`}
+              >
+                <div className="flex items-start gap-2.5">
+                  <div className="p-1.5 rounded-lg bg-[#FEF3C7] text-[#BD1113] border border-[#FDE68A] shrink-0 mt-0.5">
+                    <MapPin className="h-3.5 w-3.5 text-[#BD1113]" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#BD1113]">
+                        Official Property Address
+                      </span>
+                    </div>
+                    <p className="text-[12px] font-semibold leading-snug text-[#0A265D]">
+                      {hotel.address}
+                    </p>
+                  </div>
+                </div>
+                {/* Downward triangle arrow pointer */}
+                <div className="absolute left-5 top-full -mt-[1px] w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-[#FFFDF9]" />
+              </div>
+            </div>
+          )}
+
           {/* Bottom Right: Proximity to Biswa Bangla Mela Prangan */}
           <div className="absolute bottom-3 right-3 z-10">
             <span className="inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-[#BD1113] text-[11px] font-bold px-2.5 py-1 rounded-md border border-[#F3E8D8] shadow-md">
@@ -188,26 +239,33 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
           </div>
         </div>
 
-        {/* Content Body */}
-        <div className="p-3.5 sm:p-4 pb-2">
+        {/* Content Body - Compact height & reduced vertical padding for Home Page carousel */}
+        <div className={compact ? "p-2.5 sm:p-3 pb-1" : "p-3.5 sm:p-4 pb-2"}>
           {/* Header Title (Hotel or Homestay Name) */}
-          <h3 className="font-serif font-bold text-base sm:text-[17px] text-[#0F172A] leading-snug group-hover:text-[#BD1113] transition-colors line-clamp-2 h-[2.85rem] flex items-center">
+          <h3 className={`font-serif font-bold text-[#0F172A] leading-snug group-hover:text-[#BD1113] transition-colors line-clamp-2 flex items-center ${
+            compact ? 'text-[14.5px] sm:text-[15px] h-[2.35rem]' : 'text-base sm:text-[17px] h-[2.85rem]'
+          }`}>
             {hotel.name}
           </h3>
 
-          {/* Single Official Border Box with Complete Address Just Below Title (Up to 3 lines) */}
-          <div className="mt-2.5 rounded-xl border border-[#EBD6BE] bg-[#FAF5EC]/95 px-3 py-2 flex items-start gap-2 h-[68px] overflow-hidden">
-            <MapPin className="h-4 w-4 text-[#BD1113] shrink-0 mt-0.5" />
-            <p className="text-[11.5px] sm:text-xs font-semibold text-[#0A265D] leading-snug line-clamp-3 tracking-normal" title={hotel.address}>
-              {hotel.address}
-            </p>
-          </div>
+          {/* In Standard Mode (Hotels Page): Single Official Border Box with Complete Address.
+              In Compact Mode (Home Page): Completely removed from content side to reduce height! */}
+          {!compact && (
+            <div className="mt-2.5 rounded-xl border border-[#EBD6BE] bg-[#FAF5EC]/95 px-3 py-2 flex items-start gap-2 h-[68px] overflow-hidden">
+              <MapPin className="h-4 w-4 text-[#BD1113] shrink-0 mt-0.5" />
+              <p className="text-[11.5px] sm:text-xs font-semibold text-[#0A265D] leading-snug line-clamp-3 tracking-normal" title={hotel.address}>
+                {hotel.address}
+              </p>
+            </div>
+          )}
 
           {/* Collapsible Trigger for Editorial Description & Facility Tags */}
-          <div className="mt-3 pt-2.5 border-t border-[#F3E8D8]">
+          <div className={compact ? "mt-1.5 pt-1.5 border-t border-[#F3E8D8]" : "mt-3 pt-2.5 border-t border-[#F3E8D8]"}>
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="w-full h-8 flex items-center justify-between px-3 rounded-lg bg-[#FAF7F2] hover:bg-[#FEF3C7] text-xs font-semibold text-[#8B1D1D] transition-colors border border-[#E5D5C5]/60"
+              className={`w-full flex items-center justify-between px-2.5 sm:px-3 rounded-lg bg-[#FAF7F2] hover:bg-[#FEF3C7] font-semibold text-[#8B1D1D] transition-colors border border-[#E5D5C5]/60 ${
+                compact ? 'h-6.5 text-[10.5px]' : 'h-8 text-xs'
+              }`}
             >
               <span className="flex items-center gap-1.5">
                 <Info className="h-3.5 w-3.5 text-[#BD1113]" />
@@ -265,18 +323,20 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
       </div>
 
       {/* Card Action Footer */}
-      <div className="p-3.5 sm:p-4 pt-0 mt-auto">
-        <div className="pt-2.5 border-t border-[#F3E8D8] flex items-center gap-2 text-xs">
+      <div className={compact ? "p-2.5 sm:p-3 pt-0 mt-auto" : "p-3.5 sm:p-4 pt-0 mt-auto"}>
+        <div className={compact ? "pt-1.5 border-t border-[#F3E8D8] flex items-center gap-2 text-xs" : "pt-2.5 border-t border-[#F3E8D8] flex items-center gap-2 text-xs"}>
           {/* "Book Now" Button -> Redirects to official website if exists, else Google search booking */}
           <a
             href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 h-10 flex items-center justify-center gap-1.5 px-3 rounded-xl bg-gradient-to-r from-[#BD1113] to-[#8B1D1D] hover:from-[#A00E10] hover:to-[#701515] text-white font-bold transition-all shadow-xs hover:shadow-sm active:scale-[0.99] tracking-normal"
+            className={`flex-1 flex items-center justify-center gap-1.5 px-2.5 rounded-xl bg-gradient-to-r from-[#BD1113] to-[#8B1D1D] hover:from-[#A00E10] hover:to-[#701515] text-white font-bold transition-all shadow-xs hover:shadow-sm active:scale-[0.99] tracking-normal ${
+              compact ? 'h-7.5 sm:h-8 text-[11px]' : 'h-10 text-xs'
+            }`}
             title={hasOfficialWebsite ? 'Visit Official Property Website' : 'Search Booking Rates on Google'}
           >
             <span>{hasOfficialWebsite ? 'Book Now' : 'Book / Rates'}</span>
-            <ExternalLink className="h-3.5 w-3.5" />
+            <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
           </a>
 
           {/* Directions / Route Button -> Opens Google Maps navigation */}
@@ -284,9 +344,11 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
             href={hotel.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 h-10 flex items-center justify-center gap-1.5 px-3 rounded-xl border border-[#E5D5C5] bg-[#FAF7F2] text-[#0F172A] font-semibold hover:bg-[#FEF3C7] hover:border-[#BD1113]/30 transition-all shadow-xs tracking-normal"
+            className={`flex-1 flex items-center justify-center gap-1.5 px-2.5 rounded-xl border border-[#E5D5C5] bg-[#FAF7F2] text-[#0F172A] font-semibold hover:bg-[#FEF3C7] hover:border-[#BD1113]/30 transition-all shadow-xs tracking-normal ${
+              compact ? 'h-7.5 sm:h-8 text-[11px]' : 'h-10 text-xs'
+            }`}
           >
-            <Navigation className="h-3.5 w-3.5 text-[#BD1113]" />
+            <Navigation className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#BD1113]" />
             <span>Directions</span>
           </a>
         </div>

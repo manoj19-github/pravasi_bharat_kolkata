@@ -270,8 +270,8 @@ export const MapPreviewSection: React.FC = () => {
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${isActive
-                        ? 'bg-[#BD1113] text-white shadow-2xs'
-                        : 'bg-white text-[#475569] hover:text-[#0A265D] border border-[#EBD6BE]'
+                      ? 'bg-[#BD1113] text-white shadow-2xs'
+                      : 'bg-white text-[#475569] hover:text-[#0A265D] border border-[#EBD6BE]'
                       }`}
                   >
                     {Icon && <Icon className="w-2.5 h-2.5" />}

@@ -25,11 +25,16 @@
     --color-pbd-border-soft: #F3E5D0;
   }
 
+  html {
+    overscroll-behavior-y: none;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: var(--color-pbd-cream);
     color: var(--color-pbd-charcoal);
     overflow-x: clip;
+    overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
