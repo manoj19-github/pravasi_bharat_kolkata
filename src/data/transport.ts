@@ -17,7 +17,7 @@ export const TRANSIT_DATA: TransitOption[] = [
     iconName: 'Plane',
     category: 'Air',
     summary:
-      'Located at Dum Dum (approx. 15 km from Biswa Bangla Mela Prangan). Offers domestic connections to all major Indian state capitals and direct international flights across Southeast Asia, Middle East, and beyond.',
+      'Located at Dum Dum (15 km from venue), connecting Kolkata with major domestic hubs and international routes.',
     keyHubs: [
       'Prepaid Taxi Desks in Arrivals Terminal',
       'Dedicated PBD 2027 Welcome & Helpdesk counter',
@@ -35,7 +35,7 @@ export const TRANSIT_DATA: TransitOption[] = [
     iconName: 'Train',
     category: 'Rail',
     summary:
-      'Kolkata is seamlessly anchored by three major railway terminals: Howrah Junction (HWH), Sealdah (SDAH), and Kolkata Station (KOAA). High-speed Vande Bharat and Rajdhani express trains link the city nationwide.',
+      'Major terminals at Howrah, Sealdah, and Kolkata connect the city nationwide via high-speed express networks.',
     keyHubs: [
       'Howrah Junction (8.5 km to venue) – Eastern Railway HQ',
       'Sealdah Station (4.8 km to venue) – Metro Green Line connected',
@@ -53,7 +53,7 @@ export const TRANSIT_DATA: TransitOption[] = [
     iconName: 'Navigation',
     category: 'Metro & Road',
     summary:
-      'Biswa Bangla Mela Prangan is prominently situated along the Eastern Metropolitan Bypass (EM Bypass) and connected via the Maa Flyover directly to Central Kolkata, Park Street, and Victoria Memorial.',
+      'Direct venue access via the Maa Flyover, EM Bypass corridor, and rapid under-river Green Line Metro.',
     keyHubs: [
       'EM Bypass & Maa Flyover (Signal-free elevated expressway)',
       'Kolkata Metro Green Line (Howrah Maidan to Sector V)',

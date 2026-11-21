@@ -52,7 +52,35 @@ const MapResizer: React.FC = () => {
 }
 
 // Custom Marker Generator
-const createMarkerIcon = (category: string, isSelected: boolean) => {
+const createMarkerIcon = (category: string, isSelected: boolean, isPrimaryVenue: boolean = false) => {
+  // 1. VIP Specific Animated Marker for Biswa Bangla Mela Prangan (Convention Epicenter)
+  if (isPrimaryVenue) {
+    return L.divIcon({
+      className: 'custom-venue-epicenter-marker',
+      html: `
+        <div class="relative flex items-center justify-center">
+          <!-- Multi-tier animated radar pulse rings radiating outward from pin anchor -->
+          <span class="absolute w-12 h-12 rounded-full bg-[#BD1113]/40 animate-ping pointer-events-none"></span>
+          <span class="absolute w-9 h-9 rounded-full border-2 border-amber-400 bg-amber-400/25 animate-pulse pointer-events-none"></span>
+
+          <!-- Central Grand Landmark Pin with Star Badge & Eye-Catchy Attention Glow -->
+          <div class="relative flex flex-col items-center transition-transform duration-200 ${isSelected ? 'scale-125' : 'hover:scale-115'}">
+            <div class="relative w-10 h-10 rounded-full bg-gradient-to-br from-[#BD1113] via-[#DC2626] to-[#881337] border-2 border-amber-300 shadow-[0_5px_20px_rgba(189,17,19,0.7)] flex items-center justify-center text-white ring-4 ring-[#BD1113]/30">
+              <span class="text-lg">🏛️</span>
+              <!-- VIP Gold Star Badge -->
+              <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-500 border border-white text-[8px] font-black text-amber-950 flex items-center justify-center shadow-xs">★</span>
+            </div>
+            <!-- Pin downward pointer arrow -->
+            <div class="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-amber-300 -mt-0.5 shadow-xs"></div>
+          </div>
+        </div>
+      `,
+      iconSize: [40, 44],
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -40],
+    })
+  }
+
   let bgColor = '#BD1113'
   let emoji = '📍'
 
@@ -188,68 +216,64 @@ export const MapPreviewSection: React.FC = () => {
         />
       </div>
 
-        {/* Main Container */}
-        <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+      {/* Main 92vw Container */}
+      <div className="w-[92vw] max-w-[1920px] mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
 
-          {/* Section Header */}
-          <div className="flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3 py-0.5 mb-1.5 shadow-2xs">
-              <Compass className="w-3 h-3 text-[#BD1113]" />
-              <span className="text-[10px] font-bold tracking-wider uppercase text-[#BD1113]">
-                PBD 2027 MASTER OPENSTREETMAP GEOPORTAL
+        {/* ============================================================== */}
+        {/* SECTION HEADER (UNIFIED FONT SIZE & HEIGHT)                    */}
+        {/* ============================================================== */}
+        <div className="flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
+
+          <h2 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight">
+            <span className="text-[#0A265D]">Explore All Accommodations, Venues, Transit &amp;</span>{' '}
+            <span className="text-[#BD1113]">Iconic Destinations</span>
+          </h2>
+
+          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
+            Interactive map plotting all 48 certified hotels, 11 homestays, 10 B&amp;Bs, Biswa Bangla convention venues, airport &amp; rail gateways, and 20 iconic Kolkata heritage sights.
+          </p>
+
+          <div className="mt-2 flex items-center justify-center gap-1.5">
+            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+            <span className="w-1 h-1 rounded-full bg-[#BD1113]" />
+            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+          </div>
+        </div>
+
+        {/* Master Interactive Map Card */}
+        <div className="rounded-2xl bg-[#FFFDF9]/95 backdrop-blur-xs border border-[#EFE1CD] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+
+          {/* Top Control Header Bar */}
+          <div className="bg-[#FAF5EC]/90 border-b border-[#EFE1CD] px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
+
+            {/* Live Geoportal Status Badge */}
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#BD1113] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD1113]"></span>
+              </span>
+              <span className="text-[11px] font-bold text-[#0A265D]">
+                104 MAPPED LOCATIONS
+              </span>
+              <span className="hidden sm:inline-block text-[11px] text-[#64748B] font-mono">
+                • 22.5448° N, 88.3995° E
               </span>
             </div>
 
-            <h2 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-[#0A265D] leading-tight">
-              Explore All Accommodations, Venues, Transit &amp; <span className="text-[#BD1113]">Iconic Destinations</span>
-            </h2>
-
-            <p className="mt-1 text-xs text-[#475569] font-medium max-w-2xl leading-relaxed">
-              Interactive map plotting all 48 certified hotels, 11 homestays, 10 B&amp;Bs, Biswa Bangla convention venues, airport &amp; rail gateways, and 20 iconic Kolkata heritage sights.
-            </p>
-
-            <div className="mt-2 flex items-center justify-center gap-1.5">
-              <span className="h-[1px] w-8 bg-[#BD1113]/40" />
-              <span className="w-1 h-1 rounded-full bg-[#BD1113]" />
-              <span className="h-[1px] w-8 bg-[#BD1113]/40" />
-            </div>
-          </div>
-
-          {/* Master Interactive Map Card */}
-          <div className="rounded-2xl bg-[#FFFDF9]/95 backdrop-blur-xs border border-[#EFE1CD] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
-
-            {/* Top Control Header Bar */}
-            <div className="bg-[#FAF5EC]/90 border-b border-[#EFE1CD] px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
-
-              {/* Live Geoportal Status Badge */}
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#BD1113] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD1113]"></span>
-                </span>
-                <span className="text-[11px] font-bold text-[#0A265D]">
-                  104 MAPPED LOCATIONS
-                </span>
-                <span className="hidden sm:inline-block text-[11px] text-[#64748B] font-mono">
-                  • 22.5448° N, 88.3995° E
-                </span>
-              </div>
-
-              {/* Filter Pills */}
-                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-0.5 max-w-full sm:flex-wrap">
-                  {filterButtons.map((cat) => {
-                    const Icon = cat.icon
-                    const isActive = selectedCategory === cat.id
-                    return (
-                      <button
-                        key={cat.id}
-                        onClick={() => setSelectedCategory(cat.id)}
-                        className={`px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors flex items-center gap-1 shrink-0 ${
-                          isActive
-                            ? 'bg-[#BD1113] text-white shadow-2xs'
-                            : 'bg-white text-[#475569] hover:text-[#0A265D] border border-[#EBD6BE]'
-                        }`}
-                      >
+            {/* Filter Pills */}
+            <div className="flex items-center gap-1 flex-wrap">
+              {filterButtons.map((cat) => {
+                const Icon = cat.icon
+                const isActive = selectedCategory === cat.id
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${isActive
+                        ? 'bg-[#BD1113] text-white shadow-2xs'
+                        : 'bg-white text-[#475569] hover:text-[#0A265D] border border-[#EBD6BE]'
+                      }`}
+                  >
                     {Icon && <Icon className="w-2.5 h-2.5" />}
                     <span>{cat.label}</span>
                   </button>
@@ -260,7 +284,7 @@ export const MapPreviewSection: React.FC = () => {
             {/* Full Screen Shortcut Button in Header */}
             <Link
               to="/map"
-              className="inline-flex items-center gap-1 bg-[#BD1113] hover:bg-[#A80E10] text-white text-[10.5px] sm:text-[11px] font-semibold px-3 py-1 rounded-full shadow-2xs transition-all shrink-0"
+              className="inline-flex items-center gap-1 bg-[#BD1113] hover:bg-[#A80E10] text-white text-[11px] font-semibold px-3 py-1 rounded-full shadow-2xs transition-all"
             >
               <Maximize2 className="w-3 h-3" />
               <span>Full Screen Map</span>
@@ -296,11 +320,13 @@ export const MapPreviewSection: React.FC = () => {
 
               {filteredLocations.map((loc) => {
                 const isSelected = selectedLocation?.id === loc.id
+                const isVenue = loc.id === 'venue-biswa-bangla'
                 return (
                   <Marker
                     key={loc.id}
                     position={[loc.latitude, loc.longitude]}
-                    icon={createMarkerIcon(loc.category, isSelected)}
+                    icon={createMarkerIcon(loc.category, isSelected, isVenue)}
+                    zIndexOffset={isVenue ? 10000 : undefined}
                     eventHandlers={{
                       click: () => handleSelectLocation(loc, 15),
                     }}
@@ -347,14 +373,18 @@ export const MapPreviewSection: React.FC = () => {
               })}
             </MapContainer>
 
-            {/* Floating Quick Fly-to HUD - Desktop & Tablet Vertical Stack */}
-            <div className="hidden sm:flex absolute top-3 right-3 z-[400] flex-col gap-1.5 max-w-[200px]">
+            {/* Floating Quick Fly-to HUD (Top Right) */}
+            <div className="absolute top-3 right-3 z-400 flex flex-col gap-1.5 max-w-[210px]">
               <button
                 onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 16)}
-                className="bg-white/95 backdrop-blur-md hover:bg-[#BD1113] hover:text-white text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[10px] font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer truncate"
+                className="bg-gradient-to-r from-[#BD1113] via-[#DC2626] to-[#881337] text-white border-2 border-amber-300 px-2.5 py-1.5 rounded-lg text-[10px] font-bold shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer ring-2 ring-[#BD1113]/30 truncate"
+                title="Convention Epicenter: Biswa Bangla Mela Prangan"
               >
-                <span>🏛️</span>
-                <span className="truncate">Biswa Bangla Mela Prangan</span>
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-300 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+                </span>
+                <span className="truncate">★ Biswa Bangla Mela Prangan</span>
               </button>
 
               <button
@@ -402,48 +432,11 @@ export const MapPreviewSection: React.FC = () => {
               </button>
             </div>
 
-            {/* Floating Quick Fly-to HUD - Mobile Horizontal Scrollable Strip */}
-            <div className="sm:hidden absolute top-2 left-2 right-2 z-[400] flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
-              <button
-                onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 16)}
-                className="bg-white/95 backdrop-blur-md text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[9.5px] font-bold shadow-xs shrink-0 flex items-center gap-1"
-              >
-                <span>🏛️ Mela Prangan</span>
-              </button>
-              <button
-                onClick={() => {
-                  const itc = MAP_LOCATIONS.find((l) => l.name.includes('ITC Royal Bengal')) || MAP_LOCATIONS[1]
-                  handleSelectLocation(itc, 16)
-                }}
-                className="bg-white/95 backdrop-blur-md text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[9.5px] font-bold shadow-xs shrink-0 flex items-center gap-1"
-              >
-                <span>🏨 ITC Royal</span>
-              </button>
-              <button
-                onClick={() => {
-                  const landmark = MAP_LOCATIONS.find((l) => l.id.includes('victoria')) || MAP_LOCATIONS[2]
-                  handleSelectLocation(landmark, 15)
-                }}
-                className="bg-white/95 backdrop-blur-md text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[9.5px] font-bold shadow-xs shrink-0 flex items-center gap-1"
-              >
-                <span>🕌 Victoria</span>
-              </button>
-              <button
-                onClick={() => {
-                  const airport = MAP_LOCATIONS.find((l) => l.id.includes('airport')) || MAP_LOCATIONS[0]
-                  handleSelectLocation(airport, 14)
-                }}
-                className="bg-white/95 backdrop-blur-md text-[#0A265D] border border-[#EBD6BE] px-2.5 py-1 rounded-lg text-[9.5px] font-bold shadow-xs shrink-0 flex items-center gap-1"
-              >
-                <span>✈️ Airport</span>
-              </button>
-            </div>
-
             {/* Compact Floating Location Detail Overlay */}
             {selectedLocation && (
-              <div className="absolute bottom-3 left-3 z-[450] max-w-xs sm:max-w-sm w-[calc(100%-1.5rem)] sm:w-auto animate-in fade-in slide-in-from-bottom-2 duration-300">
+              <div className="absolute bottom-3 left-3 z-400 max-w-xs sm:max-w-sm w-[calc(100%-1.5rem)] animate-in fade-in slide-in-from-bottom-2 duration-300">
                 <div className="bg-[#FFFDF9]/95 backdrop-blur-md border border-[#EBD6BE] rounded-xl p-3 shadow-lg text-[#1E293B] relative">
-                  
+
                   {/* Close Button */}
                   <button
                     onClick={() => setSelectedLocation(null)}
@@ -472,7 +465,7 @@ export const MapPreviewSection: React.FC = () => {
                           {selectedLocation.badgeText || selectedLocation.category.toUpperCase()}
                         </span>
                         <span className="text-[10px] text-[#0A265D] font-bold font-mono">
-                          {selectedLocation.distanceToVenueKm === 0 ? 'Epicenter' : `${ selectedLocation.distanceToVenueKm } km`}
+                          {selectedLocation.distanceToVenueKm === 0 ? 'Epicenter' : `${selectedLocation.distanceToVenueKm} km`}
                         </span>
                       </div>
 
@@ -497,7 +490,7 @@ export const MapPreviewSection: React.FC = () => {
                   <div className="mt-2.5 pt-2 border-t border-[#F0E4D5] flex items-center justify-end gap-2">
                     {selectedLocation.phone && (
                       <a
-                        href={`tel:${ selectedLocation.phone } `}
+                        href={`tel:${selectedLocation.phone}`}
                         className="inline-flex items-center gap-1 rounded-lg border border-[#EBD6BE] bg-[#FAF5EC] hover:bg-white text-[#0A265D] text-[11px] font-semibold px-2 py-1 transition-all"
                         title="Call"
                       >
@@ -536,17 +529,21 @@ export const MapPreviewSection: React.FC = () => {
 
             <div
               onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 16)}
-              className="p-3 hover:bg-white transition-colors cursor-pointer group"
+              className="p-3 bg-gradient-to-br from-red-50/80 to-amber-50/80 hover:bg-white transition-colors cursor-pointer group border-b-2 sm:border-b-0 sm:border-r-2 border-[#BD1113]/30 relative"
             >
-              <div className="flex items-center gap-1.5 text-[#BD1113] text-[10.5px] font-bold uppercase tracking-wider mb-0.5">
+              <div className="flex items-center gap-1.5 text-[#BD1113] text-[10.5px] font-black uppercase tracking-wider mb-0.5">
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#BD1113] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD1113]"></span>
+                </span>
                 <Building className="w-3 h-3 text-[#BD1113]" />
-                <span>Convention Epicenter</span>
+                <span>PBD 2027 Main Venue</span>
               </div>
-              <h5 className="font-serif font-bold text-xs sm:text-sm text-[#0A265D] group-hover:text-[#BD1113] transition-colors truncate">
-                Biswa Bangla Mela Prangan
+              <h5 className="font-serif font-black text-xs sm:text-sm text-[#BD1113] group-hover:text-[#A80E10] transition-colors truncate">
+                ★ Biswa Bangla Mela Prangan
               </h5>
-              <p className="text-[10.5px] text-[#475569] truncate font-normal">
-                Primary Venue + BBCC New Town
+              <p className="text-[10.5px] text-[#475569] truncate font-medium">
+                Official Convention Grounds &amp; Expo
               </p>
             </div>
 

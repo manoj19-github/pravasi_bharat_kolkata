@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer'
 import { AlpanaBackground } from './components/decorations/AlpanaBackground'
 import { FloatingFlowers } from './components/decorations/FloatingFlowers'
 import { ScrollToTop } from './components/common/ScrollToTop'
+import { ScrollToTopButton } from './components/common/ScrollToTopButton'
 import { NavigationProgressBar } from './components/common/NavigationProgressBar'
 import { HomePage } from './pages/HomePage'
 import { HotelsPage } from './pages/HotelsPage'
@@ -131,6 +132,9 @@ export function App() {
 
         {/* Global Footer */}
         <Footer />
+
+        {/* Sticky Animated Scroll To Top Button (Home, Hotels, Explore Kolkata) */}
+        <ScrollToTopButton />
       </div>
     </Router>
   )

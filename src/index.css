@@ -1,11 +1,19 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
+@theme {
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-script: 'Alex Brush', 'Allura', 'Great Vibes', cursive;
+}
+
 @layer base {
   :root {
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --font-serif: 'Playfair Display', 'Cinzel', 'Cormorant Garamond', Georgia, serif;
-    --font-script: 'Great Vibes', 'Alex Brush', cursive;
+    --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-script: 'Alex Brush', 'Allura', 'Great Vibes', cursive;
 
     /* Theme colors aligned exactly with Image 1 (Reference) */
     --color-pbd-red: #BD1113;
@@ -17,135 +25,156 @@
     --color-pbd-border-soft: #F3E5D0;
   }
 
-
-    html,
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--color-pbd-cream);
-      color: var(--color-pbd-charcoal);
-      overflow-x: clip;
-      width: 100%;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    h1,
-    h2,
-    h3,
-    .font-serif {
-      font-family: var(--font-serif);
-    }
-
-    .font-display {
-      font-family: var(--font-display);
-    }
-
-    .font-script {
-      font-family: var(--font-script);
-    }
-  }
-
-  /* Cultural decorative animations */
-  @keyframes spin-very-slow {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  .animate-spin-slow {
-    animation: spin-very-slow 140s linear infinite;
-  }
-
-  @keyframes spin-reverse-slow {
-    from {
-      transform: rotate(360deg);
-    }
-
-    to {
-      transform: rotate(0deg);
-    }
-  }
-
-  .animate-spin-reverse-slow {
-    animation: spin-reverse-slow 160s linear infinite;
-  }
-
-  @keyframes float-gentle {
-
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-      transform: translateY(-6px) rotate(2deg);
-    }
-  }
-
-  .animate-float {
-    animation: float-gentle 5s ease-in-out infinite;
-  }
-
-  /* Smooth Infinite Marquee Carousel */
-  @keyframes infinite-scroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-33.333333%);
-    }
-  }
-
-  .animate-infinite-scroll {
-    display: flex;
-    width: max-content;
-    animation: infinite-scroll 45s linear infinite;
-    will-change: transform;
-  }
-
-  .animate-infinite-scroll:hover {
-    animation-play-state: paused;
-  }
-
-  /* Custom Leaflet Map styling */
-  .leaflet-container {
+  body {
     font-family: var(--font-sans);
-    width: 100%;
-    height: 100%;
-    border-radius: 1.25rem;
-    background-color: #f7f3ec;
+    background-color: var(--color-pbd-cream);
+    color: var(--color-pbd-charcoal);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0.015em;
+    word-spacing: 0.04em;
+    line-height: 1.68;
   }
 
-  .leaflet-popup-content-wrapper {
-    border-radius: 1rem !important;
-    box-shadow: 0 10px 25px -5px rgba(185, 28, 28, 0.15) !important;
-    border: 1px solid #FDE68A !important;
-    padding: 4px !important;
+  p, span, li, a, button, input, label {
+    letter-spacing: 0.015em;
+    word-spacing: 0.04em;
   }
 
-  .leaflet-popup-content {
-    margin: 8px 12px !important;
+  h1, h2, h3, h4, h5, h6, .font-serif, .font-heading {
+    font-family: var(--font-serif);
+    letter-spacing: -0.005em;
+    word-spacing: 0.06em;
+    line-height: 1.35;
   }
 
-  /* Scrollbar polish */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  .font-display {
+    font-family: var(--font-serif);
   }
 
-  ::-webkit-scrollbar-track {
-    background: #FFFDF9;
+  .font-script {
+    font-family: var(--font-script);
   }
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: #E5D5C5;
-    border-radius: 4px;
+/* Elegant handwriting / calligraphy writing animation */
+@keyframes handwriting-writing {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.2;
   }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+    opacity: 1;
+  }
+}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #B91C1C;
+.animate-writing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: handwriting-writing 2.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  will-change: clip-path;
+}
+
+/* Cultural decorative animations */
+@keyframes spin-very-slow {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-very-slow 140s linear infinite;
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 160s linear infinite;
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+.animate-float {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+/* Smooth Infinite Marquee Carousel */
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333333%);
+  }
+}
+
+.animate-infinite-scroll {
+  display: flex;
+  width: max-content;
+  animation: infinite-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Leaflet Map styling */
+.leaflet-container {
+  font-family: var(--font-sans);
+  width: 100%;
+  height: 100%;
+  border-radius: 1.25rem;
+  background-color: #f7f3ec;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 25px -5px rgba(185, 28, 28, 0.15) !important;
+  border: 1px solid #FDE68A !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-content {
+  margin: 8px 12px !important;
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFDF9;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5D5C5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B91C1C;
+}

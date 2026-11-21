@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react'
-import {
-  Building2,
-  Sparkles,
+import { 
+  Building2, 
+  Sparkles, 
   RotateCcw,
   SlidersHorizontal
 } from 'lucide-react'
@@ -118,7 +118,7 @@ export const HotelsPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-[#FAF5EC] via-[#FFFDF9] to-[#FAF5EC] text-[#0F172A] selection:bg-[#BD1113]/20 selection:text-[#BD1113] overflow-x-clip">
-
+      
       {/* Background Bengali Alpana Motifs (Matches Homepage Aesthetic) */}
       <div className="absolute -left-28 sm:-left-36 lg:-left-44 top-24 w-64 sm:w-80 lg:w-[400px] h-64 sm:h-80 lg:h-[400px] pointer-events-none z-0 opacity-20 select-none">
         <img
@@ -148,124 +148,126 @@ export const HotelsPage: React.FC = () => {
       </div>
 
       <div className="relative z-10 pt-6 pb-16">
+        
+        {/* Section Header (Unified font size, weight and style with Home page section headers) */}
+        <div className="w-[98vw] max-w-[1920px] mx-auto px-2 sm:px-4 flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] font-bold text-[#B91C1C] uppercase tracking-wider shadow-xs mb-2">
+            <Sparkles className="h-3.5 w-3.5" />
+            <span>Ministry of Tourism NIDHI Portal Classified Directory</span>
+          </div>
 
-            {/* Full-Text Headline Header */}
-            <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 text-center mb-6">
-              <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] sm:text-xs font-bold text-[#B91C1C] uppercase tracking-wider shadow-xs">
-                <Sparkles className="h-3.5 w-3.5" />
-                <span>Ministry of Tourism NIDHI Portal Classified Directory</span>
-              </div>
+          <h1 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight">
+            <span className="text-[#0A265D]">19th Pravasi Bharatiya Divas Convention 2027</span>{' '}
+            <span className="text-[#BD1113]">Kolkata Delegate Accommodations</span>
+          </h1>
 
-                <h1 className="mt-3 font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
-                  19th Pravasi Bharatiya Divas Convention 2027 <br className="hidden sm:inline" />
-                  <span className="text-[#BD1113]">Kolkata Delegate Accommodations</span>
-                </h1>
+          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-3xl leading-relaxed tracking-normal">
+            Discover Government-classified luxury hotels, certified boutique homestays, and bed &amp; breakfast accommodations curated for overseas Indian delegates, situated near Biswa Bangla Mela Prangan and along Kolkata’s arterial corridors.
+          </p>
 
-                  <p className="mt-2 text-xs sm:text-sm text-[#475569] leading-relaxed max-w-4xl mx-auto">
-                    Discover Government-classified luxury hotels, certified boutique homestays, and bed &amp; breakfast accommodations curated for overseas Indian delegates, situated near Biswa Bangla Mela Prangan and along Kolkata’s arterial corridors.
-                  </p>
+          <div className="mt-2 flex items-center justify-center gap-1.5">
+            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+            <span className="w-1 h-1 rounded-full bg-[#BD1113]" />
+            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+          </div>
+        </div>
 
-                    <div className="mt-3 flex items-center justify-center gap-2">
-                      <div className="h-0.5 w-16 bg-[#BD1113]/30 rounded-full" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#BD1113] shadow-xs" />
-                      <div className="h-0.5 w-16 bg-[#BD1113]/30 rounded-full" />
+        {/* Modern Sticky Top Filter cum Search Bar: Exactly ONE Single Line, Minimal Height, High Importance */}
+        <StickyHotelFilterBar
+          filters={filters}
+          setFilters={setFilters}
+          counts={counts}
+          availableFacilities={availableFacilities}
+          availableZones={availableZones}
+          onReset={handleResetFilters}
+          totalFilteredCount={filteredHotels.length}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+
+        {/* Hotels Section: Preserves comfortable side margins */}
+        <div className="w-[96vw] sm:w-[94vw] lg:w-[94vw] max-w-[1760px] mx-auto px-2 sm:px-6 lg:px-8 mt-4 sm:mt-5">
+          
+          {/* Sub-Header Bar: Showing Count & Active Indicator */}
+          <div className="flex items-center justify-between text-xs text-[#64748B] mb-4 pb-2 border-b border-[#E5D5C5]/60">
+            <div className="flex items-center gap-2">
+              <span className="font-medium">
+                Showing <strong className="text-[#0F172A] font-bold text-sm">{filteredHotels.length}</strong> of {counts.total} stays in Kolkata
+              </span>
+              {filters.searchQuery && (
+                <span className="inline-flex items-center gap-1 bg-red-50 text-[#BD1113] px-2 py-0.5 rounded-full text-[11px] font-semibold border border-red-200">
+                  &ldquo;{filters.searchQuery}&rdquo;
+                </span>
+              )}
+              {filters.propertyType !== 'all' && (
+                <span className="bg-slate-100 text-[#0F172A] px-2 py-0.5 rounded-full text-[11px] font-semibold">
+                  {filters.propertyType.toUpperCase()}
+                </span>
+              )}
+            </div>
+
+            {!isSidebarOpen && (
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#BD1113] hover:underline"
+              >
+                <SlidersHorizontal className="h-3 w-3" />
+                <span>Advanced Faceted Filters</span>
+              </button>
+            )}
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-start gap-5">
+            
+            {/* Collapsible Left Filter & Advanced Search Sidebar */}
+            <CollapsibleHotelSidebar
+              filters={filters}
+              setFilters={setFilters}
+              counts={counts}
+              availableFacilities={availableFacilities}
+              availableZones={availableZones}
+              onReset={handleResetFilters}
+              isOpen={isSidebarOpen}
+              onClose={() => setIsSidebarOpen(false)}
+            />
+
+            {/* Cards Grid: 3 Columns Full Width */}
+            <div className="flex-1 w-full min-w-0">
+              {filteredHotels.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
+                  {filteredHotels.map((hotel) => (
+                    <div key={hotel.id} className="h-full flex flex-col">
+                      <AccommodationCard hotel={hotel} />
                     </div>
+                  ))}
+                </div>
+              ) : (
+                /* Empty State */
+                <div className="text-center py-20 px-4 bg-white/90 rounded-2xl border border-dashed border-[#E5D5C5] shadow-xs">
+                  <div className="inline-flex p-3 rounded-full bg-red-50 text-[#BD1113] mb-3">
+                    <Building2 className="h-6 w-6" />
                   </div>
+                  <h3 className="font-serif font-bold text-lg text-[#0F172A]">
+                    No Accommodations Match Your Filters
+                  </h3>
+                  <p className="text-xs text-[#64748B] mt-1 max-w-md mx-auto">
+                    Try adjusting your distance radius, removing selected amenities, or clearing the search query to view all classified stays.
+                  </p>
+                  <button
+                    onClick={handleResetFilters}
+                    className="mt-4 inline-flex items-center gap-1.5 py-2 px-4 rounded-xl bg-[#BD1113] text-white text-xs font-bold hover:bg-[#A00E10] transition shadow"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5" />
+                    <span>Reset All Filters</span>
+                  </button>
+                </div>
+              )}
+            </div>
 
-                  {/* Modern Sticky Top Filter cum Search Bar: Exactly ONE Single Line, Minimal Height, High Importance */}
-                  <StickyHotelFilterBar
-                    filters={filters}
-                    setFilters={setFilters}
-                    counts={counts}
-                    availableFacilities={availableFacilities}
-                    availableZones={availableZones}
-                    onReset={handleResetFilters}
-                    totalFilteredCount={filteredHotels.length}
-                    isSidebarOpen={isSidebarOpen}
-                    setIsSidebarOpen={setIsSidebarOpen}
-                  />
+          </div>
+        </div>
 
-                    {/* Hotels Section */}
-                    <div className="w-full max-w-[1760px] mx-auto px-3 sm:px-6 lg:px-8 mt-5">
-
-                      {/* Sub-Header Bar: Showing Count & Active Indicator */}
-                          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#64748B] mb-4 pb-2 border-b border-[#E5D5C5]/60">
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span className="font-medium">
-                                Showing <strong className="text-[#0F172A] font-bold text-sm">{filteredHotels.length}</strong> of {counts.total} stays in Kolkata
-                              </span>
-                              {filters.searchQuery && (
-                                <span className="inline-flex items-center gap-1 bg-red-50 text-[#BD1113] px-2 py-0.5 rounded-full text-[11px] font-semibold border border-red-200">
-                                  &ldquo;{filters.searchQuery}&rdquo;
-                                </span>
-                              )}
-                              {filters.propertyType !== 'all' && (
-                                <span className="bg-slate-100 text-[#0F172A] px-2 py-0.5 rounded-full text-[11px] font-semibold">
-                                  {filters.propertyType.toUpperCase()}
-                                </span>
-                              )}
-                            </div>
-
-                            {!isSidebarOpen && (
-                              <button
-                                onClick={() => setIsSidebarOpen(true)}
-                                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#BD1113] hover:underline"
-                              >
-                                <SlidersHorizontal className="h-3 w-3" />
-                                <span>Advanced Faceted Filters</span>
-                              </button>
-                            )}
-                          </div>
-
-                          <div className="flex flex-col lg:flex-row items-start gap-5">
-
-                            {/* Collapsible Left Filter & Advanced Search Sidebar */}
-                            <CollapsibleHotelSidebar
-                              filters={filters}
-                              setFilters={setFilters}
-                              counts={counts}
-                              availableFacilities={availableFacilities}
-                              availableZones={availableZones}
-                              onReset={handleResetFilters}
-                              isOpen={isSidebarOpen}
-                              onClose={() => setIsSidebarOpen(false)}
-                            />
-
-                            {/* Cards Grid: 3 Columns Full Width */}
-                            <div className="flex-1 w-full min-w-0">
-                              {filteredHotels.length > 0 ? (
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                                  {filteredHotels.map((hotel) => (
-                                    <AccommodationCard key={hotel.id} hotel={hotel} />
-                                  ))}
-                                </div>
-                              ) : (
-                                /* Empty State */
-                                <div className="text-center py-20 px-4 bg-white/90 rounded-2xl border border-dashed border-[#E5D5C5] shadow-xs">
-                                  <div className="inline-flex p-3 rounded-full bg-red-50 text-[#BD1113] mb-3">
-                                    <Building2 className="h-6 w-6" />
-                                  </div>
-                                  <h3 className="font-serif font-bold text-lg text-[#0F172A]">
-                                    No Accommodations Match Your Filters
-                                  </h3>
-                                  <p className="text-xs text-[#64748B] mt-1 max-w-md mx-auto">
-                                    Try adjusting your distance radius, removing selected amenities, or clearing the search query to view all classified stays.
-                                  </p>
-                                  <button
-                                    onClick={handleResetFilters}
-                                    className="mt-4 inline-flex items-center gap-1.5 py-2 px-4 rounded-xl bg-[#BD1113] text-white text-xs font-bold hover:bg-[#A00E10] transition shadow"
-                                  >
-                                    <RotateCcw className="h-3.5 w-3.5" />
-                                    <span>Reset All Filters</span>
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                    )
+      </div>
+    </div>
+  )
 }

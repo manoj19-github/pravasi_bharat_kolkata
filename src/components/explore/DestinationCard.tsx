@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import {
-  MapPin,
-  ChevronLeft,
-  ChevronRight,
-  ChevronDown,
-  Camera,
-  Navigation,
-  ExternalLink,
-  Clock,
-  Train,
-  Ticket,
+import { 
+  MapPin, 
+  ChevronLeft, 
+  ChevronRight, 
+  ChevronDown, 
+  Camera, 
+  Navigation, 
+  ExternalLink, 
+  Clock, 
+  Train, 
+  Ticket, 
   Sparkles,
   BookOpen,
   Info
@@ -57,10 +57,11 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({
   return (
     <div
       id={attraction.id}
-      className={`group relative rounded-3xl bg-white border transition-all duration-300 flex flex-col justify-between overflow-hidden ${isTargeted
+      className={`group relative rounded-3xl bg-white border transition-all duration-300 flex flex-col justify-between overflow-hidden ${
+        isTargeted
           ? 'border-[#BD1113] ring-4 ring-[#BD1113]/30 shadow-2xl scale-[1.01] bg-[#FFFDF9]'
           : 'border-[#F3E8D8] shadow-sm hover:shadow-xl hover:shadow-[#BD1113]/10 hover:-translate-y-1.5 hover:border-[#BD1113]/30'
-        }`}
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -72,8 +73,9 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({
               key={`${imgUrl}-${idx}`}
               src={imgUrl}
               alt={`${attraction.name} - View ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${idx === currentImgIndex ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none'
-                }`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                idx === currentImgIndex ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none'
+              }`}
             />
           ))}
 
@@ -106,14 +108,14 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({
               <button
                 onClick={prevImage}
                 aria-label="Previous photo"
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-slate-900 shadow-md transition opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 z-20 cursor-pointer"
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 hover:bg-white text-slate-900 shadow-md transition opacity-0 group-hover:opacity-100 focus:opacity-100 z-20 cursor-pointer"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button
                 onClick={nextImage}
                 aria-label="Next photo"
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-slate-900 shadow-md transition opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 z-20 cursor-pointer"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 hover:bg-white text-slate-900 shadow-md transition opacity-0 group-hover:opacity-100 focus:opacity-100 z-20 cursor-pointer"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -175,15 +177,17 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({
                 <span>{isExpanded ? 'Hide Historical Context & Tips' : 'Historical Significance & Delegate Tips'}</span>
               </span>
               <ChevronDown
-                className={`h-4 w-4 text-[#8B1D1D] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''
-                  }`}
+                className={`h-4 w-4 text-[#8B1D1D] transition-transform duration-300 ${
+                  isExpanded ? 'rotate-180' : ''
+                }`}
               />
             </button>
 
             {/* Collapsible Content */}
             <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[500px] opacity-100 pt-3' : 'max-h-0 opacity-0'
-                }`}
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                isExpanded ? 'max-h-[500px] opacity-100 pt-3' : 'max-h-0 opacity-0'
+              }`}
             >
               {/* Historical Significance */}
               <div className="space-y-2">

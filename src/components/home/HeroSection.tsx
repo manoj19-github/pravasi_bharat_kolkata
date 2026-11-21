@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import {
-  Navigation,
-  Landmark,
   ChevronRight,
   Calendar,
   Clock,
@@ -85,11 +83,11 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="w-[55%] xl:w-[54%] 2xl:w-[52%] h-full flex flex-col justify-center items-center py-4 xl:py-6 pr-5 xl:pr-10 2xl:pr-14 pl-2"
+              className="w-[55%] xl:w-[54%] 2xl:w-[52%] h-full flex flex-col justify-center items-center py-8 xl:py-14 pr-6 xl:pr-12 2xl:pr-16 pl-2"
             >
 
               {/* 1. Top Lotus Flourish: — ◆ 🪷 ◆ — */}
-              <div className="flex items-center justify-center gap-2.5 w-full max-w-[540px] mb-1.5 xl:mb-2">
+              <div className="flex items-center justify-center gap-3 w-full max-w-[540px] mb-3.5 xl:mb-5">
                 <span className="h-[1.5px] w-12 xl:w-16 bg-[#BD1113] relative flex items-center justify-start">
                   <span className="w-1.5 h-1.5 rotate-45 bg-[#BD1113] absolute -left-0.5" />
                 </span>
@@ -105,24 +103,37 @@ export const HeroSection: React.FC = () => {
                 <span className="h-[1.5px] w-12 xl:w-16 bg-[#BD1113] relative flex items-center justify-start">
                   <span className="w-1.5 h-1.5 rotate-45 bg-[#BD1113] absolute -right-0.5" />
                 </span>
-
               </div>
 
-              {/* 2. Script Heading: "Kolkata" (Red) + "Welcomes You" (Navy Blue) */}
-              <div className="font-script text-[28px] xl:text-[34px] leading-none text-center max-w-[540px] select-none">
-                <span className="text-[#BD1113] font-normal tracking-wide">Kolkata </span>
-                <span className="text-[#0A265D] font-normal tracking-wide">Welcomes You</span>
+              {/* 2. Script Heading: "Kolkata" with writing effect animation + "Welcomes You" */}
+              <div className="text-center max-w-[540px] select-none mb-3 xl:mb-4.5 flex items-center justify-center gap-2 xl:gap-3 flex-wrap">
+                <motion.span
+                  initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0 }}
+                  animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
+                  transition={{ duration: 2.2, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
+                  className="font-script text-[44px] xl:text-[54px] leading-none text-[#C2410C] inline-block font-normal tracking-wide drop-shadow-xs"
+                >
+                  Kolkata
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1.2, ease: 'easeOut', delay: 1.5 }}
+                  className="font-script text-[36px] xl:text-[42px] leading-none text-[#0A265D] inline-block font-normal tracking-wide"
+                >
+                  Welcomes You
+                </motion.span>
               </div>
 
               {/* 3. MAIN HEADING */}
-              <div className="text-center max-w-[560px] mt-1.5 xl:mt-2">
-                <h1 className="font-serif text-[22px] xl:text-[32px] font-bold text-[#0A265D] tracking-tight leading-tight">
+              <div className="text-center max-w-[560px] mb-5 xl:mb-7">
+                <h1 className="font-serif text-[24px] xl:text-[34px] font-bold text-[#0A265D] tracking-tight leading-tight">
                   19th Pravasi Bharatiya
                 </h1>
 
-                <div className="flex items-center justify-center gap-2.5 mt-1">
+                <div className="flex items-center justify-center gap-3 mt-2 xl:mt-2.5">
                   <span className="h-[1.5px] w-8 xl:w-12 bg-[#BD1113] rounded-full" />
-                  <span className="font-serif text-[26px] xl:text-[34px] font-bold text-[#BD1113] tracking-normal leading-none">
+                  <span className="font-serif text-[28px] xl:text-[36px] font-bold text-[#BD1113] tracking-normal leading-none">
                     Divas
                   </span>
                   <span className="h-[1.5px] w-8 xl:w-12 bg-[#BD1113] rounded-full" />
@@ -130,40 +141,35 @@ export const HeroSection: React.FC = () => {
               </div>
 
               {/* 4. DATE & VENUE CARD (WITH NATURAL BREATHING ROOM) */}
-              <div className="mt-2.5 xl:mt-3 flex justify-center w-auto max-w-none">
-                <div className="bg-[#C2410C] text-white px-3.5 py-1 rounded-lg shadow-2xs border border-white/20 flex flex-row items-center justify-center gap-2.5 whitespace-nowrap shrink-0">
-                  <div className="flex items-center gap-1.5 font-semibold text-[11px] xl:text-xs tracking-wide">
-                    <Calendar className="w-3.5 h-3.5 text-white shrink-0" />
+              <div className="flex justify-center w-auto max-w-none mb-5 xl:mb-7">
+                <div className="bg-[#C2410C] text-white px-5 py-2 rounded-xl shadow-2xs border border-white/20 flex flex-row items-center justify-center gap-3 whitespace-nowrap shrink-0">
+                  <div className="flex items-center gap-1.5 font-semibold text-[11.5px] xl:text-[13px] tracking-wide">
+                    <Calendar className="w-4 h-4 text-white shrink-0" />
                     <span>January 7–9, 2027</span>
                   </div>
                   <span className="w-1.5 h-1.5 rounded-full bg-white/70 shrink-0" />
-                  <div className="flex items-center gap-1.5 font-semibold text-[11px] xl:text-xs tracking-wide">
-                    <MapPin className="w-3.5 h-3.5 text-white shrink-0" />
+                  <div className="flex items-center gap-1.5 font-semibold text-[11.5px] xl:text-[13px] tracking-wide">
+                    <MapPin className="w-4 h-4 text-white shrink-0" />
                     <span>Biswa Bangla Mela Prangan • Kolkata</span>
                   </div>
                 </div>
               </div>
 
-              {/* 5. OFFICIAL THEME (WITH NATURAL VERTICAL SPACE) */}
-              <div className="w-full max-w-[540px] mt-2.5 xl:mt-3 flex flex-col items-center">
-                <div className="w-full bg-[#FAF0E1]/90 border border-[#D97706]/35 rounded-xl px-3 py-1.5 shadow-2xs text-center backdrop-blur-2xs">
-                  <div className="inline-flex items-center gap-1 bg-[#B31010] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs mb-0.5">
+              {/* 5. OFFICIAL THEME (WITH GENEROUS VERTICAL SPACE) */}
+              <div className="w-full max-w-[540px] flex flex-col items-center mb-6 xl:mb-8">
+                <div className="w-full bg-[#FAF0E1]/90 border border-[#D97706]/35 rounded-xl px-5 py-2.5 xl:py-3.5 shadow-2xs text-center backdrop-blur-2xs">
+                  <div className="inline-flex items-center gap-1 bg-[#B31010] text-white text-[9.5px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-2xs mb-1.5">
                     <Sparkles className="w-2.5 h-2.5 text-[#FDE68A]" />
                     <span>OFFICIAL THEME</span>
                   </div>
-                  <p className="font-serif text-[11.5px] xl:text-[13px] font-bold text-[#0A265D] tracking-tight leading-snug">
+                  <p className="font-serif text-[12.5px] xl:text-[14px] font-bold text-[#0A265D] tracking-tight leading-snug">
                     “Return to Roots: Reigniting the Diaspora Connect with Bharat”
                   </p>
                 </div>
               </div>
 
-              {/* 6. SUPPORTING SUB-TEXT PARAGRAPH */}
-              <p className="mt-2 xl:mt-2.5 text-[14.5px] xl:text-[11.5px] text-[#0A265D] leading-relaxed text-center max-w-[500px] font-medium mx-auto">
-                Pravasi Bharatiya Divas strengthens engagement of the overseas Indian community with Bharat, celebrating diaspora leadership and cultural roots.
-              </p>
-
-              {/* 7. EVENT COUNTDOWN HEADER (WITH BREATHING SPACE) */}
-              <div className="flex items-center justify-center gap-2 max-w-[520px] mt-3 xl:mt-3.5 mb-2">
+              {/* 6. EVENT COUNTDOWN HEADER (WITH BREATHING SPACE) */}
+              <div className="flex items-center justify-center gap-2.5 max-w-[520px] mb-3.5 xl:mb-5">
                 <span className="h-[1px] w-8 xl:w-12 bg-[#BD1113]/60 relative flex items-center justify-start">
                   <span className="w-1 h-1 rotate-45 bg-[#BD1113] absolute -left-0.5" />
                 </span>
@@ -173,7 +179,7 @@ export const HeroSection: React.FC = () => {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD1113]"></span>
                 </span>
 
-                <span className="text-[10px] xl:text-[10.5px] font-black uppercase tracking-wider text-[#0A265D]">
+                <span className="text-[10px] xl:text-[11px] font-black uppercase tracking-wider text-[#0A265D]">
                   COUNTDOWN TO INAUGURATION
                 </span>
 
@@ -182,11 +188,11 @@ export const HeroSection: React.FC = () => {
                 </span>
               </div>
 
-              {/* 8. COUNTDOWN CARDS: BIGGER HEIGHT & EYE-CATCHY ANIMATIONS */}
-              <div className="grid grid-cols-4 gap-2.5 xl:gap-3 max-w-[520px] mx-auto w-full">
+              {/* 7. COUNTDOWN CARDS: ELEGANT HEIGHT & EYE-CATCHY ANIMATIONS */}
+              <div className="grid grid-cols-4 gap-3 xl:gap-4 max-w-[520px] mx-auto w-full">
 
                 {/* DAYS */}
-                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-xl border border-[#EBD6BE] hover:border-[#BD1113] py-2 px-2 flex items-center justify-center gap-2 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
+                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-2xl border border-[#EBD6BE] hover:border-[#BD1113] py-3.5 xl:py-4 px-2.5 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
                   <Calendar className="w-4 h-4 xl:w-5 xl:h-5 text-[#BD1113] shrink-0 group-hover:scale-110 transition-transform duration-300" />
                   <div className="text-left">
                     <span className="block font-mono font-black text-lg xl:text-xl text-[#BD1113] leading-none drop-shadow-2xs">
@@ -199,7 +205,7 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* HOURS */}
-                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-xl border border-[#EBD6BE] hover:border-[#BD1113] py-2 px-2 flex items-center justify-center gap-2 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
+                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-2xl border border-[#EBD6BE] hover:border-[#BD1113] py-3.5 xl:py-4 px-2.5 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
                   <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-[#BD1113] shrink-0 group-hover:scale-110 transition-transform duration-300" />
                   <div className="text-left">
                     <span className="block font-mono font-black text-lg xl:text-xl text-[#BD1113] leading-none drop-shadow-2xs">
@@ -212,7 +218,7 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* MINUTES */}
-                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-xl border border-[#EBD6BE] hover:border-[#BD1113] py-2 px-2 flex items-center justify-center gap-2 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
+                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-2xl border border-[#EBD6BE] hover:border-[#BD1113] py-3.5 xl:py-4 px-2.5 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
                   <Timer className="w-4 h-4 xl:w-5 xl:h-5 text-[#BD1113] shrink-0 group-hover:scale-110 transition-transform duration-300" />
                   <div className="text-left">
                     <span className="block font-mono font-black text-lg xl:text-xl text-[#BD1113] leading-none drop-shadow-2xs">
@@ -225,7 +231,7 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* SECONDS */}
-                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-xl border border-[#EBD6BE] hover:border-[#BD1113] py-2 px-2 flex items-center justify-center gap-2 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
+                <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#FAF0E1] rounded-2xl border border-[#EBD6BE] hover:border-[#BD1113] py-3.5 xl:py-4 px-2.5 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 cursor-default">
                   <Hourglass className="w-4 h-4 xl:w-5 xl:h-5 text-[#BD1113] shrink-0 group-hover:scale-110 transition-transform duration-300" />
                   <div className="text-left">
                     <span className="block font-mono font-black text-lg xl:text-xl text-[#BD1113] leading-none drop-shadow-2xs">
@@ -236,35 +242,6 @@ export const HeroSection: React.FC = () => {
                     </span>
                   </div>
                 </div>
-
-              </div>
-
-              {/* 9. TWIN CTA BUTTONS (WITH COMFORTABLE TOP MARGIN) */}
-              <div className="flex items-center justify-center gap-3.5 max-w-[540px] mt-3.5 xl:mt-4">
-
-                {/* Primary CTA: Explore Kolkata */}
-                <Link
-                  to="/explore-kolkata"
-                  className="relative overflow-hidden group/btn inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#BD1113] via-[#D11316] to-[#990D0F] hover:from-[#A80E10] hover:to-[#BD1113] px-6 xl:px-7 py-2 xl:py-2.5 text-xs xl:text-sm font-bold text-white shadow-md hover:shadow-xl hover:shadow-[#BD1113]/30 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
-                >
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
-
-                  <span className="flex items-center justify-center w-4 h-4 rounded-full border border-white/80">
-                    <Navigation className="w-2.5 h-2.5 text-white fill-white group-hover/btn:rotate-12 transition-transform duration-300" />
-                  </span>
-                  <span>Explore Kolkata</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-white group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </Link>
-
-                {/* Secondary CTA: Find Accommodation */}
-                <Link
-                  to="/hotels"
-                  className="group/btn2 inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#BD1113] bg-[#FAF3E7] hover:bg-white px-6 xl:px-7 py-2 xl:py-2.5 text-xs xl:text-sm font-bold text-[#0A265D] hover:text-[#BD1113] shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
-                >
-                  <Landmark className="w-3.5 h-3.5 text-[#0A265D] group-hover/btn2:text-[#BD1113] group-hover/btn2:scale-110 transition-transform duration-300" />
-                  <span>Find Accommodation</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0A265D] group-hover/btn2:text-[#BD1113] group-hover/btn2:translate-x-1 transition-transform duration-300" />
-                </Link>
 
               </div>
 
@@ -281,128 +258,126 @@ export const HeroSection: React.FC = () => {
       {/* ============================================================== */}
       <div className="lg:hidden flex flex-col w-full bg-[#FAF6F0]">
 
-          {/* Visual Artwork Showcase with Gradient Fade */}
-          <div className="relative w-full overflow-hidden bg-white shadow-xs border-b border-[#EFE6DC]">
-            <img
-              src={heroBgImg}
-              alt="19th Pravasi Bharatiya Divas Kolkata Artwork"
-              className="w-full h-auto max-h-[260px] sm:max-h-[380px] object-cover object-left"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#FAF6F0] to-transparent pointer-events-none" />
+        {/* Visual Artwork Showcase */}
+        <div className="relative w-full overflow-hidden bg-white shadow-sm border-b border-[#EFE6DC]">
+          <img
+            src={heroBgImg}
+            alt="19th Pravasi Bharatiya Divas Kolkata Artwork"
+            className="w-full h-auto object-cover object-left"
+          />
+        </div>
+
+        {/* Responsive Content Container */}
+        <div className="px-4 py-10 sm:px-6 sm:py-14 flex flex-col items-center text-center max-w-xl mx-auto">
+
+          {/* Top Lotus Flourish */}
+          <div className="flex items-center justify-center gap-2.5 mb-3">
+            <span className="h-[1px] w-10 bg-[#BD1113]" />
+            <svg viewBox="0 0 24 18" className="w-4 h-3 text-[#BD1113]" fill="currentColor">
+              <path d="M12 2 C13 5 14 7 12 12 C10 7 11 5 12 2 Z" />
+              <path d="M12 5 C14.5 7 16.5 9 18 12 C15 13.5 13 11 12 9 Z" opacity="0.9" />
+              <path d="M12 5 C9.5 7 7.5 9 6 12 C9 13.5 11 11 12 9 Z" opacity="0.9" />
+            </svg>
+            <span className="h-[1px] w-10 bg-[#BD1113]" />
           </div>
 
-          {/* Responsive Content Container */}
-            <div className="px-4 py-5 sm:px-6 sm:py-8 flex flex-col items-center text-center max-w-xl sm:max-w-2xl mx-auto w-full">
+          {/* Script Heading with Writing Animation */}
+          <div className="flex items-center justify-center gap-2 mb-3 flex-wrap select-none">
+            <motion.span
+              initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0 }}
+              animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
+              transition={{ duration: 2.2, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
+              className="font-script text-4xl sm:text-5xl leading-none text-[#C2410C] inline-block font-normal tracking-wide drop-shadow-xs"
+            >
+              Kolkata
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: -6 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, ease: 'easeOut', delay: 1.3 }}
+              className="font-script text-3xl sm:text-4xl leading-none text-[#0A265D] inline-block font-normal tracking-wide"
+            >
+              Welcomes You
+            </motion.span>
+          </div>
 
-              {/* Top Lotus Flourish */}
-                  <div className="flex items-center justify-center gap-2 mb-1.5">
-                    <span className="h-[1px] w-8 sm:w-12 bg-[#BD1113]" />
-                    <svg viewBox="0 0 24 18" className="w-4 h-3.5 text-[#BD1113]" fill="currentColor">
-                      <path d="M12 2 C13 5 14 7 12 12 C10 7 11 5 12 2 Z" />
-                      <path d="M12 5 C14.5 7 16.5 9 18 12 C15 13.5 13 11 12 9 Z" opacity="0.9" />
-                      <path d="M12 5 C9.5 7 7.5 9 6 12 C9 13.5 11 11 12 9 Z" opacity="0.9" />
-                    </svg>
-                    <span className="h-[1px] w-8 sm:w-12 bg-[#BD1113]" />
-                  </div>
+          {/* Main Heading */}
+          <div className="mb-4.5">
+            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A265D] tracking-tight leading-tight">
+              19th Pravasi Bharatiya
+            </h1>
+            <div className="flex items-center justify-center gap-2 mt-1.5">
+              <span className="h-[1.5px] w-8 bg-[#BD1113] rounded-full" />
+              <span className="font-serif text-3xl sm:text-4xl font-bold text-[#BD1113] leading-none">
+                Divas
+              </span>
+              <span className="h-[1.5px] w-8 bg-[#BD1113] rounded-full" />
+            </div>
+          </div>
 
-                  {/* Script Heading */}
-                    <div className="font-script text-2xl sm:text-4xl leading-tight">
-                      <span className="text-[#BD1113]">Kolkata </span>
-                      <span className="text-[#0A265D]">Welcomes You</span>
-                    </div>
+          {/* Compact Date & Venue */}
+          <div className="mb-5">
+            <div className="bg-[#C2410C] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs">
+              <Calendar className="w-4 h-4" />
+              <span>Jan 7–9, 2027 • Biswa Bangla Mela Prangan</span>
+            </div>
+          </div>
 
-                    {/* Main Heading */}
-                    <div className="mt-1">
-                        <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A265D] tracking-tight leading-tight">
-                          19th Pravasi Bharatiya
-                        </h1>
-                        <div className="flex items-center justify-center gap-2 mt-0.5">
-                            <span className="h-[1.5px] w-8 sm:w-12 bg-[#BD1113] rounded-full" />
-                            <span className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#BD1113] leading-none">
-                              Divas
-                            </span>
-                            <span className="h-[1.5px] w-8 sm:w-12 bg-[#BD1113] rounded-full" />
-                        </div>
-                    </div>
+          {/* Theme Card */}
+          <div className="w-full mb-5 bg-[#FAF0E1] border border-[#D97706]/40 rounded-xl p-3.5 text-center shadow-2xs">
+            <span className="text-[9.5px] font-bold uppercase text-[#BD1113] block mb-1">OFFICIAL CONVENTION THEME</span>
+            <p className="font-serif text-xs sm:text-sm font-bold text-[#0A265D] leading-snug">
+              “Return to Roots: Reigniting the Diaspora Connect with Bharat”
+            </p>
+          </div>
 
-                    {/* Compact Date & Venue */}
-                        <div className="mt-2.5 sm:mt-3">
-                          <div className="bg-[#C2410C] text-white px-3 sm:px-4 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-2xs">
-                            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                            <span>Jan 7–9, 2027 • Biswa Bangla Mela Prangan, Kolkata</span>
-                          </div>
-                        </div>
+          {/* Subtext */}
+          <p className="mb-5 text-xs sm:text-sm text-[#0A265D] leading-relaxed font-medium">
+            Pravasi Bharatiya Divas strengthens engagement of the overseas Indian community with Bharat.
+          </p>
 
-                        {/* Theme Card */}
-                            <div className="w-full mt-2.5 sm:mt-3 bg-[#FAF0E1] border border-[#D97706]/40 rounded-xl p-2.5 sm:p-3.5 text-center shadow-2xs">
-                              <span className="text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider text-[#BD1113] block mb-0.5 sm:mb-1">
-                                OFFICIAL CONVENTION THEME
-                              </span>
-                              <p className="font-serif text-xs sm:text-base font-bold text-[#0A265D] leading-snug">
-                                “Return to Roots: Reigniting the Diaspora Connect with Bharat”
-                              </p>
-                            </div>
+          {/* Countdown Cards with Modern Eye-Catchy Styling */}
+          <div className="grid grid-cols-4 gap-2.5 w-full mb-6">
+            <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-1.5 px-1 shadow-2xs">
+              <span className="block font-mono font-black text-base text-[#BD1113]">{String(timeLeft.days).padStart(2, '0')}</span>
+              <span className="block text-[8px] font-bold text-[#0A265D]">DAYS</span>
+            </div>
+            <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-1.5 px-1 shadow-2xs">
+              <span className="block font-mono font-black text-base text-[#BD1113]">{String(timeLeft.hours).padStart(2, '0')}</span>
+              <span className="block text-[8px] font-bold text-[#0A265D]">HOURS</span>
+            </div>
+            <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-1.5 px-1 shadow-2xs">
+              <span className="block font-mono font-black text-base text-[#BD1113]">{String(timeLeft.minutes).padStart(2, '0')}</span>
+              <span className="block text-[8px] font-bold text-[#0A265D]">MIN</span>
+            </div>
+            <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-1.5 px-1 shadow-2xs">
+              <span className="block font-mono font-black text-base text-[#BD1113]">{String(timeLeft.seconds).padStart(2, '0')}</span>
+              <span className="block text-[8px] font-bold text-[#0A265D]">SEC</span>
+            </div>
+          </div>
 
-                            {/* Subtext */}
-                              <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-[#0A265D] leading-relaxed font-medium max-w-lg">
-                                Pravasi Bharatiya Divas strengthens engagement of the overseas Indian community with Bharat, celebrating diaspora leadership and cultural roots.
-                              </p>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-2.5 w-full mt-3.5">
+            <Link
+              to="/explore-kolkata"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#BD1113] py-2.5 text-xs font-bold text-white shadow-xs"
+            >
+              <span>Explore Kolkata</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+            <Link
+              to="/hotels"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-[#BD1113] bg-[#FAF3E7] py-2.5 text-xs font-bold text-[#0A265D]"
+            >
+              <span>Find Accommodation</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
 
-                              {/* Countdown Header */}
-                              <div className="flex items-center justify-center gap-2 mt-3 sm:mt-4 mb-2">
-                                <span className="h-[1px] w-6 sm:w-10 bg-[#BD1113]/60" />
-                                <span className="relative flex h-2 w-2">
-                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#BD1113] opacity-75"></span>
-                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD1113]"></span>
-                                </span>
-                                <span className="text-[9.5px] sm:text-[11px] font-black uppercase tracking-wider text-[#0A265D]">
-                                  COUNTDOWN TO INAUGURATION
-                                </span>
-                                <span className="h-[1px] w-6 sm:w-10 bg-[#BD1113]/60" />
-                              </div>
+        </div>
 
-                              {/* Countdown Cards with Modern Eye-Catchy Styling */}
-                                  <div className="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-md sm:max-w-lg">
-                                    <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-2 sm:py-3 px-1 sm:px-2 shadow-2xs">
-                                      <span className="block font-mono font-black text-lg sm:text-2xl text-[#BD1113] leading-tight">{String(timeLeft.days).padStart(2, '0')}</span>
-                                      <span className="block text-[8px] sm:text-[10px] font-bold text-[#0A265D] uppercase mt-0.5">DAYS</span>
-                                    </div>
-                                      <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-2 sm:py-3 px-1 sm:px-2 shadow-2xs">
-                                        <span className="block font-mono font-black text-lg sm:text-2xl text-[#BD1113] leading-tight">{String(timeLeft.hours).padStart(2, '0')}</span>
-                                        <span className="block text-[8px] sm:text-[10px] font-bold text-[#0A265D] uppercase mt-0.5">HOURS</span>
-                                      </div>
-                                        <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-2 sm:py-3 px-1 sm:px-2 shadow-2xs">
-                                          <span className="block font-mono font-black text-lg sm:text-2xl text-[#BD1113] leading-tight">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                                          <span className="block text-[8px] sm:text-[10px] font-bold text-[#0A265D] uppercase mt-0.5">MIN</span>
-                                        </div>
-                                          <div className="bg-gradient-to-b from-white to-[#FAF0E1] rounded-xl border border-[#EBD6BE] py-2 sm:py-3 px-1 sm:px-2 shadow-2xs">
-                                            <span className="block font-mono font-black text-lg sm:text-2xl text-[#BD1113] leading-tight">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                                            <span className="block text-[8px] sm:text-[10px] font-bold text-[#0A265D] uppercase mt-0.5">SEC</span>
-                                          </div>
-                                        </div>
+      </div>
 
-                                        {/* CTA Buttons */}
-                                          <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 w-full mt-4 sm:mt-5 max-w-md sm:max-w-lg">
-                                            <Link
-                                              to="/explore-kolkata"
-                                              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#BD1113] hover:bg-[#A80E10] py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-md active:scale-95 transition-all"
-                                            >
-                                              <span>Explore Kolkata</span>
-                                              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                                            </Link>
-                                            <Link
-                                              to="/hotels"
-                                              className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-[#BD1113] bg-[#FAF3E7] hover:bg-white py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-[#0A265D] hover:text-[#BD1113] shadow-xs active:scale-95 transition-all"
-                                            >
-                                              <span>Find Accommodation</span>
-                                              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                                            </Link>
-                                          </div>
-
-                                        </div>
-
-                                      </div>
-
-                                    </section>
-                                    )
+    </section>
+  )
 }

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import {
-  MapPin,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Navigation,
-  ShieldCheck,
-  Home,
-  Coffee,
+import { 
+  MapPin, 
+  ChevronDown, 
+  ChevronLeft, 
+  ChevronRight, 
+  ExternalLink, 
+  Navigation, 
+  ShieldCheck, 
+  Home, 
+  Coffee, 
   Building2,
   Phone,
   Info
@@ -20,9 +20,9 @@ interface AccommodationCardProps {
   initiallyExpanded?: boolean
 }
 
-export const AccommodationCard: React.FC<AccommodationCardProps> = ({
-  hotel,
-  initiallyExpanded = false
+export const AccommodationCard: React.FC<AccommodationCardProps> = ({ 
+  hotel, 
+  initiallyExpanded = false 
 }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
@@ -80,8 +80,8 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
   const typeBadge = getPropertyTypeBadge()
 
   return (
-    <div
-      className="rounded-2xl border border-[#F3E8D8] bg-white overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-[#BD1113]/12 hover:border-[#BD1113]/40 hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between group cursor-pointer"
+    <div 
+      className="rounded-2xl border border-[#F3E8D8] bg-white overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-[#BD1113]/12 hover:border-[#BD1113]/40 hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col justify-between group cursor-pointer h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -93,16 +93,17 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
               key={idx}
               src={img}
               alt={`${hotel.name} view ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${idx === currentImgIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
-                }`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                idx === currentImgIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+              }`}
               loading="lazy"
               onError={(e) => {
                 const target = e.currentTarget
-                const fallback = hotel.propertyType === 'homestay'
-                  ? '/images/hotels/satguru-homestays_1.jpg'
-                  : hotel.propertyType === 'bnb'
-                    ? '/images/hotels/auckland-bed-and-breakfast_1.jpg'
-                    : '/images/hotels/itc-royal-bengal_1.jpg'
+                const fallback = hotel.propertyType === 'homestay' 
+                  ? '/images/hotels/satguru-homestays_1.jpg' 
+                  : hotel.propertyType === 'bnb' 
+                  ? '/images/hotels/auckland-bed-and-breakfast_1.jpg' 
+                  : '/images/hotels/itc-royal-bengal_1.jpg'
                 if (target.src !== fallback) {
                   target.src = fallback
                 }
@@ -145,14 +146,14 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
               <button
                 onClick={prevImage}
                 aria-label="Previous image"
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md transition opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 z-10 cursor-pointer"
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 hover:bg-white text-slate-800 shadow transition opacity-0 group-hover:opacity-100 focus:opacity-100 z-10"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button
                 onClick={nextImage}
                 aria-label="Next image"
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md transition opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 z-10 cursor-pointer"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 hover:bg-white text-slate-800 shadow transition opacity-0 group-hover:opacity-100 focus:opacity-100 z-10"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -170,8 +171,9 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
                     setCurrentImgIndex(dotIdx)
                   }}
                   aria-label={`Jump to slide ${dotIdx + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${dotIdx === currentImgIndex ? 'w-5 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'
-                    }`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    dotIdx === currentImgIndex ? 'w-5 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                  }`}
                 />
               ))}
             </div>
@@ -187,46 +189,42 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
         </div>
 
         {/* Content Body */}
-        <div className="p-5 pb-3">
-          {/* Header Title & Pricing */}
-          <div className="flex items-start justify-between gap-2">
-            <div>
-              <h3 className="font-serif font-bold text-lg sm:text-xl text-[#0F172A] leading-tight group-hover:text-[#BD1113] transition-colors">
-                {hotel.name}
-              </h3>
-              <p className="text-xs text-[#64748B] mt-1 flex items-center gap-1">
-                <span>{hotel.location}</span>
-                <span className="text-slate-300">•</span>
-                <span className="font-medium text-slate-500">{hotel.zone}</span>
-              </p>
-            </div>
+        <div className="p-3.5 sm:p-4 pb-2">
+          {/* Header Title (Hotel or Homestay Name) */}
+          <h3 className="font-serif font-bold text-base sm:text-[17px] text-[#0F172A] leading-snug group-hover:text-[#BD1113] transition-colors line-clamp-2 h-[2.85rem] flex items-center">
+            {hotel.name}
+          </h3>
+
+          {/* Single Official Border Box with Complete Address Just Below Title (Up to 3 lines) */}
+          <div className="mt-2.5 rounded-xl border border-[#EBD6BE] bg-[#FAF5EC]/95 px-3 py-2 flex items-start gap-2 h-[68px] overflow-hidden">
+            <MapPin className="h-4 w-4 text-[#BD1113] shrink-0 mt-0.5" />
+            <p className="text-[11.5px] sm:text-xs font-semibold text-[#0A265D] leading-snug line-clamp-3 tracking-normal" title={hotel.address}>
+              {hotel.address}
+            </p>
           </div>
 
-          {/* Address Line */}
-          <p className="text-[11px] text-[#64748B] mt-2 line-clamp-1 italic">
-            {hotel.address}
-          </p>
-
           {/* Collapsible Trigger for Editorial Description & Facility Tags */}
-          <div className="mt-3.5 pt-3 border-t border-[#F3E8D8]">
+          <div className="mt-3 pt-2.5 border-t border-[#F3E8D8]">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="w-full flex items-center justify-between py-1.5 px-3 rounded-lg bg-[#FAF7F2] hover:bg-[#FEF3C7] text-xs font-semibold text-[#8B1D1D] transition-colors border border-[#E5D5C5]/60"
+              className="w-full h-8 flex items-center justify-between px-3 rounded-lg bg-[#FAF7F2] hover:bg-[#FEF3C7] text-xs font-semibold text-[#8B1D1D] transition-colors border border-[#E5D5C5]/60"
             >
               <span className="flex items-center gap-1.5">
                 <Info className="h-3.5 w-3.5 text-[#BD1113]" />
-                <span>{isExpanded ? 'Hide Details & Amenities' : `View Overview & Amenities (${hotel.facilities.length})`}</span>
+                <span className="tracking-normal">{isExpanded ? 'Hide Details & Amenities' : `View Overview & Amenities (${hotel.facilities.length})`}</span>
               </span>
-              <ChevronDown
-                className={`h-4 w-4 text-[#8B1D1D] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''
-                  }`}
+              <ChevronDown 
+                className={`h-4 w-4 text-[#8B1D1D] transition-transform duration-300 ${
+                  isExpanded ? 'rotate-180' : ''
+                }`} 
               />
             </button>
 
             {/* Collapsible Content Area (Matches shared user screenshot) */}
-            <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 pt-3' : 'max-h-0 opacity-0'
-                }`}
+            <div 
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                isExpanded ? 'max-h-96 opacity-100 pt-3' : 'max-h-0 opacity-0'
+              }`}
             >
               {/* Editorial Description */}
               <p className="text-xs text-[#475569] leading-relaxed">
@@ -267,14 +265,14 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
       </div>
 
       {/* Card Action Footer */}
-      <div className="p-5 pt-0">
-        <div className="pt-3 border-t border-[#F3E8D8] flex items-center gap-2 text-xs">
+      <div className="p-3.5 sm:p-4 pt-0 mt-auto">
+        <div className="pt-2.5 border-t border-[#F3E8D8] flex items-center gap-2 text-xs">
           {/* "Book Now" Button -> Redirects to official website if exists, else Google search booking */}
           <a
             href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#BD1113] to-[#8B1D1D] hover:from-[#A00E10] hover:to-[#701515] text-white font-bold transition-all shadow-sm hover:shadow-md active:scale-[0.99]"
+            className="flex-1 h-10 flex items-center justify-center gap-1.5 px-3 rounded-xl bg-gradient-to-r from-[#BD1113] to-[#8B1D1D] hover:from-[#A00E10] hover:to-[#701515] text-white font-bold transition-all shadow-xs hover:shadow-sm active:scale-[0.99] tracking-normal"
             title={hasOfficialWebsite ? 'Visit Official Property Website' : 'Search Booking Rates on Google'}
           >
             <span>{hasOfficialWebsite ? 'Book Now' : 'Book / Rates'}</span>
@@ -286,7 +284,7 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
             href={hotel.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-[#E5D5C5] bg-[#FAF7F2] text-[#0F172A] font-semibold hover:bg-[#FEF3C7] hover:border-[#BD1113]/30 transition-all shadow-xs"
+            className="flex-1 h-10 flex items-center justify-center gap-1.5 px-3 rounded-xl border border-[#E5D5C5] bg-[#FAF7F2] text-[#0F172A] font-semibold hover:bg-[#FEF3C7] hover:border-[#BD1113]/30 transition-all shadow-xs tracking-normal"
           >
             <Navigation className="h-3.5 w-3.5 text-[#BD1113]" />
             <span>Directions</span>

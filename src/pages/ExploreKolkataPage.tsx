@@ -195,287 +195,293 @@ export const ExploreKolkataPage = () => {
 
       <div className="relative z-10 pt-6 pb-20">
 
-        {/* Full Official Title Header */}
-            <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 text-center mb-6">
-              <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] sm:text-xs font-bold text-[#B91C1C] uppercase tracking-wider shadow-xs">
-                <Compass className="h-3.5 w-3.5" />
-                <span>19th Pravasi Bharatiya Divas Convention 2027 • Official Delegate Guide</span>
+        {/* Section Header (Unified font size, weight and style with Home page section headers) */}
+        <div className="w-[98vw] max-w-[1920px] mx-auto px-2 sm:px-4 flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] font-bold text-[#B91C1C] uppercase tracking-wider shadow-xs mb-2">
+            <Compass className="h-3.5 w-3.5" />
+            <span>19th Pravasi Bharatiya Divas Convention 2027 • Official Delegate Guide</span>
+          </div>
+
+          <h1 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight">
+            <span className="text-[#0A265D]">Discover Kolkata — The City of Joy</span>{' '}
+            <span className="text-[#BD1113]">Iconic Heritage, Sacred Shrines &amp; Living Culture</span>
+          </h1>
+
+          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-3xl leading-relaxed tracking-normal">
+            From the marble splendors of Victoria Memorial to sacred river cruises at Prinsep Ghat, intellectual addas on College Street, and the sculptors of Kumartuli—curated for overseas Indian delegates visiting Biswa Bangla Mela Prangan.
+          </p>
+
+          <div className="mt-2 flex items-center justify-center gap-1.5">
+            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+            <span className="w-1 h-1 rounded-full bg-[#BD1113]" />
+            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+          </div>
+        </div>
+
+        {/* Modern Sticky Top Filter cum Search Bar: Exactly ONE Single Line, Minimal Height */}
+        <DestinationFilterBar
+          filters={filters}
+          setFilters={setFilters}
+          categories={categories}
+          totalFilteredCount={filteredAttractions.length}
+          totalCount={ATTRACTIONS_DATA.length}
+          onReset={() => setFilters(INITIAL_FILTERS)}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+
+        {/* Content Section: 3-Column Destination Cards Grid */}
+        <div className="w-[96vw] sm:w-[94vw] lg:w-[94vw] max-w-[1760px] mx-auto px-2 sm:px-6 lg:px-8 mt-4 sm:mt-5">
+
+            {/* Real-time Counter & Sidebar Toggle Indicator */}
+            <div className="flex items-center justify-between text-xs text-[#64748B] mb-4 pb-2 border-b border-[#E5D5C5]/60">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-medium">
+                  Showing <strong className="text-[#0F172A] font-bold text-sm">{filteredAttractions.length}</strong> of {ATTRACTIONS_DATA.length} iconic destinations
+                </span>
+                {filters.searchQuery && (
+                  <span className="inline-flex items-center gap-1 bg-red-50 text-[#BD1113] px-2.5 py-0.5 rounded-full text-[11px] font-semibold border border-red-200">
+                    &ldquo;{filters.searchQuery}&rdquo;
+                  </span>
+                )}
+                {filters.category !== 'All' && (
+                  <span className="bg-[#FEF3C7] text-[#B91C1C] px-2.5 py-0.5 rounded-full text-[11px] font-bold border border-[#FDE68A]">
+                    {filters.category}
+                  </span>
+                )}
+                {filters.maxDistance && (
+                  <span className="bg-slate-100 text-[#0F172A] px-2.5 py-0.5 rounded-full text-[11px] font-semibold">
+                    within {filters.maxDistance} km of venue
+                  </span>
+                )}
               </div>
 
-                <h1 className="mt-3 font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
-                  Discover Kolkata — The City of Joy <br className="hidden sm:inline" />
-                  <span className="text-[#BD1113]">Iconic Heritage, Sacred Shrines &amp; Living Culture</span>
-                </h1>
+                <div className="flex items-center gap-3">
+                  <span className="hidden sm:inline-flex items-center gap-1 text-[11px] text-slate-500">
+                    <MapPin className="h-3 w-3 text-[#BD1113]" />
+                    <span>Distances from Biswa Bangla Mela Prangan</span>
+                  </span>
 
-                  <p className="mt-2 text-xs sm:text-sm text-[#475569] leading-relaxed max-w-4xl mx-auto">
-                    From the marble splendors of Victoria Memorial to sacred river cruises at Prinsep Ghat, intellectual addas on College Street, and the sculptors of Kumartuli—curated for overseas Indian delegates visiting Biswa Bangla Mela Prangan.
-                  </p>
+                  {!isSidebarOpen && (
+                    <button
+                      onClick={() => setIsSidebarOpen(true)}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#BD1113] hover:underline"
+                    >
+                      <SlidersHorizontal className="h-3 w-3" />
+                      <span>Category &amp; Facet Filters</span>
+                    </button>
+                  )}
+                </div>
+              </div>
 
-                    <div className="mt-3 flex items-center justify-center gap-2">
-                      <div className="h-0.5 w-16 bg-[#BD1113]/30 rounded-full" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#BD1113] shadow-xs" />
-                      <div className="h-0.5 w-16 bg-[#BD1113]/30 rounded-full" />
+                  {/* Main Layout: Collapsible Sidebar + Dynamic Cards Grid */}
+                  <div className="flex flex-col lg:flex-row items-start gap-5">
+                    {/* Collapsible Left Filter & Categories Sidebar */}
+                    <CollapsibleDestinationSidebar
+                      filters={filters}
+                      setFilters={setFilters}
+                      categories={categories}
+                      categoryCounts={categoryCounts}
+                      totalCount={ATTRACTIONS_DATA.length}
+                      totalFilteredCount={filteredAttractions.length}
+                      onReset={() => setFilters(INITIAL_FILTERS)}
+                      isOpen={isSidebarOpen}
+                      onClose={() => setIsSidebarOpen(false)}
+                    />
+
+                    {/* Destination Cards Container */}
+                    <div className="flex-1 w-full min-w-0">
+                      {filteredAttractions.length > 0 ? (
+                        <div className={`grid grid-cols-1 md:grid-cols-2 ${isSidebarOpen ? 'xl:grid-cols-3' : 'lg:grid-cols-3'} gap-6`}>
+                          {filteredAttractions.map((attraction) => (
+                            <DestinationCard
+                              key={attraction.id}
+                              attraction={attraction}
+                              onOpenGallery={handleOpenGallery}
+                              isTargeted={targetedCardId === attraction.id}
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        /* Empty State */
+                        <div className="text-center py-20 px-4 bg-white/90 rounded-3xl border border-dashed border-[#E5D5C5] shadow-xs max-w-xl mx-auto">
+                          <div className="inline-flex p-3 rounded-full bg-red-50 text-[#BD1113] mb-3">
+                            <Landmark className="h-7 w-7" />
+                          </div>
+                          <h3 className="font-serif font-bold text-xl text-[#0F172A]">
+                            No Destinations Match Your Filter Criteria
+                          </h3>
+                          <p className="text-xs text-[#64748B] mt-1.5 max-w-md mx-auto">
+                            Try widening your distance radius, searching for different keywords, or resetting category filters to see all 20 iconic Kolkata destinations.
+                          </p>
+                          <button
+                            onClick={() => setFilters(INITIAL_FILTERS)}
+                            className="mt-4 inline-flex items-center gap-1.5 py-2 px-5 rounded-xl bg-[#BD1113] text-white text-xs font-bold hover:bg-[#A00E10] transition shadow"
+                          >
+                            <RotateCcw className="h-3.5 w-3.5" />
+                            <span>Reset All Filters</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
 
-                  {/* Modern Sticky Top Filter cum Search Bar: Exactly ONE Single Line, Minimal Height */}
-                  <DestinationFilterBar
-                    filters={filters}
-                    setFilters={setFilters}
-                    categories={categories}
-                    totalFilteredCount={filteredAttractions.length}
-                    totalCount={ATTRACTIONS_DATA.length}
-                    onReset={() => setFilters(INITIAL_FILTERS)}
-                    isSidebarOpen={isSidebarOpen}
-                    setIsSidebarOpen={setIsSidebarOpen}
-                  />
+                  {/* Cultural Pillars Section */}
+                  <div className="mt-20 pt-12 border-t border-[#E5D5C5]/80">
+                    <div className="flex flex-col items-center justify-center text-center mb-8">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] font-bold text-[#B91C1C] uppercase tracking-wider mb-2">
+                        <Sparkles className="h-3.5 w-3.5" />
+                        <span>Bengal Cultural Heritage</span>
+                      </div>
+                      <h2 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight">
+                        <span className="text-[#0A265D]">Why Kolkata</span>{' '}
+                        <span className="text-[#BD1113]">Captivates the World</span>
+                      </h2>
+                      <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-xl mx-auto leading-relaxed tracking-normal">
+                        Six foundational pillars of Bengal’s soul, philosophy, and global identity welcoming the Pravasi diaspora.
+                      </p>
+                      <div className="mt-2 flex items-center justify-center gap-1.5">
+                        <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+                        <span className="w-1 h-1 rounded-full bg-[#BD1113]" />
+                        <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+                      </div>
+                    </div>
 
-                  {/* Content Section: 3-Column Destination Cards Grid */}
-                    <div className="w-full max-w-[1760px] mx-auto px-3 sm:px-6 lg:px-8 mt-5">
-
-                      {/* Real-time Counter & Sidebar Toggle Indicator */}
-                      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#64748B] mb-4 pb-2 border-b border-[#E5D5C5]/60">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-medium">
-                            Showing <strong className="text-[#0F172A] font-bold text-sm">{filteredAttractions.length}</strong> of {ATTRACTIONS_DATA.length} iconic destinations
-                          </span>
-                          {filters.searchQuery && (
-                            <span className="inline-flex items-center gap-1 bg-red-50 text-[#BD1113] px-2.5 py-0.5 rounded-full text-[11px] font-semibold border border-red-200">
-                              &ldquo;{filters.searchQuery}&rdquo;
-                            </span>
-                          )}
-                          {filters.category !== 'All' && (
-                            <span className="bg-[#FEF3C7] text-[#B91C1C] px-2.5 py-0.5 rounded-full text-[11px] font-bold border border-[#FDE68A]">
-                              {filters.category}
-                            </span>
-                          )}
-                          {filters.maxDistance && (
-                            <span className="bg-slate-100 text-[#0F172A] px-2.5 py-0.5 rounded-full text-[11px] font-semibold">
-                              within {filters.maxDistance} km of venue
-                            </span>
-                          )}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {culturalPillars.map((pillar, idx) => (
+                        <div
+                          key={idx}
+                          className="rounded-2xl border border-[#F3E8D8] bg-white p-6 shadow-sm hover:shadow-md transition group"
+                        >
+                          <div className="text-3xl mb-3">{pillar.icon}</div>
+                          <h3 className="font-serif font-bold text-lg text-[#0F172A] group-hover:text-[#BD1113] transition-colors">
+                            {pillar.title}
+                          </h3>
+                          <p className="mt-2 text-xs text-[#475569] leading-relaxed">
+                            {pillar.desc}
+                          </p>
                         </div>
+                      ))}
+                    </div>
+                  </div>
 
-                        <div className="flex items-center gap-3">
-                          <span className="hidden sm:inline-flex items-center gap-1 text-[11px] text-slate-500">
-                            <MapPin className="h-3 w-3 text-[#BD1113]" />
-                            <span>Distances from Biswa Bangla Mela Prangan</span>
-                          </span>
+                  {/* Chief Minister's Warm Welcome Section (Matches Home Page Exactly) */}
+                  <div className="mt-16">
 
-                          {!isSidebarOpen && (
-                            <button
-                              onClick={() => setIsSidebarOpen(true)}
-                              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#BD1113] hover:underline"
-                            >
-                              <SlidersHorizontal className="h-3 w-3" />
-                              <span>Advanced Category &amp; Facet Filters</span>
-                            </button>
-                          )}
-                        </div>
+                    {/* Header */}
+                    <div className="flex flex-col items-center justify-center text-center mb-5">
+                      <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3.5 py-1 mb-1.5 shadow-2xs">
+                        <Award className="w-3.5 h-3.5 text-[#BD1113]" />
+                        <span className="text-[10.5px] font-bold tracking-wider uppercase text-[#BD1113]">
+                          HOST STATE LEADERSHIP • WEST BENGAL
+                        </span>
                       </div>
 
-                      {/* Main Layout: Collapsible Sidebar + Dynamic Cards Grid */}
-                      <div className="flex flex-col lg:flex-row items-start gap-5">
-                        {/* Collapsible Left Filter & Categories Sidebar */}
-                        <CollapsibleDestinationSidebar
-                          filters={filters}
-                          setFilters={setFilters}
-                          categories={categories}
-                          categoryCounts={categoryCounts}
-                          totalCount={ATTRACTIONS_DATA.length}
-                          totalFilteredCount={filteredAttractions.length}
-                          onReset={() => setFilters(INITIAL_FILTERS)}
-                          isOpen={isSidebarOpen}
-                          onClose={() => setIsSidebarOpen(false)}
-                        />
+                      <h2 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight text-[#0F172A]">
+                        Chief Minister's <span className="text-[#BD1113]">Warm Welcome</span>
+                      </h2>
 
-                        {/* Destination Cards Container */}
-                        <div className="flex-1 w-full min-w-0">
-                          {filteredAttractions.length > 0 ? (
-                            <div className={`grid grid-cols-1 md:grid-cols-2 ${isSidebarOpen ? 'xl:grid-cols-3' : 'lg:grid-cols-3'} gap-6`}>
-                              {filteredAttractions.map((attraction) => (
-                                <DestinationCard
-                                  key={attraction.id}
-                                  attraction={attraction}
-                                  onOpenGallery={handleOpenGallery}
-                                  isTargeted={targetedCardId === attraction.id}
+                      <p className="mt-1 text-xs text-[#475569] font-medium max-w-xl leading-relaxed">
+                        Extending the timeless warmth of Bengal's hospitality to overseas Indian delegates gathering for the 19th Pravasi Bharatiya Divas 2027 in Kolkata.
+                      </p>
+
+                      <div className="mt-2 flex items-center justify-center gap-1.5">
+                        <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#BD1113]" />
+                        <span className="h-[1px] w-8 bg-[#BD1113]/40" />
+                      </div>
+                    </div>
+
+                    {/* Master Card with Top Royal Gradient Rim */}
+                    <div className="rounded-3xl bg-[#FFFDF9]/95 backdrop-blur-xs border border-[#EFE1CD] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                      <div className="h-1.5 w-full bg-gradient-to-r from-[#BD1113] via-[#D97706] to-[#BD1113]" />
+
+                      <div className="p-5 sm:p-7 lg:p-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+
+                          {/* Left Column: Official CM Hero Image Card */}
+                          <div className="lg:col-span-5 flex flex-col items-center">
+                            <div className="w-full relative rounded-2xl bg-gradient-to-b from-[#FAF2E4] via-[#FFFDF9] to-[#FAF0E1] border border-[#EBD6BE] p-3.5 shadow-xs overflow-hidden group">
+
+                              <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-b from-white/90 to-[#FAF5EC]/90 border border-[#EFE1CD] p-2 flex items-center justify-center">
+                                <img
+                                  src={cmHeroImg}
+                                  alt={`${cm.name} - ${cm.title}`}
+                                  className="w-full h-auto max-h-[220px] sm:max-h-[250px] object-contain drop-shadow-md group-hover:scale-102 transition-transform duration-500"
                                 />
-                              ))}
-                            </div>
-                          ) : (
-                            /* Empty State */
-                            <div className="text-center py-20 px-4 bg-white/90 rounded-3xl border border-dashed border-[#E5D5C5] shadow-xs max-w-xl mx-auto">
-                              <div className="inline-flex p-3 rounded-full bg-red-50 text-[#BD1113] mb-3">
-                                <Landmark className="h-7 w-7" />
-                              </div>
-                              <h3 className="font-serif font-bold text-xl text-[#0F172A]">
-                                No Destinations Match Your Filter Criteria
-                              </h3>
-                              <p className="text-xs text-[#64748B] mt-1.5 max-w-md mx-auto">
-                                Try widening your distance radius, searching for different keywords, or resetting category filters to see all 20 iconic Kolkata destinations.
-                              </p>
-                              <button
-                                onClick={() => setFilters(INITIAL_FILTERS)}
-                                className="mt-4 inline-flex items-center gap-1.5 py-2 px-5 rounded-xl bg-[#BD1113] text-white text-xs font-bold hover:bg-[#A00E10] transition shadow"
-                              >
-                                <RotateCcw className="h-3.5 w-3.5" />
-                                <span>Reset All Filters</span>
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Cultural Pillars Section */}
-                      <div className="mt-20 pt-12 border-t border-[#E5D5C5]/80">
-                        <div className="text-center mb-10">
-                          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-xs font-bold text-[#B91C1C] uppercase tracking-wider mb-2">
-                            <Sparkles className="h-3.5 w-3.5" />
-                            Bengal Cultural Heritage
-                          </div>
-                          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0F172A]">
-                            Why Kolkata Captivates the World
-                          </h2>
-                          <p className="text-xs text-[#64748B] mt-1 max-w-xl mx-auto">
-                            Six foundational pillars of Bengal’s soul, philosophy, and global identity welcoming the Pravasi diaspora.
-                          </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {culturalPillars.map((pillar, idx) => (
-                            <div
-                              key={idx}
-                              className="rounded-2xl border border-[#F3E8D8] bg-white p-6 shadow-sm hover:shadow-md transition group"
-                            >
-                              <div className="text-3xl mb-3">{pillar.icon}</div>
-                              <h3 className="font-serif font-bold text-lg text-[#0F172A] group-hover:text-[#BD1113] transition-colors">
-                                {pillar.title}
-                              </h3>
-                              <p className="mt-2 text-xs text-[#475569] leading-relaxed">
-                                {pillar.desc}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Chief Minister's Warm Welcome Section (Matches Home Page Exactly) */}
-                      <div className="mt-16">
-
-                        {/* Header */}
-                        <div className="flex flex-col items-center justify-center text-center mb-5">
-                          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3.5 py-1 mb-1.5 shadow-2xs">
-                            <Award className="w-3.5 h-3.5 text-[#BD1113]" />
-                            <span className="text-[10.5px] font-bold tracking-wider uppercase text-[#BD1113]">
-                              HOST STATE LEADERSHIP • WEST BENGAL
-                            </span>
-                          </div>
-
-                          <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A]">
-                            Chief Minister's <span className="text-[#BD1113]">Warm Welcome</span>
-                          </h2>
-
-                          <p className="mt-1 text-xs text-[#475569] font-medium max-w-xl leading-relaxed">
-                            Extending the timeless warmth of Bengal's hospitality to overseas Indian delegates gathering for the 19th Pravasi Bharatiya Divas 2027 in Kolkata.
-                          </p>
-
-                          <div className="mt-2 flex items-center justify-center gap-1.5">
-                            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#BD1113]" />
-                            <span className="h-[1px] w-8 bg-[#BD1113]/40" />
-                          </div>
-                        </div>
-
-                        {/* Master Card with Top Royal Gradient Rim */}
-                        <div className="rounded-3xl bg-[#FFFDF9]/95 backdrop-blur-xs border border-[#EFE1CD] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
-                          <div className="h-1.5 w-full bg-gradient-to-r from-[#BD1113] via-[#D97706] to-[#BD1113]" />
-
-                          <div className="p-5 sm:p-7 lg:p-8">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-
-                              {/* Left Column: Official CM Hero Image Card */}
-                              <div className="lg:col-span-5 flex flex-col items-center">
-                                <div className="w-full relative rounded-2xl bg-gradient-to-b from-[#FAF2E4] via-[#FFFDF9] to-[#FAF0E1] border border-[#EBD6BE] p-3.5 shadow-xs overflow-hidden group">
-
-                                  <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-b from-white/90 to-[#FAF5EC]/90 border border-[#EFE1CD] p-2 flex items-center justify-center">
-                                    <img
-                                      src={cmHeroImg}
-                                      alt={`${cm.name} - ${cm.title}`}
-                                      className="w-full h-auto max-h-[220px] sm:max-h-[250px] object-contain drop-shadow-md group-hover:scale-102 transition-transform duration-500"
-                                    />
-                                  </div>
-
-                                  {/* Identity Strip */}
-                                  <div className="mt-2.5 pt-2 border-t border-[#EBD6BE] text-center">
-                                    <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] text-[9.5px] font-bold uppercase tracking-wider text-[#BD1113] mb-1">
-                                      <Sparkles className="w-2.5 h-2.5 text-[#D97706]" />
-                                      <span>OFFICIAL HOST STATE LEADERSHIP</span>
-                                    </div>
-
-                                    <h3 className="font-serif font-bold text-base sm:text-lg text-[#0A265D]">
-                                      {cm.name}
-                                    </h3>
-
-                                    <p className="text-xs font-semibold text-[#BD1113]">
-                                      {cm.title}
-                                    </p>
-
-                                    <p className="text-[11px] text-[#64748B] font-medium">
-                                      {cm.state}
-                                    </p>
-                                  </div>
-                                </div>
                               </div>
 
-                              {/* Right Column: Warm Welcome Message */}
-                              <div className="lg:col-span-7 flex flex-col justify-between">
-
-                                {/* Greeting */}
-                                <div className="flex items-center gap-1.5 mb-1">
-                                  <HeartHandshake className="w-4 h-4 text-[#BD1113]" />
-                                  <span className="font-script text-2xl sm:text-3xl text-[#BD1113]">
-                                    {cm.messageTitle}
-                                  </span>
+                              {/* Identity Strip */}
+                              <div className="mt-2.5 pt-2 border-t border-[#EBD6BE] text-center">
+                                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] text-[9.5px] font-bold uppercase tracking-wider text-[#BD1113] mb-1">
+                                  <Sparkles className="w-2.5 h-2.5 text-[#D97706]" />
+                                  <span>OFFICIAL HOST STATE LEADERSHIP</span>
                                 </div>
 
-                                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#0A265D] tracking-tight leading-snug mb-2.5">
-                                  Warmest Greetings to Overseas Indian Delegates &amp; Luminaries
+                                <h3 className="font-serif font-bold text-base sm:text-lg text-[#0A265D]">
+                                  {cm.name}
                                 </h3>
 
-                                {/* Message Callout Body */}
-                                  <div className="relative pl-4 sm:pl-5 border-l-4 border-[#BD1113] bg-[#FAF5EC]/70 rounded-r-2xl p-3 sm:p-4 mb-3">
-                                    <Quote className="absolute -top-2.5 -left-2.5 w-5 h-5 text-[#BD1113] fill-[#BD1113] bg-[#FAF5EC] p-0.5 rounded-full" />
+                                <p className="text-xs font-semibold text-[#BD1113]">
+                                  {cm.title}
+                                </p>
 
-                                    <div className="space-y-2 text-xs sm:text-[13px] text-[#334155] leading-relaxed">
-                                      <p className="font-bold text-xs sm:text-sm text-[#0A265D]">
-                                        Dear Members of the Global Indian Diaspora,
-                                      </p>
+                                <p className="text-[11px] text-[#64748B] font-medium">
+                                  {cm.state}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
 
-                                      <p className="font-medium">
-                                        It gives us immense pleasure to welcome you to Kolkata, the cultural and intellectual heart of India, for the landmark <span className="font-bold text-[#BD1113]">19th Pravasi Bharatiya Divas Convention 2027</span>.
-                                      </p>
+                          {/* Right Column: Warm Welcome Message */}
+                          <div className="lg:col-span-7 flex flex-col justify-between">
 
-                                      <p className="font-medium">
-                                        Bengal has historically served as a cradle of renaissance, literature, enterprise, and timeless cultural harmony. Biswa Bangla Mela Prangan and the entire people of West Bengal await your presence with warmth and reverence (অতিথি দেবো ভব). May your visit foster lasting partnerships and treasured memories with Bengal and Bharat.
-                                      </p>
+                            {/* Greeting */}
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <HeartHandshake className="w-4 h-4 text-[#BD1113]" />
+                              <span className="font-script text-2xl sm:text-3xl text-[#BD1113]">
+                                {cm.messageTitle}
+                              </span>
+                            </div>
 
-                                      <p className="font-bold text-[#0A265D] pt-0.5">
-                                        With warm regards &amp; best wishes,
-                                      </p>
-                                    </div>
-                                  </div>
+                            <h3 className="font-serif text-lg sm:text-xl font-bold text-[#0A265D] tracking-tight leading-snug mb-2.5">
+                              Warmest Greetings to Overseas Indian Delegates &amp; Luminaries
+                            </h3>
 
-                                  {/* Signature & Official Link */}
-                                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 pt-3 border-t border-[#F0E4D5]">
-                                    <div>
-                                      <h4 className="font-serif font-bold text-sm sm:text-base text-[#0A265D]">
-                                        {cm.name}
-                                      </h4>
-                                      <p className="text-[11px] font-semibold text-[#BD1113]">
-                                        {cm.title}, {cm.state}
-                                      </p>
-                                    </div>
-                                    {/* <a
+                            {/* Message Callout Body */}
+                            <div className="relative pl-4 sm:pl-5 border-l-3 border-[#BD1113] bg-[#FAF5EC]/70 rounded-r-2xl p-3 sm:p-4 mb-3">
+                              <Quote className="absolute -top-2.5 -left-2.5 w-5 h-5 text-[#BD1113] fill-[#BD1113] bg-[#FAF5EC] p-0.5 rounded-full" />
+
+                              <div className="space-y-2 text-xs sm:text-[13px] text-[#334155] leading-relaxed">
+                                <p className="font-bold text-xs sm:text-sm text-[#0A265D]">
+                                  Dear Members of the Global Indian Diaspora,
+                                </p>
+
+                                <p className="font-medium">
+                                  It gives us immense pleasure to welcome you to Kolkata, the cultural and intellectual heart of India, for the landmark <span className="font-bold text-[#BD1113]">19th Pravasi Bharatiya Divas Convention 2027</span>.
+                                </p>
+
+                                <p className="font-medium">
+                                  Bengal has historically served as a cradle of renaissance, literature, enterprise, and timeless cultural harmony. Biswa Bangla Mela Prangan and the entire people of West Bengal await your presence with warmth and reverence (অতিথি দেবো ভব). May your visit foster lasting partnerships and treasured memories with Bengal and Bharat.
+                                </p>
+
+                                <p className="font-bold text-[#0A265D] pt-0.5">
+                                  With warm regards &amp; best wishes,
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Signature & Official Link */}
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 pt-3 border-t border-[#F0E4D5]">
+                              <div>
+                                <h4 className="font-serif font-bold text-sm sm:text-base text-[#0A265D]">
+                                  {cm.name}
+                                </h4>
+                                <p className="text-[11px] font-semibold text-[#BD1113]">
+                                  {cm.title}, {cm.state}
+                                </p>
+                              </div>
+                              {/* <a
                         href="https://wbtourism.gov.in/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -484,28 +490,28 @@ export const ExploreKolkataPage = () => {
                         <span>Explore WB Tourism</span>
                         <ExternalLink className="h-3 w-3" />
                       </a> */}
-                                  </div>
-
-                                </div>
-
-                              </div>
                             </div>
+
                           </div>
 
                         </div>
-
                       </div>
-
                     </div>
 
-                    {/* Interactive Photo Gallery Lightbox Modal */}
-                    <DestinationGalleryModal
-                      attraction={galleryAttraction}
-                      images={galleryImages}
-                      isOpen={isGalleryOpen}
-                      onClose={() => setIsGalleryOpen(false)}
-                    />
-
                   </div>
-                  )
+
+                </div>
+
+      </div>
+
+            {/* Interactive Photo Gallery Lightbox Modal */}
+            <DestinationGalleryModal
+              attraction={galleryAttraction}
+              images={galleryImages}
+              isOpen={isGalleryOpen}
+              onClose={() => setIsGalleryOpen(false)}
+            />
+
+          </div>
+          )
 }
