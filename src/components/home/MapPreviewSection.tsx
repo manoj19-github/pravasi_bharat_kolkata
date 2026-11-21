@@ -373,8 +373,8 @@ export const MapPreviewSection: React.FC = () => {
               })}
             </MapContainer>
 
-            {/* Floating Quick Fly-to HUD (Top Right) */}
-            <div className="absolute top-3 right-3 z-400 flex flex-col gap-1.5 max-w-[210px]">
+            {/* Floating Quick Fly-to HUD (Top Right) - Hidden on Mobile Screens */}
+            <div className="hidden sm:flex absolute top-3 right-3 z-400 flex-col gap-1.5 max-w-[210px]">
               <button
                 onClick={() => handleSelectLocation(MAP_LOCATIONS[0], 16)}
                 className="bg-gradient-to-r from-[#BD1113] via-[#DC2626] to-[#881337] text-white border-2 border-amber-300 px-2.5 py-1.5 rounded-lg text-[10px] font-bold shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer ring-2 ring-[#BD1113]/30 truncate"

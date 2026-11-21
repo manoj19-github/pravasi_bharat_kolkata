@@ -197,9 +197,11 @@ export const ExploreKolkataPage = () => {
 
         {/* Section Header (Unified font size, weight and style with Home page section headers) */}
         <div className="w-[98vw] max-w-[1920px] mx-auto px-2 sm:px-4 flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] font-bold text-[#B91C1C] uppercase tracking-wider shadow-xs mb-2">
-            <Compass className="h-3.5 w-3.5" />
-            <span>19th Pravasi Bharatiya Divas Convention 2027 • Official Delegate Guide</span>
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3 py-0.5 mb-1.5 shadow-2xs">
+            <Compass className="w-3 h-3 text-[#BD1113]" />
+            <span className="text-[10px] font-bold tracking-wider uppercase text-[#BD1113]">
+              OFFICIAL DELEGATE GUIDE • 19TH PBD 2027
+            </span>
           </div>
 
           <h1 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight">
@@ -207,7 +209,7 @@ export const ExploreKolkataPage = () => {
             <span className="text-[#BD1113]">Iconic Heritage, Sacred Shrines &amp; Living Culture</span>
           </h1>
 
-          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-3xl leading-relaxed tracking-normal">
+          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
             From the marble splendors of Victoria Memorial to sacred river cruises at Prinsep Ghat, intellectual addas on College Street, and the sculptors of Kumartuli—curated for overseas Indian delegates visiting Biswa Bangla Mela Prangan.
           </p>
 
@@ -329,9 +331,11 @@ export const ExploreKolkataPage = () => {
                   {/* Cultural Pillars Section */}
                   <div className="mt-20 pt-12 border-t border-[#E5D5C5]/80">
                     <div className="flex flex-col items-center justify-center text-center mb-8">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] font-bold text-[#B91C1C] uppercase tracking-wider mb-2">
-                        <Sparkles className="h-3.5 w-3.5" />
-                        <span>Bengal Cultural Heritage</span>
+                      <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3 py-0.5 mb-1.5 shadow-2xs">
+                        <Sparkles className="w-3 h-3 text-[#BD1113]" />
+                        <span className="text-[10px] font-bold tracking-wider uppercase text-[#BD1113]">
+                          BENGAL CULTURAL HERITAGE
+                        </span>
                       </div>
                       <h2 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight">
                         <span className="text-[#0A265D]">Why Kolkata</span>{' '}

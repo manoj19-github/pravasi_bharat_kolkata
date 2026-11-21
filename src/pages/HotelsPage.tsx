@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { 
   Building2, 
-  Sparkles, 
   RotateCcw,
   SlidersHorizontal
 } from 'lucide-react'
@@ -151,9 +150,11 @@ export const HotelsPage: React.FC = () => {
         
         {/* Section Header (Unified font size, weight and style with Home page section headers) */}
         <div className="w-[98vw] max-w-[1920px] mx-auto px-2 sm:px-4 flex flex-col items-center justify-center text-center mb-4 sm:mb-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[11px] font-bold text-[#B91C1C] uppercase tracking-wider shadow-xs mb-2">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Ministry of Tourism NIDHI Portal Classified Directory</span>
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FAF0E1] border border-[#EBD6BE] px-3 py-0.5 mb-1.5 shadow-2xs">
+            <Building2 className="w-3 h-3 text-[#BD1113]" />
+            <span className="text-[10px] font-bold tracking-wider uppercase text-[#BD1113]">
+              MINISTRY OF TOURISM NIDHI DIRECTORY
+            </span>
           </div>
 
           <h1 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight">
@@ -161,7 +162,7 @@ export const HotelsPage: React.FC = () => {
             <span className="text-[#BD1113]">Kolkata Delegate Accommodations</span>
           </h1>
 
-          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-3xl leading-relaxed tracking-normal">
+          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
             Discover Government-classified luxury hotels, certified boutique homestays, and bed &amp; breakfast accommodations curated for overseas Indian delegates, situated near Biswa Bangla Mela Prangan and along Kolkata’s arterial corridors.
           </p>
 
