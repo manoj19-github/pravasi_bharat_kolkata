@@ -82,7 +82,7 @@ export const FeaturedHotels: React.FC = () => {
             <span className="text-[#BD1113]">Accommodations &amp; Stays</span>
           </h2>
 
-          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
+          <p className="hidden sm:block mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
             A curated snapshot of premier luxury hotels, certified homestays, and boutique B&amp;Bs near Biswa Bangla Mela Prangan and key Kolkata corridors.
           </p>
 

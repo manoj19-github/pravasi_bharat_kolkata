@@ -335,7 +335,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Subtext */}
-          <p className="mb-5 text-xs sm:text-sm text-[#0A265D] leading-relaxed font-medium">
+          <p className="hidden sm:block mb-5 text-xs sm:text-sm text-[#0A265D] leading-relaxed font-medium">
             Pravasi Bharatiya Divas strengthens engagement of the overseas Indian community with Bharat.
           </p>
 

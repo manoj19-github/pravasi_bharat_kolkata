@@ -229,7 +229,7 @@ export const MapPreviewSection: React.FC = () => {
             <span className="text-[#BD1113]">Iconic Destinations</span>
           </h2>
 
-          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
+          <p className="hidden sm:block mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
             Interactive map plotting all 48 certified hotels, 11 homestays, 10 B&amp;Bs, Biswa Bangla convention venues, airport &amp; rail gateways, and 20 iconic Kolkata heritage sights.
           </p>
 

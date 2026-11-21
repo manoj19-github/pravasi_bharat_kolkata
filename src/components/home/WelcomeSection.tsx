@@ -50,7 +50,7 @@ export const WelcomeSection: React.FC = () => {
             <span className="text-[#BD1113]">Warm Welcome</span>
           </h2>
 
-          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
+          <p className="hidden sm:block mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
             Extending the timeless warmth of Bengal's hospitality to overseas Indian delegates gathering for the 19th Pravasi Bharatiya Divas 2027 in Kolkata.
           </p>
 

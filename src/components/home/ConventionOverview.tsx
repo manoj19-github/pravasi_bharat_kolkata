@@ -50,7 +50,7 @@ export const ConventionOverview: React.FC = () => {
             <span className="text-[#BD1113]">One Global Synergy.</span>
           </h2>
 
-          <p className="mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
+          <p className="hidden sm:block mt-1.5 text-xs sm:text-[13.5px] text-[#475569] font-medium max-w-2xl leading-relaxed tracking-normal">
             Commemorating Mahatma Gandhi's return to India, PBD 2027 unites 30+ million global Indians across three plenary days at Biswa Bangla Mela Prangan.
           </p>
 
