@@ -359,27 +359,27 @@ export const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-2.5 w-full mt-3.5">
-            <Link
-              to="/explore-kolkata"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#BD1113] py-2.5 text-xs font-bold text-white shadow-xs"
-            >
-              <span>Explore Kolkata</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              to="/hotels"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-[#BD1113] bg-[#FAF3E7] py-2.5 text-xs font-bold text-[#0A265D]"
-            >
-              <span>Find Accommodation</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </Link>
+            {/* CTA Buttons - Hidden on Mobile Screens */}
+            <div className="hidden sm:flex flex-row gap-2.5 w-full mt-3.5">
+              <Link
+                to="/explore-kolkata"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#BD1113] py-2.5 text-xs font-bold text-white shadow-xs"
+              >
+                <span>Explore Kolkata</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                to="/hotels"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-[#BD1113] bg-[#FAF3E7] py-2.5 text-xs font-bold text-[#0A265D]"
+              >
+                <span>Find Accommodation</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
           </div>
 
         </div>
-
-      </div>
 
     </section>
   )
